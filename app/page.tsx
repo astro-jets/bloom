@@ -282,7 +282,7 @@ export default function Dashboard() {
                         <ul className="text-sm text-gray-700 space-y-2">
                             <li><span className="text-blue-600 font-semibold">New homework submission:</span> Sophia Richards submitted Calculus Problem Set — <span className="text-gray-500">10:23 AM</span></li>
                             <li><span className="text-blue-600 font-semibold">Lesson rescheduled:</span> Jack Lee moved his lesson to Thursday — <span className="text-gray-500">Yesterday</span></li>
-                            <li><span className="text-blue-600 font-semibold">New message:</span> Mason Keller: "Will we cover chapter 5 today?" — <span className="text-gray-500">Yesterday</span></li>
+                            <li><span className="text-blue-600 font-semibold">New message:</span> Mason Keller: Will we cover chapter 5 today — <span className="text-gray-500">Yesterday</span></li>
                             <li><span className="text-blue-600 font-semibold">New review:</span> Olivia Parker rated 5-stars — <span className="text-gray-500">2 days ago</span></li>
                         </ul>
                     </div>
