@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const homeWorkData: any[] = [
+const homeWorkData = [
     {
         image: "/images/user-02.png",
         name: "Jane Stones",

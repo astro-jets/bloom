@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Header/Navbar"
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import ThemeProvider from "@/theme/theme-provider";
 export const metadata: Metadata = {
   title: "Bloom",
