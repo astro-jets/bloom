@@ -1,6 +1,6 @@
 import TableOne from "@/components/table";
 import { BiCameraMovie, BiSolidComment } from "react-icons/bi";
-import { BsBarChartLine, BsBook, BsCalendar, BsPeople, BsPerson, BsStarFill } from "react-icons/bs";
+import { BsBarChartLine, BsBook, BsCalendar, BsPeople, BsStarFill } from "react-icons/bs";
 import { FaCalendar, FaEnvelope } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { PiGraduationCapLight } from "react-icons/pi";
