@@ -14,13 +14,13 @@
 /* This will change the thumb color and border-radius */
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: linear-gradient(65deg,
-            rgba(17, 0, 114, 0.637),
-            rgba(25, 0, 255, 0.856));
+            rgba(48, 33, 131, 0.637),
+            #5755d8e8);
     border-radius: 10px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(65deg, rgb(65, 51, 255), rgba(68, 0, 255, 0.856));
+    background: linear-gradient(65deg, rgb(65, 51, 255), rgba(101, 51, 240, 0.568));
 }
 
 .hide-scrollbar::-webkit-scrollbar {

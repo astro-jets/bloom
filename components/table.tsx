@@ -37,14 +37,14 @@ const homeWorkData = [
 
 const TableOne = () => {
     return (
-        <div className="text-black rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div className="px-4 py-6 md:px-6 xl:px-7.5">
-                <h4 className="text-xl font-semibold text-black ">
-                    Recent Homework
+        <div className="text-[#2c2d39] rounded-sm mb-6  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+            <div className="px-4 md:px-6 xl:px-7.5">
+                <h4 className="text-lg font-semibold text-[#2c2d39] ">
+                    Recent Homework Submissions
                 </h4>
             </div>
 
-            <div className="grid grid-cols-5 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5">
+            <div className="grid grid-cols-5 px-4 py-4.5 sm:grid-cols-8 md:px-6 2xl:px-7.5">
                 <div className="col-span-3 flex items-center">
                     <p className="font-medium">Student Name</p>
                 </div>
@@ -77,23 +77,23 @@ const TableOne = () => {
                                     alt="Product"
                                 />
                             </div>
-                            <p className="text-sm text-black ">
+                            <p className="text-sm text-[#2c2d39] ">
                                 {product.name}
                             </p>
                         </div>
                     </div>
                     <div className="col-span-1 hidden items-center sm:flex">
-                        <p className="text-sm text-black ">
+                        <p className="text-sm text-[#2c2d39] ">
                             {product.subject}
                         </p>
                     </div>
                     <div className="col-span-2 flex items-center">
-                        <p className="text-sm text-black ">
+                        <p className="text-sm text-[#2c2d39] ">
                             {product.tutor}
                         </p>
                     </div>
                     <div className="col-span-1 flex items-center">
-                        <p className="text-sm text-black text-center ">{product.score}</p>
+                        <p className="text-sm text-[#2c2d39] text-center ">{product.score}</p>
                     </div>
                     <div className="col-span-1 flex items-center">
                         <p className="text-sm text-meta-3">{product.status}</p>
