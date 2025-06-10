@@ -7,7 +7,7 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for clickable dates
 
 export default function MyCalendar() {
-    const handleDateClick = (arg: { dateStr: any; }) => {
+    const handleDateClick = (arg: { dateStr: string; }) => {
         alert(`Date clicked: ${arg.dateStr}`);
     };
 
