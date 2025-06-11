@@ -16,7 +16,7 @@ export default function RootLayout({
       <body className="hide-scrollbar" suppressHydrationWarning={true}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="light"
           enableSystem
           disableTransitionOnChange
         >
