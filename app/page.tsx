@@ -58,7 +58,7 @@ export default function Dashboard() {
                         </div>
                         <div className="flex space-x-3 items-center">
                             <BsBellFill className="fill-gray-600" size={20} />
-                            <img src={'/images/user-04.png'} className={'object-cover w-12 h-12 rounded-full'} />
+                            <img src={'/images/user-04.png'} className={'object-cover w-12 h-12 rounded-full'} alt={''} />
                             <DropdownDefault />
                         </div>
 
@@ -339,7 +339,7 @@ export default function Dashboard() {
                                 <div className="rounded-xl  bg-[#5C56D3] text-white p-1" style={{ 'fontSize': '10px' }}>In 1 hour</div>
                             </div>
                             <div className="flex space-x-3 items-center text-[#2c2d39]">
-                                <img src={'/images/user-04.png'} className={'object-cover w-12 h-12 rounded-full'} />
+                                <img src={'/images/user-04.png'} className={'object-cover w-12 h-12 rounded-full'} alt={''} />
                                 <div className="flex flex-col items-start justify-start">
                                     <h3 className="font-bold">Sophia Richards</h3>
                                     <p className="text-sm text-gray-700">Math - Calculus</p>

@@ -1,24 +1,27 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import DarkModeSwitcher from "../themeMode/ThemeMode";
-import { BiCaretDown } from "react-icons/bi";
 import { FaAngleDown } from "react-icons/fa";
 import { BsDoorOpen, BsGear, BsPerson } from "react-icons/bs";
 
 const DropdownDefault = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const trigger = useRef<any>(null);
-  const dropdown = useRef<any>(null);
+  const trigger = useRef<HTMLButtonElement | null>(null);
+  const dropdown = useRef<HTMLDivElement | null>(null);
+
+
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }: MouseEvent) => {
       if (!dropdown.current) return;
+      if (!trigger.current) return;
+      // Type assertion to fix TS error
       if (
         !dropdownOpen ||
-        dropdown.current.contains(target) ||
-        trigger.current.contains(target)
+        dropdown.current.contains(target as Node) ||
+        trigger.current.contains(target as Node)
       )
         return;
       setDropdownOpen(false);
