@@ -1,6 +1,7 @@
+
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import Pagination from "@/components/pagination/pagination";
 import Image from "next/image";
-import React from "react";
 import { BiSolidComment } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 
@@ -62,10 +63,12 @@ const statusColors = {
     Missed: "bg-red-600",
 };
 
+
+
 export default function StudentCardGrid() {
     return (
         <DefaultLayout>
-            <main className="ml-[17.3%] w-full max-w-6xl mx-auto p-6">
+            <main className="h-full custom-scrollbar py-2 px-4 overflow-y-auto w-[83%] ml-[17.3%]">
                 <h1 className="text-2xl font-semibold">My Students</h1>
                 <p className="mb-6 text-sm text-gray-600">Manage your assigned students and track their progress.</p>
 
@@ -147,7 +150,7 @@ export default function StudentCardGrid() {
                                     <button className="w-full bg-gray-900 text-white text-sm py-2 rounded font-medium hover:bg-gray-700">
                                         View Profile
                                     </button>
-                                    <div className="rounded-sm p-2 items-center justify-center flex border border-gray-900">
+                                    <div className="rounded-sm p-2 items-center justify-center flex border border-gray-900 shadow">
                                         <BiSolidComment className="fill-black" />
                                     </div>
                                 </div>
@@ -155,6 +158,7 @@ export default function StudentCardGrid() {
                         );
                     })}
                 </div>
+                <Pagination />
             </main>
         </DefaultLayout>
     );
