@@ -2,16 +2,10 @@
 import React from "react";
 import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-interface PaginationProps {
-    currentPage: number;
-    totalPages: number;
-    onPageChange: (page: number) => void;
-}
-
 export default function Pagination() {
     const totalPages = 3;
     const currentPage = 2;
-    const onPageChange = (page: number) => { };
+    const onPageChange = (page: number) => { console.log(page) };
 
     const handlePrev = () => {
         if (currentPage > 1) onPageChange(currentPage - 1);
