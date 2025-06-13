@@ -202,7 +202,7 @@ const Homeworks = () => {
                                 {filteredData.length === 0 && (
                                     <tr>
                                         <td colSpan={4} className="text-center py-6 text-gray-400">
-                                            No homework found for "{filter}" status.
+                                            No homework found for {filter} status.
                                         </td>
                                     </tr>
                                 )}

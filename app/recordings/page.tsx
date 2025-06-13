@@ -189,7 +189,7 @@ const Recordings = () => {
 
                     {filteredRecordings.length === 0 && (
                         <p className="text-center text-gray-400 col-span-full">
-                            No recordings found for "{filter}"
+                            No recordings found for {filter}
                         </p>
                     )}
                 </div>
