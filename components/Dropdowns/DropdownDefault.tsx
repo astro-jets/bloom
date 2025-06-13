@@ -1,7 +1,7 @@
 "use client"
 import { useEffect, useRef, useState } from "react";
 import DarkModeSwitcher from "../themeMode/ThemeMode";
-import { FaAngleDown } from "react-icons/fa";
+import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { BsDoorOpen, BsGear, BsPerson } from "react-icons/bs";
 
 const DropdownDefault = () => {
@@ -48,13 +48,13 @@ const DropdownDefault = () => {
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
         <p>Sarah Johnson</p>
-        <FaAngleDown />
+        {dropdownOpen ? <FaAngleUp /> : <FaAngleDown />}
       </button>
       <div
         ref={dropdown}
         onFocus={() => setDropdownOpen(true)}
         onBlur={() => setDropdownOpen(false)}
-        className={`absolute right-0 top-full z-40 w-60 pb-2 space-y-3 rounded-sm outline-0 dark:bg-[#333A48] bg-white p-1.5 shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? "block" : "hidden"
+        className={`absolute right-0 top-9 z-40 w-60 p-1.5 py-2 space-y-6 rounded-sm outline-0 dark:bg-[#333A48] bg-white  shadow-default dark:border-strokedark dark:bg-boxdark ${dropdownOpen === true ? "block" : "hidden"
           }`}
       >
         <div className="flex space-x-3">
