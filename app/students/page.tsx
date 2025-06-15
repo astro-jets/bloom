@@ -2,6 +2,7 @@
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import Pagination from "@/components/pagination/pagination";
 import Image from "next/image";
+import Link from "next/link";
 import { BiSolidComment } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 
@@ -147,9 +148,9 @@ export default function StudentCardGrid() {
                                     <div className="text-left text-xs text-gray-500 mt-1">{percent}% complete</div>
                                 </div>
                                 <div className="flex space-x-3 items-center">
-                                    <button className="w-full bg-gray-900 text-white text-sm py-2 rounded font-medium hover:bg-gray-700">
+                                    <Link href={'/students/1'} className="w-70 bg-gray-900 text-white text-sm p-2 rounded font-medium hover:bg-gray-700">
                                         View Profile
-                                    </button>
+                                    </Link>
                                     <div className="rounded-sm p-2 items-center justify-center flex border border-gray-900 shadow">
                                         <BiSolidComment className="fill-black" />
                                     </div>

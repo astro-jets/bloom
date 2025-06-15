@@ -27,7 +27,7 @@ const LeftSidebar = () => {
 
             <nav className="font-semibold flex flex-col py-4 space-y-2 w-full text-gray-700 border-t border-gray-300">
                 {navLinks.map(({ name, icon: Icon, href, badge }) => {
-                    const isActive = pathname === href;
+                    const isActive = pathname.includes(href);
 
                     return (
                         <Link
