@@ -10,6 +10,7 @@ import { BsX } from 'react-icons/bs';
 import { fetchLessons } from '@/utils/fetxhLessons';
 import { lessonsToEvents } from '@/utils/lessonsToEvent';
 import moment from 'moment'
+import { EventClickArg, EventContentArg } from '@fullcalendar/core/index.js';
 
 type LessonEvent = {
     id: string;
@@ -40,7 +41,7 @@ export default function MyCalendar() {
     // const handleDateClick = (arg: { dateStr: string; }) => {
     //     alert(`Date clicked: ${arg.dateStr}`);
     // };
-    const handleEventClick = (info: any) => {
+    const handleEventClick = (info: EventClickArg) => {
         const eventId = info.event.id.toString();
         const eventData = events?.find((e: { id: string; }) => e.id === eventId);
         if (!eventData) { return }
@@ -48,9 +49,9 @@ export default function MyCalendar() {
         console.log("info => ", eventData)
     };
 
-    const renderEventContent = (eventInfo: any) => {
-        const isRecorded = eventInfo.event.extendedProps.recorded;
-        const time = new Date(eventInfo.event.start).toLocaleTimeString([], {
+    const renderEventContent = (eventInfo: EventContentArg) => {
+        // const isRecorded = eventInfo.event.extendedProps.recorded;
+        const time = new Date(eventInfo.event.start as unknown as string).toLocaleTimeString([], {
             hour: '2-digit',
             minute: '2-digit',
             hour12: true,
