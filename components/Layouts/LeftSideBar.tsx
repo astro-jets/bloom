@@ -8,7 +8,7 @@ import { FaUserGraduate, FaBook, FaVideo, FaCalendar, FaEnvelope } from "react-i
 import { HiPresentationChartBar } from "react-icons/hi";
 
 const navLinks = [
-    { name: "Dashboard", icon: BiLineChart, href: "/" },
+    { name: "Dashboard", icon: BiLineChart, href: "/dashboard" },
     { name: "Student Management", icon: FaUserGraduate, href: "/students" },
     { name: "Homework", icon: FaBook, href: "/homework" },
     { name: "Recordings", icon: FaVideo, href: "/recordings" },
