@@ -73,7 +73,7 @@ export default function StudentCardGrid() {
                 <h1 className="text-2xl font-semibold">My Students</h1>
                 <p className="mb-6 text-sm text-gray-600">Manage your assigned students and track their progress.</p>
 
-                {/* Filter Section */}
+                {/* Filter Sections */}
                 <div className="flex flex-wrap gap-3 justify-between items-center mb-6">
                     <div className="flex gap-2">
                         <select className="rounded px-3 py-2 w-40 bg-white text-sm shadow-sm">

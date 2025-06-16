@@ -3,7 +3,6 @@ import MyCalendar from "@/components/calendar/calendar";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import React from "react";
 
-
 export default function LessonsPage() {
     return (
         <DefaultLayout>
