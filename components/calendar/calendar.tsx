@@ -76,7 +76,7 @@ export default function MyCalendar() {
     console.log("Events => ", events)
 
     return (
-        <div className="bg-white text-black shadow rounded-xl">
+        <div className="bg-white text-black shadow rounded-xl overflow-y-auto custom-scrollbar w-full">
             {events &&
                 <FullCalendar
                     eventTimeFormat={{

@@ -7,7 +7,7 @@ import React from "react";
 export default function LessonsPage() {
     return (
         <DefaultLayout>
-            <main className="ml-[17.3%] w-full max-w-6xl mx-auto">
+            <main className="ml-[17.3%] w-full max-w-6xl mx-auto ">
                 <div className="p-4 w-full flex justify-between">
                     <h1 className="text-2xl font-semibold mb-4">Lessons</h1>
                     {/* Filter Section */}
@@ -22,7 +22,6 @@ export default function LessonsPage() {
                         </div>
                     </div>
                 </div>
-
                 <MyCalendar />
             </main>
         </DefaultLayout>
