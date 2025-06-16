@@ -42,7 +42,7 @@ export default function MyCalendar() {
     // };
     const handleEventClick = (info: any) => {
         const eventId = info.event.id.toString();
-        const eventData = events?.find((e: { id: { toString: () => any; }; }) => e.id.toString() === eventId);
+        const eventData = events?.find((e: { id: string; }) => e.id === eventId);
         if (!eventData) { return }
         setSelectedEvent(eventData);
         console.log("info => ", eventData)
@@ -62,7 +62,9 @@ export default function MyCalendar() {
                     <span className="font-semibold text-gray-800 truncate">
                         {eventInfo.event.title}
                     </span>
-                    {isRecorded && <FaPlay size={12} className="text-gray-600 ml-2 shrink-0" />}
+                    {/* {isRecorded && */}
+                    <FaPlay size={12} className="text-gray-600 ml-2 shrink-0" />
+                    {/* //  } */}
                 </div>
                 <div className="text-gray-500">{time}</div>
             </div>
@@ -150,12 +152,12 @@ export default function MyCalendar() {
                                 </div>
 
                                 {/* Recording Info */}
-                                {selectedEvent.recorded && (
-                                    <div className="flex items-center gap-2 text-green-600 bg-green-50 px-3 py-2 rounded-md w-fit">
-                                        <FaPlay className="w-4 h-4" />
-                                        <span className="text-sm font-medium">Recording Available</span>
-                                    </div>
-                                )}
+                                {/* {selectedEvent.recorded && ( */}
+                                <div className="flex items-center gap-2 text-green-600 bg-green-50 px-3 py-2 rounded-md w-fit">
+                                    <FaPlay className="w-4 h-4" />
+                                    <span className="text-sm font-medium">Recording Available</span>
+                                </div>
+                                {/* )} */}
                             </div>
 
                             {/* Right Side: Video or Placeholder */}

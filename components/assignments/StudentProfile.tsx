@@ -39,8 +39,8 @@ export const StudentProfile = ({
                         />
                     </div>
                     <div className="text-sm flex justify-between text-gray-900 mb-2">
-                        <p>Average: 82%</p>
-                        <p className="">Class Average: 82%</p>
+                        <p>Average: {average}</p>
+                        <p className="">Class Average: {classAverage}</p>
                     </div>
                 </div>
                 <div>
