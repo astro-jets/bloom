@@ -24,7 +24,7 @@ export default function HomeworksSection() {
     return (
         <div className="bg-white flex flex-col p-4 rounded-xl shadow space-y-4">
             <div className="flex justify-between items-center mb-4">
-                <h3 className="font-semibold text-lg">Student's Homeworks</h3>
+                <h3 className="font-semibold text-lg">Student&apos;s Homeworks</h3>
                 <div className="w-40 flex justify-between">
                     <button className="text-sm bg-purple-500 text-white px-3 py-1 rounded-md">+ Assign</button>
                     <button className="text-sm bg-gray-100 text-black px-3 py-1 flex items-center space-x-2 rounded-md">
