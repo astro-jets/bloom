@@ -51,7 +51,7 @@ export default function HomeworksSection() {
                                 </p>
                             </div>
                         </div>
-                        <span className="text-xs font-semibold bg-gray-100 px-2 py-1 rounded">{hw.status}</span>
+                        <span className="text-sm font-semibold bg-gray-100 px-2 py-1 rounded">{hw.status}</span>
                     </li>
                 ))}
             </ul>
