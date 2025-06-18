@@ -22,7 +22,7 @@ const homeworks: Homework[] = [
 
 export default function HomeworksSection() {
     return (
-        <div className="bg-white flex flex-col p-4 rounded-xl shadow space-y-4">
+        <div className="bg-white h-120 flex flex-col p-4 rounded-xl shadow space-y-4">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="font-semibold text-lg">Student&apos;s Homeworks</h3>
                 <div className="w-40 flex justify-between">
@@ -43,7 +43,7 @@ export default function HomeworksSection() {
                 {homeworks.map((hw, idx) => (
                     <li key={idx} className="flex justify-between items-center space-y-4">
                         <div className="flex items-center gap-3">
-                            <div className="bg-purple-100 text-purple-700 p-2 rounded">{hw.icon}</div>
+                            <div className="bg-purple-100 text-purple-700 h-12 w-12 flex items-center justify-center text-xl p-2 rounded">{hw.icon}</div>
                             <div>
                                 <p className="font-medium">{hw.title}</p>
                                 <p className="text-xs text-gray-500">

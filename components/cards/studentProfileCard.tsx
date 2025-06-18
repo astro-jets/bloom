@@ -11,7 +11,7 @@ export default function StudentProfileCard() {
                         <Image src={'/images/user-02.png'} width={120} height={120} className='w-30 h-30 rounded-full object-cover' alt='' />
 
                         <div>
-                            <h2 className="font-semibold text-lg">Emma Johnson</h2>
+                            <h2 className="font-semibold text-3xl">Emma Johnson</h2>
                             <p className="text-sm text-gray-500">emma.johnson@example.com</p>
                         </div>
                     </div>
@@ -19,9 +19,8 @@ export default function StudentProfileCard() {
                 </div>
             </div>
             <div className="flex  justify-center w-full space-x-3 text-sm text-gray-600 mt-2">
-                <div className='flex flex-col px-2'><strong>Start Date</strong> Sep 12, 2023</div>
-                <div className='flex flex-col px-2 border-l border-r border-gray-300'><strong>Contract</strong> 6-month plan</div>
-                <div className='flex flex-col px-2'><strong>Subject</strong> Science & Math</div>
+                <div className='flex flex-col px-2 border-l border-gray-300'><strong>Start Date</strong> Sep 12, 2023</div>
+                <div className='flex flex-col px-2 border-l border-r border-gray-300'><strong>Subject</strong> Science & Math</div>
             </div>
 
         </div>

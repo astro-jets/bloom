@@ -1,9 +1,9 @@
 'use client'
 
 const tabs = [
-    { label: 'Lessons', color: 'bg-purple-100 text-purple-700' },
+    { label: 'Progress', color: 'bg-purple-100 text-purple-700' },
     { label: 'Schedule', color: 'bg-purple-100 text-purple-700' },
-    { label: 'Assignments', color: 'bg-purple-100 text-purple-700' },
+    { label: 'Homeworks', color: 'bg-purple-100 text-purple-700' },
 ];
 
 export default function NavigationTabs() {

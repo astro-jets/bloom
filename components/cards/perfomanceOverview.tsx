@@ -1,5 +1,7 @@
 'use client'
 
+import { ProgressBar } from "../assignments/ProgresBar";
+
 type SubjectScore = {
     name: string;
     score: number;
@@ -20,7 +22,7 @@ const progress = (score / 10) * circumference;
 
 export default function PerformanceOverview() {
     return (
-        <div className="w-full h-full bg-white p-4 rounded-xl shadow space-y-3">
+        <div className="w-full bg-white p-4 rounded-xl shadow space-y-2 h-120">
             <h3 className="text-xl text-gray-900 font-semibold">Perfomance Overview</h3>
             <div className="flex flex-col items-center justify-center w-full">
                 {/* Circular progress bar */}
@@ -68,13 +70,7 @@ export default function PerformanceOverview() {
             </div>
             <div className="space-y-2 text-sm">
                 {subjects.map((subject) => (
-                    <div key={subject.name} className="w-full flex flex-col space-y-1 justify-between items-center">
-                        <div className="flex justify-between items-center    w-full">
-                            <span>{subject.name}</span>
-                            <span className="text-xs font-semibold">{subject.score}/10</span>
-                        </div>
-                        <div className={`w-full h-2 rounded ${subject.color}`}></div>
-                    </div>
+                    <ProgressBar subject={subject.name} grade={subject.score.toString()} />
                 ))}
             </div>
         </div>
