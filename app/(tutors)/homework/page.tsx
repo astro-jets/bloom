@@ -1,9 +1,7 @@
 "use client";
 
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import { useState } from "react";
 import { FaFilter } from "react-icons/fa";
-import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 type HomeworkStatus = "Pending" | "Submitted" | "Overdue";
 
