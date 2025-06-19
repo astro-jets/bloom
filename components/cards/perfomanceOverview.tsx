@@ -69,8 +69,8 @@ export default function PerformanceOverview() {
                 <p className="text-sm text-gray-500">Excellent progress this week</p>
             </div>
             <div className="space-y-2 text-sm">
-                {subjects.map((subject) => (
-                    <ProgressBar subject={subject.name} grade={subject.score.toString()} />
+                {subjects.map((subject, index) => (
+                    <ProgressBar key={index} subject={subject.name} grade={subject.score.toString()} />
                 ))}
             </div>
         </div>

@@ -1,110 +1,54 @@
 "use client";
 
-import DropdownDefault from "@/components/Dropdowns/DropdownDefault";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { useState } from "react";
-import { BsBellFill } from "react-icons/bs";
-import { FaSearch } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
+import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
 type HomeworkStatus = "Pending" | "Submitted" | "Overdue";
 
-
 type Homework = {
-    title: string;
+    student: string;
     subject: string;
-    dueDate: string;
+    title: string;
+    submitted: string;
     status: HomeworkStatus;
 };
 
 const dummyHomeworks: Homework[] = [
     {
-        title: "Algebra Worksheet",
+        student: "Emma Wilson",
         subject: "Mathematics",
-        dueDate: "2025-06-20",
+        title: "Algebra Equations",
+        submitted: "2025-05-28",
         status: "Pending",
     },
     {
-        title: "Grammar Quiz",
-        subject: "English",
-        dueDate: "2025-06-18",
+        student: "James Brown",
+        subject: "Physics",
+        title: "Newton's Laws",
+        submitted: "2025-05-27",
         status: "Submitted",
     },
     {
-        title: "Chemistry Lab Report",
-        subject: "Science",
-        dueDate: "2025-06-22",
-        status: "Overdue",
-    },
-    {
-        title: "Algebra Worksheet",
-        subject: "Mathematics",
-        dueDate: "2025-06-20",
+        student: "Sophia Martinez",
+        subject: "English",
+        title: "Essay on Shakespeare",
+        submitted: "2025-05-26",
         status: "Pending",
     },
     {
-        title: "Grammar Quiz",
-        subject: "English",
-        dueDate: "2025-06-18",
+        student: "Lucas Johnson",
+        subject: "Chemistry",
+        title: "Periodic Table Quiz",
+        submitted: "2025-05-25",
         status: "Submitted",
     },
     {
-        title: "Chemistry Lab Report",
-        subject: "Science",
-        dueDate: "2025-06-22",
-        status: "Overdue",
-    },
-    {
-        title: "Algebra Worksheet",
-        subject: "Mathematics",
-        dueDate: "2025-06-20",
-        status: "Pending",
-    },
-    {
-        title: "Grammar Quiz",
-        subject: "English",
-        dueDate: "2025-06-18",
-        status: "Submitted",
-    },
-    {
-        title: "Chemistry Lab Report",
-        subject: "Science",
-        dueDate: "2025-06-22",
-        status: "Overdue",
-    },
-    {
-        title: "Algebra Worksheet",
-        subject: "Mathematics",
-        dueDate: "2025-06-20",
-        status: "Pending",
-    },
-    {
-        title: "Grammar Quiz",
-        subject: "English",
-        dueDate: "2025-06-18",
-        status: "Submitted",
-    },
-    {
-        title: "Chemistry Lab Report",
-        subject: "Science",
-        dueDate: "2025-06-22",
-        status: "Overdue",
-    },
-    {
-        title: "Algebra Worksheet",
-        subject: "Mathematics",
-        dueDate: "2025-06-20",
-        status: "Pending",
-    },
-    {
-        title: "Grammar Quiz",
-        subject: "English",
-        dueDate: "2025-06-18",
-        status: "Submitted",
-    },
-    {
-        title: "Chemistry Lab Report",
-        subject: "Science",
-        dueDate: "2025-06-22",
+        student: "Olivia Taylor",
+        subject: "Biology",
+        title: "Cell Structure Report",
+        submitted: "2025-05-24",
         status: "Overdue",
     },
 ];
@@ -116,100 +60,101 @@ const statusColors: Record<HomeworkStatus, string> = {
 };
 
 const Homeworks = () => {
-    const [filter, setFilter] = useState("All");
-
-    const filteredData =
-        filter === "All"
-            ? dummyHomeworks
-            : dummyHomeworks.filter((hw) => hw.status === filter);
-
     return (
         <DefaultLayout>
-            <main className="h-full custom-scrollbar py-2 px-4 overflow-y-auto w-[83%] ml-[17.3%]">
+            <main className="h-full custom-scrollbar py-6 px-8 overflow-y-auto w-[83%] ml-[17.3%]">
                 <div className="mb-6 flex justify-between items-center w-full">
                     <div className="">
-                        <h2 className="text-2xl font-bold text-[#5855D8]">Homework</h2>
+                        <h2 className="text-xl font-bold text-[#5855D8]">Homework</h2>
                         <p className="text-gray-500 mt-1">
                             Track and manage all assigned homework for your students.
                         </p>
                     </div>
                     <div className="flex space-x-3 items-center">
-                        <BsBellFill className="fill-gray-600" size={20} />
-                        <img src={'/images/user-04.png'} className={'object-cover w-12 h-12 rounded-full'} alt={''} />
-                        <DropdownDefault />
+                        <span className="bg-white w-25 p-2 text-black rounded shadow space-x-2 flex items-center justify-center">
+                            <FaFilter size={20} className={'fill-gray-900 text-sm'} />
+                            <p>Filter</p>
+                        </span>
+                        <span className="p-2 text-white bg-gray-800 rounded shadow">+ Assign Homework</span>
                     </div>
 
                 </div>
-                <div className="p-6 w-full">
-
-
-                    {/* Filter + Search */}
-                    <div className="flex flex-wrap justify-between items-center mb-4 gap-2">
-                        <div className="flex items-center gap-2">
-                            <label className="text-sm font-medium text-gray-700">Filter by:</label>
-                            <select
-                                className="text-sm rounded border-gray-300 focus:ring-[#5855D8] focus:border-[#5855D8]"
-                                value={filter}
-                                onChange={(e) => setFilter(e.target.value)}
-                            >
-                                <option>All</option>
-                                <option>Pending</option>
-                                <option>Submitted</option>
-                                <option>Overdue</option>
-                            </select>
-                        </div>
-
-                        <div className="relative w-full max-w-xs">
-                            <input
-                                type="text"
-                                placeholder="Search by title..."
-                                className="w-full rounded border-gray-300 pl-10 pr-3 py-2 text-sm focus:ring-[#5855D8] focus:border-[#5855D8]"
-                            />
-                            <FaSearch className="absolute left-3 top-2.5 text-gray-400" size={14} />
-                        </div>
+                {/* Top Summary Cards */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div className="bg-white shadow rounded p-4">
+                        <h3 className="text-gray-500 text-sm">Total Submissions</h3>
+                        <p className="text-xl font-semibold">28</p>
+                        <p className="text-green-500 text-xs mt-1">+4 from last week</p>
                     </div>
+                    <div className="bg-white shadow rounded p-4">
+                        <h3 className="text-gray-500 text-sm">Pending Review</h3>
+                        <p className="text-xl font-semibold">12</p>
+                        <p className="text-yellow-500 text-xs mt-1">Needs your attention</p>
+                    </div>
+                    <div className="bg-white shadow rounded p-4">
+                        <h3 className="text-gray-500 text-sm">Average Grade</h3>
+                        <p className="text-xl font-semibold">87%</p>
+                        <p className="text-green-500 text-xs mt-1">+2% from last month</p>
+                    </div>
+                </div>
 
-                    {/* Homework Table */}
-                    <div className="overflow-auto bg-white rounded-xl shadow-md">
-                        <table className="w-full text-sm text-left">
-                            <thead className="bg-[#5C56D3] text-white uppercase text-xs border-b">
-                                <tr>
-                                    <th className="px-4 py-3">Title</th>
-                                    <th className="px-4 py-3">Subject</th>
-                                    <th className="px-4 py-3">Due Date</th>
-                                    <th className="px-4 py-3">Status</th>
+                {/* Table */}
+                <div className="overflow-x-auto bg-white shadow rounded">
+                    <h2 className="text-xl font-bold text-gary-800 px-4 py-2">Recent Submissions</h2>
+                    <table className="min-w-full table-auto">
+                        <thead className="bg-gray-50 text-sm text-gray-600">
+                            <tr>
+                                <th className="text-left px-6 py-3">Student</th>
+                                <th className="text-left px-6 py-3">Subject</th>
+                                <th className="text-left px-6 py-3">Assignment</th>
+                                <th className="text-left px-6 py-3">Submitted</th>
+                                <th className="text-left px-6 py-3">Status</th>
+                                <th className="text-left px-6 py-3">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody className="text-sm divide-y divide-gray-200">
+                            {dummyHomeworks.map((hw, idx) => (
+                                <tr key={idx} className="hover:bg-gray-50">
+                                    <td className="px-6 py-4">{hw.student}</td>
+                                    <td className="px-6 py-4">{hw.subject}</td>
+                                    <td className="px-6 py-4">{hw.title}</td>
+                                    <td className="px-6 py-4">{new Date(hw.submitted).toLocaleDateString()}</td>
+                                    <td className="px-6 py-4">
+                                        <span
+                                            className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[hw.status]}`}
+                                        >
+                                            {hw.status}
+                                        </span>
+                                    </td>
+                                    <td className="px-6 py-4">
+                                        <button className="text-gray-900 cursor-pointer">
+                                            {hw.status === "Submitted" ? "View" : "Review"}
+                                        </button>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody>
-                                {filteredData.map((hw, idx) => (
-                                    <tr
-                                        key={idx}
-                                        className="border-b hover:bg-gray-50 transition duration-150"
-                                    >
-                                        <td className="px-4 py-3 font-medium text-gray-900">{hw.title}</td>
-                                        <td className="px-4 py-3">{hw.subject}</td>
-                                        <td className="px-4 py-3">{hw.dueDate}</td>
-                                        <td className="px-4 py-3">
-                                            <span
-                                                className={`px-2 py-1 rounded-full text-xs font-semibold ${statusColors[hw.status]}`}
-                                            >
-                                                {hw.status}
-                                            </span>
-                                        </td>
-                                    </tr>
-                                ))}
-
-                                {filteredData.length === 0 && (
-                                    <tr>
-                                        <td colSpan={4} className="text-center py-6 text-gray-400">
-                                            No homework found for {filter} status.
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
+                            ))}
+                            <tr className="p-6!">
+                                <td className="px-6 py-4">Showing 5 of 28 submissions</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td className="pr-12" >
+                                    {/* Pagination */}
+                                    <div className="flex justify-end items-center space-x-2">
+                                        <button className="px-3 py-1 rounded shadow border border-[#ccc] text-gray-900 flex items-center">
+                                            Previous
+                                        </button>
+                                        <button className="px-3 py-1 rounded shadow text-gray-50 bg-gray-900 flex items-center">
+                                            Next
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
             </main>
         </DefaultLayout>
     );
