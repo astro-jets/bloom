@@ -82,7 +82,7 @@ const Homeworks = () => {
                     <div className="bg-white shadow rounded p-4">
                         <h3 className="text-gray-500 text-sm">Total Submissions</h3>
                         <p className="text-xl font-semibold">28</p>
-                        <p className="text-green-500 text-xs mt-1">+4 from last week</p>
+                        <p className="text-green-500 text-xs mt-1">+5 from last week</p>
                     </div>
                     <div className="bg-white shadow rounded p-4">
                         <h3 className="text-gray-500 text-sm">Pending Review</h3>
