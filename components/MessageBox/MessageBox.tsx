@@ -37,7 +37,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -73,7 +73,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -109,7 +109,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -145,7 +145,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -181,7 +181,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -217,7 +217,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -253,7 +253,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -289,7 +289,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -325,7 +325,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -361,7 +361,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -397,7 +397,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>
@@ -433,7 +433,7 @@ const MessageBox = () => {
                             <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
-                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which don't look even slightly believable.
+                                    There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
                                 </p>
                             </div>
                             <span className="text-gray-900 text-xs">3:25 PM</span>

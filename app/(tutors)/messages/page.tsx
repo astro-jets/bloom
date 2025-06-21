@@ -9,7 +9,6 @@ const MessagesPage = () => {
                 <div className="flex flex-col h-screen w-[18%]">
 
                     <div className="flex flex-col items-center  h-60 w-full">
-
                         <div className="flex flex-col relative w-25 h-25 items-center justify-center">
                             <div className="rounded-full h-20 w-20 overflow-hidden shadow">
                                 <img src={'/images/user-04.png'} className="w-full object-cover" />
