@@ -18,6 +18,13 @@ type LessonEvent = {
     start: string; // ISO datetime string
     end: string; // ISO datetime string
     recorded?: string | null;
+    tutor: {
+        id: string;
+        name: string;
+        status: string;
+        tutorProfile: { id: string; link: string };
+    };
+    student: { id: string; name: string; status: string };
 }
 
 export default function MyCalendar() {
@@ -105,7 +112,7 @@ export default function MyCalendar() {
                         {/* Close Button */}
                         <button
                             onClick={closeModal}
-                            className="absolute top-2 right-2 text-gray-400 hover:text-gray-600 transition"
+                            className="absolute cursor-pointer top-4 right-4 text-gray-400 hover:text-gray-600 transition"
                         >
                             <BsX className="w-6 h-6 fill-black" />
                         </button>
@@ -130,7 +137,7 @@ export default function MyCalendar() {
                                     />
                                     <div>
                                         <p className="text-sm text-gray-500">Tutor</p>
-                                        <p className="font-medium text-gray-800">Tutor Name</p>
+                                        <p className="font-medium text-gray-800">{selectedEvent.tutor.name}</p>
                                     </div>
                                 </div>
 
@@ -143,7 +150,7 @@ export default function MyCalendar() {
                                     />
                                     <div>
                                         <p className="text-sm text-gray-500">Student</p>
-                                        <p className="font-medium text-gray-800">Student Name</p>
+                                        <p className="font-medium text-gray-800">{selectedEvent.student.name}</p>
                                     </div>
                                 </div>
 
@@ -162,7 +169,7 @@ export default function MyCalendar() {
                             </div>
 
                             {/* Right Side: Video or Placeholder */}
-                            <div className="col-span-2 flex items-center justify-center bg-black/5 rounded-xl border border-gray-200 p-4">
+                            <div className="col-span-2 flex items-center justify-center bg-black/5 rounded-xl border border-gray-200 p-4 mr-4">
                                 {/* {selectedEvent.videoUrl ? ( */}
                                 {/* <video
                                         controls
