@@ -4,8 +4,9 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BiLineChart } from "react-icons/bi";
 import { BsBarChartLine } from "react-icons/bs";
-import { FaUserGraduate, FaBook, FaVideo, FaCalendar, FaEnvelope } from "react-icons/fa";
+import { FaUserGraduate, FaBook, FaVideo, FaEnvelope } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
+import { PiBooks } from "react-icons/pi";
 
 const navLinks = [
     { name: "Dashboard", icon: BiLineChart, href: "/dashboard" },
@@ -13,7 +14,7 @@ const navLinks = [
     { name: "Homework", icon: FaBook, href: "/homework" },
     { name: "Recordings", icon: FaVideo, href: "/recordings" },
     { name: "Lessons", icon: HiPresentationChartBar, href: "/lessons" },
-    { name: "Schedules", icon: FaCalendar, href: "/schedules" },
+    { name: "Libraly", icon: PiBooks, href: "/libraly" },
     { name: "Messages", icon: FaEnvelope, href: "/messages", badge: 3 },
     { name: "Reports", icon: BsBarChartLine, href: "/reports" },
 ];

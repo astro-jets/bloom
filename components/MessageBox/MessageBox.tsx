@@ -9,7 +9,7 @@ const MessageBox = () => {
 
     return (
         <div className={`w-full h-full md:w-[${boxWidth}] h-full flex flex-col bg-white`}>
-            <div className="h-12 flex justify-between items-center w-full px-4 py-2 shadow border border-gray-200">
+            <div className="h-16 flex justify-between items-center w-full px-4 py-2 shadow border border-gray-200">
                 <div className="flex items-center">
                     <img className="h-10 w-10 overflow-hidden rounded-full"
                         src="/images/user-03.png"

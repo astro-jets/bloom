@@ -1,9 +1,13 @@
 // app/lessons/page.tsx or components/LessonsPage.tsx
 import MyCalendar from "@/components/calendar/calendar";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import { fetchLessons } from "@/utils/fetxhLessons";
+import { lessonsToEvents } from "@/utils/lessonsToEvent";
 import React from "react";
 
-export default function LessonsPage() {
+export default async function LessonsPage() {
+    const rawLessons = await fetchLessons();
+    const formattedEvents = rawLessons ? lessonsToEvents(rawLessons) : [];
     return (
         <DefaultLayout>
             <main className="ml-[17.3%] w-full max-w-6xl mx-auto ">
@@ -21,7 +25,7 @@ export default function LessonsPage() {
                         </div>
                     </div>
                 </div>
-                <MyCalendar />
+                {formattedEvents && <MyCalendar events={formattedEvents} />}
             </main>
         </DefaultLayout>
     );

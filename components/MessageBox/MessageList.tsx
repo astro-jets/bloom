@@ -4,7 +4,7 @@ import { BsMegaphone } from "react-icons/bs";
 const MessageList = () => {
     return (
         <div className="w-full h-screen flex flex-col bg-white">
-            <div className="h-12 flex justify-between items-center w-full px-4 py-3 shadow border border-gray-200">
+            <div className="h-16 flex justify-between items-center w-full px-4 py-3 shadow border border-gray-200">
                 <h3 className="text-gray-900 text-xl">Messages</h3>
 
                 <div className="flex space-x-3">

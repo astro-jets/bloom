@@ -7,8 +7,6 @@ import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction'; // for clickable dates
 import { FaPlay } from 'react-icons/fa';
 import { BsX } from 'react-icons/bs';
-import { fetchLessons } from '@/utils/fetxhLessons';
-import { lessonsToEvents } from '@/utils/lessonsToEvent';
 import moment from 'moment'
 import { EventClickArg, EventContentArg } from '@fullcalendar/core/index.js';
 
@@ -27,23 +25,10 @@ type LessonEvent = {
     student: { id: string; name: string; status: string };
 }
 
-export default function MyCalendar() {
-    const [events, setEvents] = useState<LessonEvent[] | null>([]);
+export default function MyCalendar({ events }: { events: LessonEvent[] | null }) {
+    // const [events, setEvents] = useState<LessonEvent[] | null>([]);
     const [selectedEvent, setSelectedEvent] = useState<LessonEvent | null>(null);
 
-    useEffect(() => {
-        const loadLessons = async () => {
-            try {
-                const rawLessons = await fetchLessons();
-                const formattedEvents = lessonsToEvents(rawLessons);
-                setEvents(formattedEvents);
-            } catch (err) {
-                console.error("Failed to load lessons", err);
-            }
-        };
-
-        loadLessons();
-    }, []);
 
     // const handleDateClick = (arg: { dateStr: string; }) => {
     //     alert(`Date clicked: ${arg.dateStr}`);
