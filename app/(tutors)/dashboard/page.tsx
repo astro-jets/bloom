@@ -7,8 +7,12 @@ import { BiSolidComment } from "react-icons/bi";
 import { BsBarChartLine, BsBook, BsCalendar, BsArrowUp, BsChevronLeft, BsChevronRight, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate, } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
+import { lessonsToEvents } from "@/utils/lessonsToEvent";
+import { fetchLessons } from "@/utils/fetxhLessons";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+    const rawLessons = await fetchLessons();
+    const formattedEvents = rawLessons ? lessonsToEvents(rawLessons) : [];
     return (
         <DefaultLayout>
 
@@ -277,7 +281,7 @@ export default function Dashboard() {
                     </table>
                 </div>
                 <TableOne />
-                <MyCalendar />
+                <MyCalendar events={formattedEvents} />
 
                 {/* Notifications */}
                 <div className="bg-white rounded-xl shadow p-4 mt-6">
