@@ -12,7 +12,7 @@ import { fetchLessons } from "@/utils/fetxhLessons";
 
 export default async function Dashboard() {
     const rawLessons = await fetchLessons();
-    const formattedEvents = rawLessons ? lessonsToEvents(rawLessons) : [];
+    const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons) : [];
     return (
         <DefaultLayout>
 
@@ -281,21 +281,10 @@ export default async function Dashboard() {
                     </table>
                 </div>
                 <TableOne />
-                <MyCalendar events={formattedEvents} />
-
-                {/* Notifications */}
-                <div className="bg-white rounded-xl shadow p-4 mt-6">
-                    <h3 className="text-lg font-semibold mb-4">Recent Notifications</h3>
-                    <ul className="text-sm text-gray-700 space-y-2">
-                        <li><span className="text-blue-600 font-semibold">New homework submission:</span> Sophia Richards submitted Calculus Problem Set — <span className="text-gray-500">10:23 AM</span></li>
-                        <li><span className="text-blue-600 font-semibold">Lesson rescheduled:</span> Jack Lee moved his lesson to Thursday — <span className="text-gray-500">Yesterday</span></li>
-                        <li><span className="text-blue-600 font-semibold">New message:</span> Mason Keller: Will we cover chapter 5 today — <span className="text-gray-500">Yesterday</span></li>
-                        <li><span className="text-blue-600 font-semibold">New review:</span> Olivia Parker rated 5-stars — <span className="text-gray-500">2 days ago</span></li>
-                    </ul>
-                </div>
+                {formattedEvents && <MyCalendar events={formattedEvents} />}
             </main>
 
-            {/* Sidebar */}
+            {/*  Right Sidebar */}
             <aside className="fixed custom-scrollbar overflow-y-auto top-0 right-0 bg-white rounded-xl shadow p-4 space-y-6 h-screen w-[23%]">
                 <div className="flex-col flex space-y-2">
                     <h2 className="mb-2 text-gray-700 capitalize">NEXT SCHEDULED LESSON</h2>

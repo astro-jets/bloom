@@ -158,7 +158,7 @@ const BookCard = ({ resource }: { resource: Resource }) => (
             <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
 
                 <div className="flex gap-3 justify-between w-full">
-                    <span>PDF.{resource.size}</span>
+                    <span>PDF•{resource.size}</span>
                     {resource.type === "Exam" && <FaEye color="black" />}
                     <FaDownload />
                 </div>
@@ -182,7 +182,7 @@ const ExamCard = ({ resource }: { resource: Resource }) => (
         <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
 
             <div className="flex gap-3 justify-between w-full">
-                <span>PDF.{resource.size}</span>
+                <span>PDF•{resource.size}</span>
                 <div className="space-x-4 flex items-center">
                     <FaEye color="black" />
                     <FaDownload color="black" />
@@ -207,7 +207,7 @@ const PresentationsCard = ({ resource }: { resource: Resource }) => (
         <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
 
             <div className="flex gap-3 justify-between w-full">
-                <span>PDF.{resource.size}</span>
+                <span>PDF•{resource.size}</span>
                 <div className="space-x-4 flex items-center">
                     <FaEye color="black" />
                     <FaDownload color="black" />

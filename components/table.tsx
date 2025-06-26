@@ -37,65 +37,65 @@ const homeWorkData = [
 
 const TableOne = () => {
     return (
-        <div className="text-[#2c2d39] rounded-sm mb-6  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div className="px-4 md:px-6 xl:px-7.5">
+        <div className="text-[#2c2d39] space-y-4 rounded-sm mb-6  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+            <div className="px-4">
                 <h4 className="text-lg font-semibold text-[#2c2d39] ">
                     Recent Homework Submissions
                 </h4>
             </div>
 
-            <div className="grid grid-cols-5 px-4 py-4.5 sm:grid-cols-8 md:px-6 2xl:px-7.5">
-                <div className="col-span-3 flex items-center">
+            <div className="grid grid-cols-5 p-4 border-t border-gray-300">
+                <div className="flex items-center">
                     <p className="font-medium">Student Name</p>
                 </div>
-                <div className="col-span-1 hidden items-center sm:flex">
+                <div className="hidden items-center sm:flex">
                     <p className="font-medium">Subject</p>
                 </div>
-                <div className="col-span-2 flex items-center">
+                <div className="flex items-center">
                     <p className="font-medium">Tutor</p>
                 </div>
-                <div className="col-span-1 flex items-center">
+                <div className="flex items-center">
                     <p className="font-medium">Perfomance</p>
                 </div>
-                <div className="col-span-1 flex items-center">
+                <div className="flex items-center">
                     <p className="font-medium">Status</p>
                 </div>
             </div>
 
             {homeWorkData.map((product, key) => (
                 <div
-                    className="grid grid-cols-5 border-t border-stroke px-4 py-4.5 dark:border-strokedark sm:grid-cols-8 md:px-6 2xl:px-7.5"
+                    className="grid grid-cols-5 border-t border-gray-300 p-2"
                     key={key}
                 >
-                    <div className="col-span-3 flex items-center">
-                        <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <div className="h-12.5 w-15 rounded-md">
-                                <Image
-                                    src={product.image}
-                                    width={60}
-                                    height={50}
-                                    alt="Product"
-                                />
-                            </div>
-                            <p className="text-sm text-[#2c2d39] ">
-                                {product.name}
-                            </p>
+
+                    <div className="flex flex-col  items-center mr-2 w-30">
+                        <div className="h-12.5 w-15 rounded-md">
+                            <img
+                                src={product.image}
+                                // width={60}
+                                // height={50}
+                                alt="Product"
+                            />
                         </div>
+                        <p className="text-sm font-bold text-[#2c2d39] mt-4">
+                            {product.name}
+                        </p>
                     </div>
-                    <div className="col-span-1 hidden items-center sm:flex">
-                        <p className="text-sm text-[#2c2d39] ">
+
+                    <div className="hidden items-center sm:flex">
+                        <p className="text-sm text-center text-[#2c2d39] ">
                             {product.subject}
                         </p>
                     </div>
-                    <div className="col-span-2 flex items-center">
+                    <div className="flex items-center">
                         <p className="text-sm text-[#2c2d39] ">
                             {product.tutor}
                         </p>
                     </div>
-                    <div className="col-span-1 flex items-center">
+                    <div className="flex items-center justify-center w-20">
                         <p className="text-sm text-[#2c2d39] text-center ">{product.score}</p>
                     </div>
-                    <div className="col-span-1 flex items-center">
+                    <div className="flex items-center">
                         <p className="text-sm text-meta-3">{product.status}</p>
                     </div>
                 </div>

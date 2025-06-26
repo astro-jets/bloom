@@ -3,8 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BiLineChart } from "react-icons/bi";
-import { BsBarChartLine } from "react-icons/bs";
-import { FaUserGraduate, FaBook, FaVideo, FaEnvelope } from "react-icons/fa";
+import { FaUserGraduate, FaBook, FaVideo, FaEnvelope, FaCog } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { PiBooks } from "react-icons/pi";
 
@@ -16,7 +15,7 @@ const navLinks = [
     { name: "Lessons", icon: HiPresentationChartBar, href: "/lessons" },
     { name: "Libraly", icon: PiBooks, href: "/libraly" },
     { name: "Messages", icon: FaEnvelope, href: "/messages", badge: 3 },
-    { name: "Reports", icon: BsBarChartLine, href: "/reports" },
+    { name: "Settings", icon: FaCog, href: "/settings" },
 ];
 
 const LeftSidebar = () => {
@@ -40,6 +39,7 @@ const LeftSidebar = () => {
                                 }`}
                         >
                             <Icon size={15} />
+
                             <span>{name}</span>
                             {badge && (
                                 <span className="ml-auto text-xs bg-gray-500 text-white rounded-full px-2">

@@ -7,7 +7,7 @@ import React from "react";
 
 export default async function LessonsPage() {
     const rawLessons = await fetchLessons();
-    const formattedEvents = rawLessons ? lessonsToEvents(rawLessons) : [];
+    const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons) : [];
     return (
         <DefaultLayout>
             <main className="ml-[17.3%] w-full max-w-6xl mx-auto ">
