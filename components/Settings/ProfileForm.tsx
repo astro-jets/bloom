@@ -10,7 +10,7 @@ export default function ProfileForm() {
     const [subjects, setSubjects] = useState(["Mathematics", "Physics", "Computer Science"]);
     const [newSubject, setNewSubject] = useState("");
     // Input form class
-    const input = "border border-gray-300 rounded px-3.1 py-2 w-full focus:outline-none focus:ring-1 focus:ring-purple-400";
+    const input = "border border-gray-300 rounded px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-purple-400";
 
     const handleAdd = () => {
         if (newSubject.trim()) {
