@@ -4,6 +4,7 @@ import { useState } from "react";
 import NotificationSettings from "./NotificationsSettings";
 import CertificateUpload from "./CertificateUpload";
 import AvailabilityForm from "./AvailabilityForn";
+import Image from "next/image";
 
 export default function ProfileForm() {
     const [subjects, setSubjects] = useState(["Mathematics", "Physics", "Computer Science"]);
@@ -24,14 +25,16 @@ export default function ProfileForm() {
 
     return (
         <div className="flex flex-col space-y-4">
-            <div className="space-y-6 p-4 pb-6 shadow rounded bg-white">
+            <div id="profile" className="scroll-mt-24 space-y-6 p-4 pb-6 shadow rounded bg-white">
                 <div className="flex flex-col space-y-1 w-full border-b border-gray-300 pb-3">
                     <h1 className="text-gray-900">Personal Information</h1>
                     <p className="text-gray-500 text-sm">Update your personal details and public info</p>
                 </div>
                 {/* Profile Picture */}
                 <div className="flex items-center space-x-4">
-                    <div className="w-16 h-16 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl font-bold">JD</div>
+                    <div className="w-20 h-20 rounded-full overflow-hidden">
+                        <Image className="w-full h-full object-cover" alt="" width={500} height={500} src={'/images/user-02.png'} />
+                    </div>
 
                     <div className="flex flex-col">
                         <div className="text-gray-900">Profile photo</div>
@@ -103,9 +106,17 @@ export default function ProfileForm() {
                     />
                 </div>
             </div>
-            <CertificateUpload />
-            <AvailabilityForm />
-            <NotificationSettings />
+            <div id="certificates" className="scroll-mt-24">
+                <CertificateUpload />
+            </div>
+
+            <div id="availability" className="scroll-mt-24">
+                <AvailabilityForm />
+            </div>
+
+            <div id="notifications" className="scroll-mt-24">
+                <NotificationSettings />
+            </div>
             <button className="px-4 bg-purple-500 text-white rounded w-35 ml-auto h-10 shadow-lg cursor-pointer">Save Changes</button>
         </div>
     );

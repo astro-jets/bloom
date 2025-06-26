@@ -4,6 +4,7 @@ import { PiFilePdfFill } from "react-icons/pi";
 import { JSX } from "react";
 import { IoIosArrowForward } from "react-icons/io";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import { BsSearch } from "react-icons/bs";
 
 type Resource = {
     title: string;
@@ -46,7 +47,7 @@ const books: Resource[] = [
         size: "18MB",
         icon: <FaBook className="text-gray-900" />,
         description: "Analysis of classic and contemporary literature with study questions.",
-        color: 'bg-blue-600'
+        color: 'bg-purple-600'
     },
     {
         title: "Physics Principles",
@@ -158,8 +159,8 @@ const BookCard = ({ resource }: { resource: Resource }) => (
             <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
 
                 <div className="flex gap-3 justify-between w-full">
-                    <span>PDF•{resource.size}</span>
-                    {resource.type === "Exam" && <FaEye color="black" />}
+                    <span>PDF • {resource.size}</span>
+                    {resource.type === "Exam" && <FaEye color="black" className="cursor-pointer" />}
                     <FaDownload />
                 </div>
             </div>
@@ -182,9 +183,9 @@ const ExamCard = ({ resource }: { resource: Resource }) => (
         <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
 
             <div className="flex gap-3 justify-between w-full">
-                <span>PDF•{resource.size}</span>
+                <span>PDF • {resource.size}</span>
                 <div className="space-x-4 flex items-center">
-                    <FaEye color="black" />
+                    <FaEye color="black" className="cursor-pointer" />
                     <FaDownload color="black" />
                 </div>
             </div>
@@ -207,9 +208,9 @@ const PresentationsCard = ({ resource }: { resource: Resource }) => (
         <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
 
             <div className="flex gap-3 justify-between w-full">
-                <span>PDF•{resource.size}</span>
+                <span>PDF • {resource.size}</span>
                 <div className="space-x-4 flex items-center">
-                    <FaEye color="black" />
+                    <FaEye color="black" className="cursor-pointer" />
                     <FaDownload color="black" />
                 </div>
             </div>
@@ -222,35 +223,47 @@ export default function EducationalResources() {
         <DefaultLayout>
             <main className="ml-[17.3%] w-full p-6 space-y-10 max-w-screen-xl mx-auto custom-scrollbar overflow-y-auto h-screen">
                 {/* Filters */}
-                <div className="flex flex-wrap gap-4 items-end">
-                    <div>
-                        <label className="block text-sm font-medium">Grade Level</label>
-                        <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
-                            <option>All Grades</option>
-                        </select>
+                <div className="flex justify-between items-center w-full">
+                    <div className="flex gap-4">
+                        <div>
+                            <label className="block text-sm font-medium">Grade Level</label>
+                            <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
+                                <option>All Grades</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium">Subject</label>
+                            <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
+                                <option>All Subjects</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium">Resource Type</label>
+                            <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
+                                <option>All Types</option>
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        <label className="block text-sm font-medium">Subject</label>
-                        <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
-                            <option>All Subjects</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium">Resource Type</label>
-                        <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
-                            <option>All Types</option>
-                        </select>
-                    </div>
-                    <button className="bg-blue-600 text-white px-4 py-2 rounded text-sm flex items-center gap-2">
-                        <FaFilter /> Apply Filters
+                    <button className="bg-purple-600 text-white px-4 py-2 shadow-lg border-purple-400 border cursor-pointer rounded text-sm flex items-center gap-2">
+                        <FaFilter /> <span>Apply Filters</span>
                     </button>
                 </div>
-
+                <div className="w-full flex flex-col">
+                    <label className="block text-sm font-medium">Search</label>
+                    <div className="flex relative">
+                        <BsSearch className="absolute left-2 top-2.5 fill-gray-600" />
+                        <input
+                            type="text"
+                            placeholder="Search resources..."
+                            className="outline-0 px-4 py-2 pl-8 text-black bg-white text-sm rounded shadow border border-gray-200 w-84"
+                        />
+                    </div>
+                </div>
                 {/* Books */}
                 <section>
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-semibold">Books</h2>
-                        <a href="#" className="text-sm text-blue-600 flex items-center gap-1">
+                        <a href="#" className="text-sm text-purple-600 flex items-center gap-1">
                             View All <IoIosArrowForward />
                         </a>
                     </div>
@@ -265,7 +278,7 @@ export default function EducationalResources() {
                 <section>
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-semibold">Past Exam Papers</h2>
-                        <a href="#" className="text-sm text-blue-600 flex items-center gap-1">
+                        <a href="#" className="text-sm text-purple-600 flex items-center gap-1">
                             View All <IoIosArrowForward />
                         </a>
                     </div>
@@ -280,7 +293,7 @@ export default function EducationalResources() {
                 <section>
                     <div className="flex justify-between items-center mb-4">
                         <h2 className="text-xl font-semibold">PowerPoint Presentations</h2>
-                        <a href="#" className="text-sm text-blue-600 flex items-center gap-1">
+                        <a href="#" className="text-sm text-purple-600 flex items-center gap-1">
                             View All <IoIosArrowForward />
                         </a>
                     </div>
