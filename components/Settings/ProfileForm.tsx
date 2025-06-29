@@ -114,7 +114,7 @@ export default function ProfileForm() {
                 <AvailabilityForm />
             </div>
 
-            <div id="notifications" className="scroll-mt-24">
+            <div id="notifications" className="scroll-mt-24 h-screen">
                 <NotificationSettings />
             </div>
             <button className="px-4 bg-purple-500 text-white rounded w-35 ml-auto h-10 shadow-lg cursor-pointer">Save Changes</button>

@@ -221,9 +221,9 @@ const PresentationsCard = ({ resource }: { resource: Resource }) => (
 export default function EducationalResources() {
     return (
         <DefaultLayout>
-            <main className="ml-[17.3%] w-full p-6 space-y-10 max-w-screen-xl mx-auto custom-scrollbar overflow-y-auto h-screen">
+            <main className="md:ml-[17.3%] w-full px-2 md:p-6 space-y-10 max-w-screen-xl mx-auto md:custom-scrollbar md:overflow-y-auto h-screen">
                 {/* Filters */}
-                <div className="flex justify-between items-center w-full">
+                <div className="hidden md:flex justify-between items-center w-full">
                     <div className="flex gap-4">
                         <div>
                             <label className="block text-sm font-medium">Grade Level</label>
@@ -248,7 +248,7 @@ export default function EducationalResources() {
                         <FaFilter /> <span>Apply Filters</span>
                     </button>
                 </div>
-                <div className="w-full flex flex-col">
+                <div className="w-full flex flex-col mt-16">
                     <label className="block text-sm font-medium">Search</label>
                     <div className="flex relative">
                         <BsSearch className="absolute left-2 top-2.5 fill-gray-600" />

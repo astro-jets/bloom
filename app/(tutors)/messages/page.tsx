@@ -5,7 +5,7 @@ import MessageList from "@/components/MessageBox/MessageList";
 const MessagesPage = () => {
     return (
         <DefaultLayout>
-            <main className="flex justify-between ml-[17%] h-full w-full bg-slate-50">
+            <main className="flex justify-between md:ml-[17%] h-full w-full bg-slate-50">
                 {/* <div className="flex flex-col h-screen w-[18%]">
 
                     <div className="flex flex-col items-center  h-60 w-full">
@@ -19,12 +19,12 @@ const MessagesPage = () => {
                         <span className="rounded-4xl py-1 px-4 bg-gray-900 text-white">Tutor</span>
                     </div>
                 </div> */}
-                <div className="w-[75%] h-full  custom-scrollbar overflow-y-auto">
+                <div className="w-full md:w-[75%] h-full mt-15 p-0 hide-scrollbar">
                     <MessageBox />
                 </div>
-                <div className="h-full w-[24.5%]">
+                {/* <div className="h-full w-[24.5%]">
                     <MessageList />
-                </div>
+                </div> */}
             </main>
         </DefaultLayout>
     );

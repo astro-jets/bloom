@@ -37,7 +37,7 @@ const homeWorkData = [
 
 const TableOne = () => {
     return (
-        <div className="text-[#2c2d39] space-y-4 rounded-sm mb-6  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+        <div className="text-[#2c2d39] hidden md:block space-y-4 rounded-sm mb-6  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
             <div className="px-4">
                 <h4 className="text-lg font-semibold text-[#2c2d39] ">
                     Recent Homework Submissions

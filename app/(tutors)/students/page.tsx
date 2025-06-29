@@ -66,15 +66,15 @@ const statusColors = {
 
 
 
-export default function StudentCardGrid() {
+export default function Studentspage() {
     return (
         <DefaultLayout>
-            <main className="h-full custom-scrollbar py-2 px-4 overflow-y-auto w-[83%] ml-[17.3%]">
-                <h1 className="text-2xl font-semibold">My Students</h1>
+            <main className="h-full custom-scrollbar p-2 md:px-4 nd:overflow-y-auto md:w-[83%] w-full md:ml-[17.3%] pb-24">
+                <h1 className="mt-16 md:mt-0 text-2xl font-semibold">My Students</h1>
                 <p className="mb-6 text-sm text-gray-600">Manage your assigned students and track their progress.</p>
 
                 {/* Filter Sections */}
-                <div className="flex flex-wrap gap-3 justify-between items-center mb-6">
+                <div className="hidden md:flex flex-wrap gap-3 justify-between items-center mb-6">
                     <div className="flex gap-2">
                         <select className="rounded px-3 py-2 w-40 bg-white text-sm shadow-sm">
                             <option>All Subjects</option>

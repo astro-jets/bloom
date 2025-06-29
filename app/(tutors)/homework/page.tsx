@@ -60,15 +60,15 @@ const statusColors: Record<HomeworkStatus, string> = {
 const Homeworks = () => {
     return (
         <DefaultLayout>
-            <main className="h-full custom-scrollbar py-6 px-8 overflow-y-auto w-[83%] ml-[17.3%]">
-                <div className="mb-6 flex justify-between items-center w-full">
+            <main className="h-full custom-scrollbar py-6 px-2 md:px-8 md:overflow-y-auto w-full md:w-[83%] md:ml-[17.3%]">
+                <div className="mb-6 mt-16 flex flex-col md:flex-row justify-between items-center w-full">
                     <div className="">
                         <h2 className="text-xl font-bold text-[#5855D8]">Homework</h2>
                         <p className="text-gray-500 mt-1">
                             Track and manage all assigned homework for your students.
                         </p>
                     </div>
-                    <div className="flex space-x-3 items-center">
+                    <div className="hidden md:flex space-x-3 items-center">
                         <span className="bg-white w-25 p-2 text-black rounded shadow space-x-2 flex items-center justify-center">
                             <FaFilter size={20} className={'fill-gray-900 text-sm'} />
                             <p>Filter</p>

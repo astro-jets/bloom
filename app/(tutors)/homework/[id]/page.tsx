@@ -14,7 +14,7 @@ const StudentsProfile = () => {
 
     return (
         <DefaultLayout>
-            <main className="w-full ml-[17.3%] mx-auto p-1 space-y-4 flex justify-between">
+            <main className="w-full md:ml-[17.3%] mx-auto p-1 space-y-4 flex justify-between">
                 <div className="w-[66.5%] rounded bg-white  p-4 overflow-y-scroll custom-scrollbar ">
                     <AssignmentHeader
                         studentName="Emma Wilson"

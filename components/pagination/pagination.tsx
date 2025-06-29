@@ -16,7 +16,7 @@ export default function Pagination() {
     };
 
     return (
-        <div className="flex justify-center items-center gap-2 mt-2 bg-none">
+        <div className="flex justify-center items-center gap-2 mt-4 bg-none pb-10">
             <button
                 onClick={handlePrev}
                 className="px-3 py-1 rounded border border-gray-300 text-sm hover:bg-gray-100 disabled:opacity-40"

@@ -27,14 +27,14 @@ const MessageBox = () => {
             <div className="p-4 h-[77vh] mt-1 overflow-y-auto custom-scrollbar">
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
                         </div>
                         <div className="flex-col space-y-2 w-full">
-                            <div className=" w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
+                            <div className="w-full bg-slate-100 p-4 rounded-b-2xl rounded-tr-2xl">
                                 <p className=" text-sm text-gray-900">
                                     Hey all, <br />
                                     There are many variation of passages of Lorem ipsum avaliable, but the jority have alternation in some form , by injected humor, or randomise words which dont look even slightly believable.
@@ -45,8 +45,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -63,7 +63,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -81,8 +81,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -99,7 +99,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -117,8 +117,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -135,7 +135,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -153,8 +153,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -171,7 +171,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -189,8 +189,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -207,7 +207,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -225,8 +225,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -243,7 +243,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -261,8 +261,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -279,7 +279,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -297,8 +297,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -315,7 +315,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -333,8 +333,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -351,7 +351,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -369,8 +369,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -387,7 +387,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -405,8 +405,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />
@@ -423,7 +423,7 @@ const MessageBox = () => {
                 </div>
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
-                    <div className="w-1/2 flex space-x-1">
+                    <div className="w-full md:w-1/2 flex space-x-1">
                         <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
@@ -441,8 +441,8 @@ const MessageBox = () => {
                     </div>
                 </div>
                 {/*  me */}
-                <div className="w-full flex justify-end ">
-                    <div className="w-1/2 flex items-start space-x-1">
+                <div className="w-full flex justify-end  my-4">
+                    <div className="w-full md:w-1/2 flex items-start space-x-1">
                         <div className=" w-full bg-slate-900 p-4 rounded-b-xl rounded-tl-xl">
                             <p className=" text-sm text-white">
                                 Hey, <br />

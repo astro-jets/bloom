@@ -17,8 +17,8 @@ export default async function Dashboard() {
         <DefaultLayout>
 
             {/* Main Content */}
-            <main className="h-full custom-scrollbar py-2 px-4 overflow-y-auto w-[60%] ml-[17.3%]">
-                <div className="mb-6 flex justify-between items-center w-full">
+            <main className="h-full custom-scrollbar py-2 px-4 pb-24 md:overflow-y-auto w-full md:w-[60%] md:ml-[17.3%]">
+                <div className="mb-6 mt-16 flex justify-between items-center w-full">
                     <div className="flex flex-col">
                         <h2 className="text-2xl font-bold text-gray-700">Good morning, Sarah!</h2>
                         <p className="text-sm text-gray-500">Tuesday, May 29, 2025</p>
@@ -65,7 +65,7 @@ export default async function Dashboard() {
                 </div>
 
 
-                <div className="w-full mb-6 rounded-sm  bg-white shadow-default  h-80">
+                <div className="w-full mb-6 rounded-sm  bg-white shadow-default md:h-80">
                     <div className="flex justify-between px-4">
                         <h3 className="text-xl font- my-2 text-[#2c2d39] px-2">This Weeks Schedule</h3>
 
@@ -78,7 +78,7 @@ export default async function Dashboard() {
                             </span>
                         </div>
                     </div>
-                    <table className="w-full border-0">
+                    <table className="w-full border-0 min-w-full table-auto">
                         <thead>
                             <tr className="grid grid-cols-7 rounded-t-sm bg-primary text-[#2c2d39]">
                                 <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
@@ -285,7 +285,7 @@ export default async function Dashboard() {
             </main>
 
             {/*  Right Sidebar */}
-            <aside className="fixed custom-scrollbar overflow-y-auto top-0 right-0 bg-white rounded-xl shadow p-4 space-y-6 h-screen w-[23%]">
+            <aside className="hidden md:block fixed custom-scrollbar overflow-y-auto top-0 right-0 bg-white rounded-xl shadow p-4 space-y-6 h-screen w-[23%]">
                 <div className="flex-col flex space-y-2">
                     <h2 className="mb-2 text-gray-700 capitalize">NEXT SCHEDULED LESSON</h2>
 

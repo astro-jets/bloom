@@ -2,10 +2,11 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { BiLineChart } from "react-icons/bi";
+import { BiLineChart, BiMenu, BiX } from "react-icons/bi";
 import { FaUserGraduate, FaBook, FaVideo, FaEnvelope, FaCog } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { PiBooks } from "react-icons/pi";
+import { useState } from "react";
 
 const navLinks = [
     { name: "Dashboard", icon: BiLineChart, href: "/dashboard" },
@@ -20,12 +21,20 @@ const navLinks = [
 
 const LeftSidebar = () => {
     const pathname = usePathname();
+    const [showMenu, setShowMenu] = useState(false)
 
     return (
-        <aside className="fixed flex flex-col items-center top-0 left-0 bg-white rounded-xl shadow p-4 h-screen w-[17%]">
-            <h1 className="text-2xl font-bold mb-6 text-[#5855D8]">Bloom</h1>
+        <aside className="fixed z-10  h-15 md:flex flex-col items-center top-0 left-0 bg-white md:rounded-xl shadow p-4 md:h-screen md:w-[17%] w-full">
+            <div className="w-full flex justify-between">
+                <h1 className="text-2xl font-bold mb-6 text-[#5855D8]">Bloom</h1>
+                {
+                    showMenu ?
+                        <BiX size={30} className="fill-gray-900 md:hidden" onClick={() => { setShowMenu(!showMenu) }} />
+                        : <BiMenu size={30} className="fill-gray-900 md:hidden" onClick={() => { setShowMenu(!showMenu) }} />
+                }
+            </div>
 
-            <nav className="font-semibold flex flex-col py-4 space-y-2 w-full text-gray-700 border-t border-gray-300">
+            <nav className={`${showMenu ? 'flex' : 'hidden md:flex'} bg-white font-semibold flex-col py-4 space-y-2 w-full text-gray-700 border-t border-gray-300`}>
                 {navLinks.map(({ name, icon: Icon, href, badge }) => {
                     const isActive = pathname.includes(href);
 
@@ -51,7 +60,7 @@ const LeftSidebar = () => {
                 })}
             </nav>
 
-            <div className="absolute bottom-4 w-11/12 pt-4">
+            <div className={`hidden md:block absolute bottom-4 w-11/12 pt-4`}>
                 <div className="bg-[#202938] text-white p-3 rounded-lg text-center">
                     <h3 className="font-semibold text-sm mb-2">Upgrade to Pro</h3>
                     <p className="text-sm mb-2 text-left">

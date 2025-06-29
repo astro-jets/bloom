@@ -8,7 +8,7 @@ import DefaultLayout from '@/components/Layouts/DefaultLayout';
 export default function StudentDashboard() {
     return (
         <DefaultLayout>
-            <main className="ml-[17.3%] p-4 w-full min-h-screen space-y-3 overflow-y-auto custom-scrollbar">
+            <main className="md:ml-[17.3%] p-4 w-full min-h-screen space-y-3 overflow-y-auto custom-scrollbar">
                 <div className="w-full flex justify-between">
                     <div className="w-[68%]">
                         <StudentProfileCard />
