@@ -22,9 +22,9 @@ const MessagesPage = () => {
                 <div className="w-full md:w-[75%] h-full mt-15 p-0 hide-scrollbar">
                     <MessageBox />
                 </div>
-                {/* <div className="h-full w-[24.5%]">
+                <div className="h-full w-[24.5%] hidden md:block">
                     <MessageList />
-                </div> */}
+                </div>
             </main>
         </DefaultLayout>
     );

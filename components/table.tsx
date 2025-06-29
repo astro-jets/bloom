@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 const homeWorkData = [
     {
         image: "/images/user-02.png",
