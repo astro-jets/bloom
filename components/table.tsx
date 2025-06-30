@@ -1,104 +1,116 @@
-const homeWorkData = [
+type HomeworkStatus = "Pending" | "Submitted" | "Overdue";
+
+type Homework = {
+    student: string;
+    subject: string;
+    title: string;
+    submitted: string;
+    status: HomeworkStatus;
+};
+
+const dummyHomeworks: Homework[] = [
     {
-        image: "/images/user-02.png",
-        name: "Jane Stones",
-        subject: "Chemistry",
-        tutor: 'Mason K',
-        score: '42%',
-        status: 'Pass',
+        student: "Emma Wilson",
+        subject: "Mathematics",
+        title: "Algebra Equations",
+        submitted: "2025-05-28",
+        status: "Pending",
     },
     {
-        image: "/images/user-07.png",
-        name: "Alexia Arnold",
-        subject: "English",
-        tutor: 'Sophia R',
-        score: '78%',
-        status: 'Strong Merit',
-    },
-    {
-        image: "/images/user-08.png",
-        name: "Declan Rice",
+        student: "James Brown",
         subject: "Physics",
-        tutor: 'Olivia P',
-        score: '64%',
-        status: 'Merit',
+        title: "Newton's Laws",
+        submitted: "2025-05-27",
+        status: "Submitted",
     },
     {
-        image: "/images/user-10.png",
-        name: "Judith Bellingham",
-        subject: "Science",
-        tutor: 'Alex T',
-        score: '69%',
-        status: 'Merit',
+        student: "Sophia Martinez",
+        subject: "English",
+        title: "Essay on Shakespeare",
+        submitted: "2025-05-26",
+        status: "Pending",
+    },
+    {
+        student: "Lucas Johnson",
+        subject: "Chemistry",
+        title: "Periodic Table Quiz",
+        submitted: "2025-05-25",
+        status: "Submitted",
+    },
+    {
+        student: "Olivia Taylor",
+        subject: "Biology",
+        title: "Cell Structure Report",
+        submitted: "2025-05-24",
+        status: "Overdue",
     },
 ];
 
+
+const statusColors: Record<HomeworkStatus, string> = {
+    Pending: "bg-yellow-100 text-yellow-800",
+    Submitted: "bg-green-100 text-green-800",
+    Overdue: "bg-red-100 text-red-800",
+};
+
+
 const TableOne = () => {
     return (
-        <div className="text-[#2c2d39] hidden md:block space-y-4 rounded-sm mb-6  bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
-            <div className="px-4">
-                <h4 className="text-lg font-semibold text-[#2c2d39] ">
-                    Recent Homework Submissions
-                </h4>
-            </div>
-
-            <div className="grid grid-cols-5 p-4 border-t border-gray-300">
-                <div className="flex items-center">
-                    <p className="font-medium">Student Name</p>
-                </div>
-                <div className="hidden items-center sm:flex">
-                    <p className="font-medium">Subject</p>
-                </div>
-                <div className="flex items-center">
-                    <p className="font-medium">Tutor</p>
-                </div>
-                <div className="flex items-center">
-                    <p className="font-medium">Perfomance</p>
-                </div>
-                <div className="flex items-center">
-                    <p className="font-medium">Status</p>
-                </div>
-            </div>
-
-            {homeWorkData.map((product, key) => (
-                <div
-                    className="grid grid-cols-5 border-t border-gray-300 p-2"
-                    key={key}
-                >
-
-                    <div className="flex flex-col  items-center mr-2 w-30">
-                        <div className="h-12.5 w-15 rounded-md">
-                            <img
-                                src={product.image}
-                                // width={60}
-                                // height={50}
-                                alt="Product"
-                            />
-                        </div>
-                        <p className="text-sm font-bold text-[#2c2d39] mt-4">
-                            {product.name}
-                        </p>
-                    </div>
-
-                    <div className="hidden items-center sm:flex">
-                        <p className="text-sm text-center text-[#2c2d39] ">
-                            {product.subject}
-                        </p>
-                    </div>
-                    <div className="flex items-center">
-                        <p className="text-sm text-[#2c2d39] ">
-                            {product.tutor}
-                        </p>
-                    </div>
-                    <div className="flex items-center justify-center w-20">
-                        <p className="text-sm text-[#2c2d39] text-center ">{product.score}</p>
-                    </div>
-                    <div className="flex items-center">
-                        <p className="text-sm text-meta-3">{product.status}</p>
-                    </div>
-                </div>
-            ))}
-        </div>
+        < div className="overflow-x-auto bg-white shadow rounded" >
+            <h2 className="text-xl font-bold text-gary-800 px-4 py-2">Recent Submissions</h2>
+            <table className="min-w-full table-auto">
+                <thead className="bg-gray-50 text-sm text-gray-600">
+                    <tr>
+                        <th className="text-left px-6 py-3">Student</th>
+                        <th className="text-left px-6 py-3">Subject</th>
+                        <th className="text-left px-6 py-3">Assignment</th>
+                        <th className="text-left px-6 py-3">Submitted</th>
+                        <th className="text-left px-6 py-3">Status</th>
+                        <th className="text-left px-6 py-3">Action</th>
+                    </tr>
+                </thead>
+                <tbody className="text-sm divide-y divide-gray-200">
+                    {dummyHomeworks.map((hw, idx) => (
+                        <tr key={idx} className="hover:bg-gray-50">
+                            <td className="px-6 py-4">{hw.student}</td>
+                            <td className="px-6 py-4">{hw.subject}</td>
+                            <td className="px-6 py-4">{hw.title}</td>
+                            <td className="px-6 py-4">{new Date(hw.submitted).toLocaleDateString()}</td>
+                            <td className="px-6 py-4">
+                                <span
+                                    className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[hw.status]}`}
+                                >
+                                    {hw.status}
+                                </span>
+                            </td>
+                            <td className="px-6 py-4">
+                                <button className="text-gray-900 cursor-pointer">
+                                    {hw.status === "Submitted" ? "View" : "Review"}
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                    <tr className="p-6!">
+                        <td className="px-6 py-4">Showing 5 of 28 submissions</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td className="pr-12" >
+                            {/* Pagination */}
+                            <div className="flex justify-end items-center space-x-2">
+                                <button className="px-3 py-1 rounded shadow border border-[#ccc] text-gray-900 flex items-center">
+                                    Previous
+                                </button>
+                                <button className="px-3 py-1 rounded shadow text-gray-50 bg-gray-900 flex items-center">
+                                    Next
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div >
     );
 };
 

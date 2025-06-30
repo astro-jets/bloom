@@ -65,7 +65,7 @@ const dummyData: Props[] = [
 export default function RecordingsPage() {
     return (
         <DefaultLayout>
-            <main className="md:ml-[17.3%] h-full p-2 md:p-4 w-full md:overflow-y-auto md:custom-scrollbar ">
+            <main className="md:ml-[17.3%] h-full p-2 md:p-4 w-full md:overflow-y-auto custom-scrollbar ">
                 <h1 className="text-2xl font-semibold mb-1 mt-12 md:mt-0">Recordings</h1>
                 <p className="text-gray-500 mb-4 text-sm">View and manage all your past lesson recordings</p>
 

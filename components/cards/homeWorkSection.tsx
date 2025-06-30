@@ -25,14 +25,14 @@ export default function HomeworksSection() {
         <div className="bg-white h-120 flex flex-col p-4 rounded-xl shadow space-y-4">
             <div className="flex justify-between items-center mb-4">
                 <h3 className="font-semibold text-lg">Student&apos;s Homeworks</h3>
-                <div className="w-40 flex justify-between">
+                <div className="hidden w-40 md:flex justify-between">
                     <button className="text-sm bg-purple-500 text-white px-3 py-1 rounded-md">+ Assign</button>
                     <button className="text-sm bg-gray-100 text-black px-3 py-1 flex items-center space-x-2 rounded-md">
                         <FaFilter /><span>Filter</span>
                     </button>
                 </div>
             </div>
-            <div className="w-full flex justify-between mb-4">
+            <div className="w-full hidden md:flex justify-between mb-4">
                 <NavigationTabs />
                 <div className="w-35 h-8 text-sm flex space-x-2 rounded bg-gray-100 p-1">
                     <button className="w-16 h-6 text-black bg-white shadow rounded">Week</button>

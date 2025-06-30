@@ -64,7 +64,7 @@
 
 /* This will change the scrollbar color */
 .custom-scrollbar::-webkit-scrollbar {
-    width: 10px;
+    width: 7px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {

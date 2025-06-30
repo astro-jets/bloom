@@ -60,8 +60,8 @@ const statusColors: Record<HomeworkStatus, string> = {
 const Homeworks = () => {
     return (
         <DefaultLayout>
-            <main className="h-full custom-scrollbar py-6 px-2 md:px-8 md:overflow-y-auto w-full md:w-[83%] md:ml-[17.3%]">
-                <div className="mb-6 mt-16 flex flex-col md:flex-row justify-between items-center w-full">
+            <main className="h-full md:overflow-y-auto w-full custom-scrollbar py-6 px-2 md:px-8 md:w-[83%] md:ml-[17.3%]">
+                <div className="mb-6 mt-16 md:mt-0 flex flex-col md:flex-row justify-between items-center w-full">
                     <div className="">
                         <h2 className="text-xl font-bold text-[#5855D8]">Homework</h2>
                         <p className="text-gray-500 mt-1">

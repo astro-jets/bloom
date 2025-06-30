@@ -69,7 +69,7 @@ const statusColors = {
 export default function Studentspage() {
     return (
         <DefaultLayout>
-            <main className="h-full custom-scrollbar p-2 md:px-4 nd:overflow-y-auto md:w-[83%] w-full md:ml-[17.3%] pb-24">
+            <main className="h-full custom-scrollbar p-2 md:px-4 md:overflow-y-auto md:w-[83%] w-full md:ml-[17.3%] pb-10">
                 <h1 className="mt-16 md:mt-0 text-2xl font-semibold">My Students</h1>
                 <p className="mb-6 text-sm text-gray-600">Manage your assigned students and track their progress.</p>
 

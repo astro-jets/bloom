@@ -17,8 +17,8 @@ export default async function Dashboard() {
         <DefaultLayout>
 
             {/* Main Content */}
-            <main className="h-full custom-scrollbar py-2 px-4 pb-24 md:overflow-y-auto w-full md:w-[60%] md:ml-[17.3%]">
-                <div className="mb-6 mt-16 flex justify-between items-center w-full">
+            <main className="h-full custom-scrollbar py-2 px-4 pb-10 md:overflow-y-auto w-full md:w-[60%] md:ml-[17.3%]">
+                <div className="mb-6 mt-16 md:mt-0 flex justify-between items-center w-full">
                     <div className="flex flex-col">
                         <h2 className="text-2xl font-bold text-gray-700">Good morning, Sarah!</h2>
                         <p className="text-sm text-gray-500">Tuesday, May 29, 2025</p>
@@ -65,7 +65,7 @@ export default async function Dashboard() {
                 </div>
 
 
-                <div className="w-full mb-6 rounded-sm  bg-white shadow-default md:h-80">
+                <div className="w-full mb-6 rounded-sm overflow-x-auto bg-white shadow-default md:h-80">
                     <div className="flex justify-between px-4">
                         <h3 className="text-xl font- my-2 text-[#2c2d39] px-2">This Weeks Schedule</h3>
 
@@ -78,7 +78,7 @@ export default async function Dashboard() {
                             </span>
                         </div>
                     </div>
-                    <table className="w-full border-0 min-w-full table-auto">
+                    <table className="border-0 min-w-full table-auto">
                         <thead>
                             <tr className="grid grid-cols-7 rounded-t-sm bg-primary text-[#2c2d39]">
                                 <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
@@ -125,7 +125,7 @@ export default async function Dashboard() {
                                         28
                                     </span>
                                     <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100    z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
+                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
                                             <span className="event-name text-sm font-semibold text-[#2c2d39]">
                                                 Sophia R
                                             </span>
@@ -138,7 +138,7 @@ export default async function Dashboard() {
                                         </div>
                                     </div>
                                     <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100    z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
+                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
                                             <span className="event-name text-sm font-semibold text-[#2c2d39]">
                                                 Olivia P
                                             </span>
@@ -151,7 +151,7 @@ export default async function Dashboard() {
                                         </div>
                                     </div>
                                     <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100    z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
+                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
                                             <span className="event-name text-sm font-semibold text-[#2c2d39]">
                                                 Mason K
                                             </span>
@@ -202,7 +202,7 @@ export default async function Dashboard() {
                                         30
                                     </span>
                                     <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100    z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
+                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
                                             <span className="event-name text-sm font-semibold text-[#2c2d39]">
                                                 Eva S
                                             </span>
@@ -221,7 +221,7 @@ export default async function Dashboard() {
                                         31
                                     </span>
                                     <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100    z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
+                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
                                             <span className="event-name text-sm font-semibold text-[#2c2d39]">
                                                 Noah J
                                             </span>
@@ -253,7 +253,7 @@ export default async function Dashboard() {
                                         </div>
                                     </div>
                                     <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100    z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
+                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
                                             <span className="event-name text-sm font-semibold text-[#2c2d39]">
                                                 Emma W
                                             </span>
@@ -280,7 +280,9 @@ export default async function Dashboard() {
                         </tbody>
                     </table>
                 </div>
-                <TableOne />
+                <div className="mb-6">
+                    <TableOne />
+                </div>
                 {formattedEvents && <MyCalendar events={formattedEvents} />}
             </main>
 

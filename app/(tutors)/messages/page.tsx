@@ -19,7 +19,7 @@ const MessagesPage = () => {
                         <span className="rounded-4xl py-1 px-4 bg-gray-900 text-white">Tutor</span>
                     </div>
                 </div> */}
-                <div className="w-full md:w-[75%] h-full mt-15 p-0 hide-scrollbar">
+                <div className="w-full md:w-[75%] h-full mt-15 md:mt-0 p-0 hide-scrollbar">
                     <MessageBox />
                 </div>
                 <div className="h-full w-[24.5%] hidden md:block">

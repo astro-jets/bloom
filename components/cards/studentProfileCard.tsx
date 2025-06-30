@@ -11,11 +11,11 @@ export default function StudentProfileCard() {
                         <Image src={'/images/user-02.png'} width={120} height={120} className='w-30 h-30 rounded-full object-cover' alt='' />
 
                         <div>
-                            <h2 className="font-semibold text-3xl">Emma Johnson</h2>
+                            <h2 className="font-semibold md:text-3xl">Emma Johnson</h2>
                             <p className="text-sm text-gray-500">emma.johnson@example.com</p>
                         </div>
                     </div>
-                    <span className="bg-green-100 h-6 p-1 text-green-700 px-2 py-1 rounded-2xl text-xs inline-block w-fit">Active Student</span>
+                    <span className="bg-green-100 h-10 flex items-center justify-center w-32 md:h-6 p-1 text-green-700 px-2 py-1 rounded-2xl text-xs  md:w-fit">Active Student</span>
                 </div>
             </div>
             <div className="flex  justify-center w-full space-x-3 text-sm text-gray-600 mt-2">

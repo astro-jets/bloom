@@ -24,11 +24,11 @@ const MessageBox = () => {
                 </div>
             </div>
             {/*  message container */}
-            <div className="p-4 h-[77vh] mt-1 overflow-y-auto custom-scrollbar">
+            <div className="p-4 h-[70vh] md:h-[77vh] mt-1 overflow-y-auto custom-scrollbar">
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -54,7 +54,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -64,7 +64,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -90,7 +90,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -100,7 +100,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -126,7 +126,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -136,7 +136,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -162,7 +162,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -172,7 +172,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -198,7 +198,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -208,7 +208,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -234,7 +234,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -244,7 +244,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -270,7 +270,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -280,7 +280,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -306,7 +306,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -316,7 +316,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -342,7 +342,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -352,7 +352,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -378,7 +378,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -388,7 +388,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -414,7 +414,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -424,7 +424,7 @@ const MessageBox = () => {
                 {/*  messages */}
                 <div className="w-full flex flex-start overflow-y-auto">
                     <div className="w-full md:w-1/2 flex space-x-1">
-                        <div className="h-10 w-12 shadow flex items-center justify-center rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center rounded-full p-0 ">
                             <img className="w-full h-full  "
                                 src="/images/user-05.png"
                                 alt="" />
@@ -450,7 +450,7 @@ const MessageBox = () => {
                             </p>
                         </div>
 
-                        <div className="h-10 w-12 shadow flex items-center justify-center  rounded-full p-0 ">
+                        <div className="h-10 w-12 shadow hidden md:flex items-center justify-center  rounded-full p-0 ">
                             <img className="w-full h-full"
                                 src="/images/user-03.png"
                                 alt="" />
@@ -459,7 +459,7 @@ const MessageBox = () => {
                 </div>
             </div>
 
-            <div className="pb-6 w-full mt-2 flex items-center space-x-4">
+            <div className="md:pb-3 w-full mt-2 flex items-center space-x-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 stroke-slate-900" fill="none"
                     viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round"

@@ -11,7 +11,7 @@ export default async function LessonsPage() {
     return (
         <DefaultLayout>
             <main className="md:ml-[17.3%] w-full md:max-w-6xl md:mx-auto ">
-                <div className="p-4 w-full flex justify-between mt-12">
+                <div className="p-4 w-full flex justify-between mt-12 md:mt-0">
                     <h1 className="text-2xl font-semibold mb-4">Lessons</h1>
                     {/* Filter Section */}
                     <div className="hidden md:flex flex-wrap gap-3 justify-between items-center mb-6">

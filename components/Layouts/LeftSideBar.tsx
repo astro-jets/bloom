@@ -24,8 +24,8 @@ const LeftSidebar = () => {
     const [showMenu, setShowMenu] = useState(false)
 
     return (
-        <aside className="fixed z-10  h-15 md:flex flex-col items-center top-0 left-0 bg-white md:rounded-xl shadow p-4 md:h-screen md:w-[17%] w-full">
-            <div className="w-full flex justify-between">
+        <aside className="fixed z-20  h-15 md:flex flex-col items-center top-0 left-0 bg-white md:rounded-xl shadow md:p-4 md:h-screen md:w-[17%] w-full">
+            <div className="w-full flex justify-between p-4 md:p-0 bg-white md:bg-none h-14">
                 <h1 className="text-2xl font-bold mb-6 text-[#5855D8]">Bloom</h1>
                 {
                     showMenu ?
@@ -34,7 +34,7 @@ const LeftSidebar = () => {
                 }
             </div>
 
-            <nav className={`${showMenu ? 'flex' : 'hidden md:flex'} bg-white font-semibold flex-col py-4 space-y-2 w-full text-gray-700 border-t border-gray-300`}>
+            <nav className={`${showMenu ? 'flex' : 'hidden md:flex'} bg-white font-semibold flex-col md:py-4 space-y-2 w-full text-gray-700 border-t border-gray-300`}>
                 {navLinks.map(({ name, icon: Icon, href, badge }) => {
                     const isActive = pathname.includes(href);
 
