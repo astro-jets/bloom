@@ -1,0 +1,59 @@
+{
+  "students": [
+    {
+      "id": "string",
+      "name": "string",
+      "grade": "string",
+      "subject": "string",
+      "package": "string",
+      "progress": "string",
+      "paymentStatus": "string",
+      "lessons": [
+        {
+          "lesson1": { "id": "string", "details": "string", "date": "date" },
+          "lesson2": { "id": "string", "details": "string", "date": "date" },
+          "lesson3": { "id": "string", "details": "string", "date": "date" }
+        }
+      ]
+    }
+  ],
+  "topStats": {
+    "totalStudents": { "count": "number", "difference": "number" },
+    "totalLessons": { "count": "number", "difference": "number" },
+    "perfomanceScore": "number"
+  },
+  "schedule": {
+    "id": "string",
+    "tutor": {
+      "id": "string",
+      "name": "string",
+      "status": "string",
+      "tutorProfile": {
+        "id": "string",
+        "link": "string"
+      }
+    },
+    "student": {
+      "id": "string",
+      "name": "string",
+      "status": "string"
+    },
+    "subject": "string",
+    "videoLink": "string",
+    "lessonLink": "string",
+    "title": "string",
+    "start": "timestamp",
+    "end": "timestamp"
+  },
+  "homework": {
+    "student": {
+      "id": "string",
+      "name": "string",
+      "status": "string"
+    },
+    "subject": "string",
+    "title": "string",
+    "submitted": "date",
+    "status": "string"
+  }
+}
