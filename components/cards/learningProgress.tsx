@@ -7,7 +7,7 @@ const ProgressBar = ({
     grade,
     subject,
 }: ProgressBarProps) => {
-    const parsedGrade = (parseInt(grade) * 10).toString();
+    // const parsedGrade = (parseInt(grade) * 10).toString();
     return (
         <div className="flex flex-col-reverse">
 
