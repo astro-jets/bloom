@@ -44,7 +44,7 @@ export default function LearningProgress() {
             <h3 className="text-lg text-gray-900 font-semibold">Learning Progress</h3>
             <div className="space-y-2 text-sm">
                 {subjects.map((subject, index) => (
-                    <ProgressBar grade={subject.score.toString()} subject={subject.name} />
+                    <ProgressBar key={index} grade={subject.score.toString()} subject={subject.name} />
                 ))}
             </div>
             <hr className="w-full my-2 border-b border-gray-100" />
