@@ -47,7 +47,7 @@ const DropdownDefault = () => {
         ref={trigger}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
-        <p>Sarah Johnson</p>
+        <p>Alex Rock</p>
         {dropdownOpen ? <FaAngleUp /> : <FaAngleDown />}
       </button>
       <div

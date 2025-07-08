@@ -3,15 +3,14 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BiLineChart, BiMenu, BiX } from "react-icons/bi";
-import { FaUserGraduate, FaBook, FaEnvelope } from "react-icons/fa";
-import { HiPresentationChartBar } from "react-icons/hi";
+import { FaUserGraduate, FaBook, FaEnvelope, FaCalendarAlt } from "react-icons/fa";
 import { PiBooks } from "react-icons/pi";
 import { useState } from "react";
 import { BsCreditCard, BsQrCodeScan } from "react-icons/bs";
 
 const navLinks = [
     { name: "Dashboard", icon: BiLineChart, href: "/dashboard" },
-    { name: "schedule", icon: HiPresentationChartBar, href: "/lessons" },
+    { name: "Schedule", icon: FaCalendarAlt, href: "/schedule" },
     { name: "Homework", icon: FaBook, href: "/homework" },
     { name: "Messages", icon: FaEnvelope, href: "/messages", badge: 3 },
     { name: "Lessons", icon: FaUserGraduate, href: "/lessons" },
@@ -41,7 +40,7 @@ const StudentsLeftSideBar = () => {
                     return (
                         <Link
                             key={name}
-                            href={href}
+                            href={`/students${href}`}
                             className={`cursor-pointer flex items-center gap-3 text-sm p-2 rounded text-white hover:text-[#5C56D3] ${isActive
                                 ? "bg-[#1c1d1f]"
                                 : " text-gray-700"
@@ -51,7 +50,7 @@ const StudentsLeftSideBar = () => {
 
                             <span>{name}</span>
                             {badge && (
-                                <span className="ml-auto text-xs bg-gray-500 text-white rounded-full px-2">
+                                <span className="ml-auto text-xs bg-red-600 text-white rounded-full px-2 py-1 flex items-center justify-center">
                                     {badge}
                                 </span>
                             )}
