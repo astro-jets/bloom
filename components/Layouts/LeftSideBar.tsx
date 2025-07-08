@@ -41,7 +41,7 @@ const LeftSidebar = () => {
                     return (
                         <Link
                             key={name}
-                            href={href}
+                            href={`/tutors${href}`}
                             className={`cursor-pointer flex items-center gap-3 text-sm p-2 rounded ${isActive
                                 ? "bg-[#f0f3f6] text-[#706DA2]"
                                 : "hover:text-[#5C56D3] text-gray-700"

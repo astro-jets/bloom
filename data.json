@@ -3,8 +3,6 @@
     {
       "id": "string",
       "name": "string",
-      "grade": "string",
-      "subject": "string",
       "package": "string",
       "progress": "string",
       "paymentStatus": "string",
