@@ -13,16 +13,19 @@ import { EventClickArg, EventContentArg } from '@fullcalendar/core/index.js';
 type LessonEvent = {
     id: string;
     title: string;
-    start: string; // ISO datetime string
-    end: string; // ISO datetime string
-    recorded?: string | null;
+    start: string; // ISO datetime
+    end: string;
     tutor: {
         id: string;
         name: string;
         status: string;
-        tutorProfile: { id: string; link: string };
+        tutorProfile: { link: string };
     };
-    student: { id: string; name: string; status: string };
+    student: {
+        id: string;
+        name: string;
+        status: string;
+    };
 }
 
 export default function MyCalendar({ events }: { events: LessonEvent[] | null }) {

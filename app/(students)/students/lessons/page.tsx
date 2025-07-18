@@ -12,8 +12,8 @@ export default async function LessonsPage() {
     const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons) : [];
     return (
         <StudentsLayout>
-            <div className="flex justify-between">
-                <div className="w-[73%] flex flex-col bg-white rounded shadow">
+            <div className="flex flex-col md:flex-row space-y-6 justify-between">
+                <div className="w-full md:w-[73%] flex flex-col bg-white rounded shadow">
                     <h1 className="text-2xl font-semibold mb-4 px-4">Schedule</h1>
                     {formattedEvents && <MyCalendar events={formattedEvents} />}
                 </div>

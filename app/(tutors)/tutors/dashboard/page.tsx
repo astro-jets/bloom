@@ -3,16 +3,24 @@ import PerformanceScoreCard from "@/components/charts/perfomanceScoreCard";
 import DropdownDefault from "@/components/Dropdowns/DropdownDefault";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import TableOne from "@/components/table";
-import { BsArrowUp, BsChevronLeft, BsChevronRight, BsBellFill } from "react-icons/bs";
+import { BsArrowUp, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate, } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
-import { fetchLessons } from "@/utils/fetxhLessons";
+import { fetchLessons, fetchTutorsHomeworks } from "@/utils/fetxhLessons";
 import DashboardRightSideBar from "@/components/Layouts/DashboardRightSidebar";
+import { WeeklySchedule } from "@/components/cards/weeklySchedule";
+import { parseWeeklyEvents } from "@/utils/parseWeeklyEvetns";
 
 export default async function Dashboard() {
+
+    // Fetch Lessons
     const rawLessons = await fetchLessons();
     const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons) : [];
+    const weeklyEvents = rawLessons && rawLessons.length ? parseWeeklyEvents(rawLessons) : [];
+    // Fetch Homeworks
+    const homeworks = await fetchTutorsHomeworks();
+    console.log("homeworks => ", homeworks.data)
     return (
         <DefaultLayout>
 
@@ -64,222 +72,7 @@ export default async function Dashboard() {
 
                 </div>
 
-
-                <div className="w-full mb-6 rounded-sm overflow-x-auto bg-white shadow-default md:h-80">
-                    <div className="flex justify-between px-4">
-                        <h3 className="text-xl font- my-2 text-[#2c2d39] px-2">This Weeks Schedule</h3>
-
-                        <div className="flex space-x-3 items-center ">
-                            <span className="p-1 border border-gray-300 rounded shadow">
-                                <BsChevronLeft className="fill-gray-700" size={20} />
-                            </span>
-                            <span className="p-1 border border-gray-300 rounded shadow">
-                                <BsChevronRight className="fill-gray-700" size={20} />
-                            </span>
-                        </div>
-                    </div>
-                    <table className="border-0 min-w-full table-auto">
-                        <thead>
-                            <tr className="grid grid-cols-7 rounded-t-sm bg-primary text-[#2c2d39]">
-                                <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Monday </span>
-                                    <span className="block lg:hidden"> Mon </span>
-                                </th>
-                                <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Tuesday </span>
-                                    <span className="block lg:hidden"> Tue </span>
-                                </th>
-                                <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Wednesday </span>
-                                    <span className="block lg:hidden"> Wed </span>
-                                </th>
-                                <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Thursday </span>
-                                    <span className="block lg:hidden"> Thur </span>
-                                </th>
-                                <th className="flex h-10 items-center justify-center p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Friday </span>
-                                    <span className="block lg:hidden"> Fri </span>
-                                </th>
-                                <th className="flex h-10 items-center justify-center rounded-tr-sm p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Saturday </span>
-                                    <span className="block lg:hidden"> Sat </span>
-                                </th>
-                                <th className="flex h-10 items-center justify-center rounded-tl-sm p-1 text-xs font-semibold sm:text-base xl:p-5">
-                                    <span className="hidden lg:block"> Sunday </span>
-                                    <span className="block lg:hidden"> Sun </span>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {/* <!-- Line 1 --> */}
-                            <tr className="grid grid-cols-7 min-h-16 h-full">
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-medium text-[#2c2d39] text-center">
-                                        27
-                                    </span>
-                                </td>
-
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-medium text-[#2c2d39] text-center">
-                                        28
-                                    </span>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Sophia R
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Physics
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                9:00 AM
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Olivia P
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Math
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                1:00 PM
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Mason K
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Chemistry
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                3:30 PM
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-bold text-[#5C56D3] text-center">
-                                        29
-                                    </span>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="event bg-gray-100 border-[#5C56D3] border-l-2   z-99 mb-1 flex w-full flex-col rounded-lg  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Emma W
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Math
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                3:30 PM
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100 border-[#5C56D3] border-l-2  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Alex T
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Science
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                5:00 PM
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-medium text-[#2c2d39] text-center">
-                                        30
-                                    </span>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Eva S
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Spanish
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                9:30 AM
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-medium text-[#2c2d39] text-center">
-                                        31
-                                    </span>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Noah J
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                History
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                3:30 PM
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-medium text-[#2c2d39] text-center">
-                                        1
-                                    </span>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="event bg-gray-100    z-99 mb-1 flex w-full flex-col rounded-lg  border-primary bg-gray px-2 py-1 text-left opacity-0 group-hover:visible group-hover:opacity-100  md:visible md:w-[100%] md:opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Jack L
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                English
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                9:30 AM
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div className="w-full cursor-pointer px-1 h-16 overflow-hidden">
-                                        <div className="rounded-lg bg-gray-100  z-99 mb-1 flex w-full flex-col  border-primary bg-gray px-2 py-1 text-left  group-hover:visible group-hover:opacity-100  visible opacity-100">
-                                            <span className="event-name text-sm font-semibold text-[#2c2d39]">
-                                                Emma W
-                                            </span>
-                                            <span className="time text-sm font-medium text-[#2c2d39]">
-                                                Math
-                                            </span>
-                                            <span className="time text-xs font-small text-gray-500">
-                                                3:30 PM
-                                            </span>
-                                        </div>
-                                    </div>
-                                </td>
-
-                                <td className="flex flex-col space-y-1 relative cursor-pointer ">
-                                    <span className="font-medium text-[#2c2d39] text-center">
-                                        2
-                                    </span>
-                                </td>
-
-
-                            </tr>
-                            {/* <!-- Line 1 --> */}
-                            {/* <!-- Line 2 --> */}
-                        </tbody>
-                    </table>
-                </div>
+                <WeeklySchedule events={weeklyEvents} />
                 <div className="mb-6">
                     <TableOne />
                 </div>

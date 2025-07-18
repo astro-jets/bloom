@@ -1,11 +1,11 @@
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import StudentsLayout from "@/components/Layouts/StudentsLayout";
 import MessageBox from "@/components/MessageBox/MessageBox"
 import MessageList from "@/components/MessageBox/MessageList";
 
 const MessagesPage = () => {
     return (
-        <DefaultLayout>
-            <main className="flex justify-between md:ml-[17%] h-full w-full bg-slate-50">
+        <StudentsLayout>
+            <main className="flex justify-between  h-full w-full bg-slate-50">
                 {/* <div className="flex flex-col h-screen w-[18%]">
 
                     <div className="flex flex-col items-center  h-60 w-full">
@@ -22,11 +22,11 @@ const MessagesPage = () => {
                 <div className="w-full md:w-[75%] h-full mt-15 md:mt-0 p-0 hide-scrollbar">
                     <MessageBox />
                 </div>
-                <div className="h-full w-[24.5%] hidden md:block">
+                <div className="h-full w-[25%] hidden md:block">
                     <MessageList />
                 </div>
             </main>
-        </DefaultLayout>
+        </StudentsLayout>
     );
 }
 

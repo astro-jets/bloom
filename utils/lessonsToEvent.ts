@@ -1,47 +1,72 @@
 // utils/transformLessons.ts
 
-export interface Lesson {
-  id: number;
-  subject: string;
-  lessonDate: string; // ISO string
-  startTime: string; // "09:00:00"
-  endTime: string; // "09:45:00"
-
+export interface NewLesson {
+  id: string;
+  lessonDate: string; // "2025-07-15"
+  startTime: string; // "14:00:00"
+  endTime: string; // "15:00:00"
+  Subject: {
+    subject_id: number;
+    subject_name: string;
+  };
   tutor: {
     id: string;
     name: string;
+    email: string;
     status: string;
-    tutorProfile: { id: string; link: string };
+    tutorProfile: {
+      link: string;
+    };
   };
-  student: { id: string; name: string; status: string };
+  student: {
+    id: string;
+    name: string;
+    email: string;
+    status: string;
+  };
 }
 
 export interface CalendarEvent {
   id: string;
+  title: string;
+  start: string; // ISO datetime
+  end: string;
   tutor: {
     id: string;
     name: string;
     status: string;
-    tutorProfile: { id: string; link: string };
+    tutorProfile: { link: string };
   };
-  student: { id: string; name: string; status: string };
-  title: string;
-  start: string; // ISO datetime string
-  end: string; // ISO datetime string
+  student: {
+    id: string;
+    name: string;
+    status: string;
+  };
 }
-export const lessonsToEvents = (lessons: Lesson[]): CalendarEvent[] => {
+
+export const lessonsToEvents = (lessons: NewLesson[]): CalendarEvent[] => {
   return lessons.map((lesson) => {
-    const date = lesson.lessonDate.split("T")[0]; // Just the date
-    const start = `${date}T${lesson.startTime}`;
-    const end = `${date}T${lesson.endTime}`;
+    const start = `${lesson.lessonDate}T${lesson.startTime}`;
+    const end = `${lesson.lessonDate}T${lesson.endTime}`;
 
     return {
-      id: lesson.id.toString(),
-      title: lesson.subject.trim(),
-      tutor: lesson.tutor,
-      student: lesson.student,
+      id: lesson.id,
+      title: lesson.Subject.subject_name.trim(),
       start,
       end,
+      tutor: {
+        id: lesson.tutor.id,
+        name: lesson.tutor.name,
+        status: lesson.tutor.status,
+        tutorProfile: {
+          link: lesson.tutor.tutorProfile.link,
+        },
+      },
+      student: {
+        id: lesson.student.id,
+        name: lesson.student.name,
+        status: lesson.student.status,
+      },
     };
   });
 };

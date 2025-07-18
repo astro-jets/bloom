@@ -1,309 +1,151 @@
-// app/resources/page.tsx or pages/resources.tsx
-import { FaBook, FaDownload, FaEye, FaFilePowerpoint, FaFilter } from "react-icons/fa";
-import { PiFilePdfFill } from "react-icons/pi";
-import { JSX } from "react";
-import { IoIosArrowForward } from "react-icons/io";
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import { BsSearch } from "react-icons/bs";
+"use client"
 
-type Resource = {
-    title: string;
-    type: "Textbook" | "Exam" | "Presentation";
-    subject: string;
-    grade: string;
-    size: string;
-    year?: string;
-    icon: JSX.Element;
-    description: string;
-    color?: string;
+import { useState } from 'react';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
+import { BsSearch } from 'react-icons/bs';
+import { FiX } from 'react-icons/fi';
+import StudentsLayout from '@/components/Layouts/StudentsLayout';
+
+const resources = [
+    {
+        id: 1,
+        title: "Chemical Reactions Explained",
+        subject: "Chemistry",
+        tutor: "Dr. Emily Parker",
+        type: "Video",
+        dateAdded: "2025-06-02",
+        description: "Detailed explanation of chemical reactions with examples from the lab session on May 15th.",
+    },
+    {
+        id: 2,
+        title: "Calculus Practice Problems",
+        subject: "Mathematics",
+        tutor: "Prof. James Wilson",
+        type: "PDF",
+        dateAdded: "2025-05-28",
+        description: "Additional practice problems for derivatives and integrals with step-by-step solutions.",
+    },
+    {
+        id: 3,
+        title: "Shakespeare's Hamlet Analysis",
+        subject: "Literature",
+        tutor: "Ms. Sarah Johnson",
+        type: "Notes",
+        dateAdded: "2025-06-05",
+        description: "Comprehensive character analysis and themes from our class discussions.",
+    },
+    {
+        id: 4,
+        title: "World War II Timeline",
+        subject: "History",
+        tutor: "Dr. Robert Brown",
+        type: "Worksheet",
+        dateAdded: "2025-05-20",
+        description: "Interactive timeline worksheet with key events and figures from 1939–1945.",
+    },
+    {
+        id: 5,
+        title: "Python Programming Basics",
+        subject: "Computer Science",
+        tutor: "Mr. David Lee",
+        type: "Link",
+        dateAdded: "2025-06-10",
+        description: "Interactive tutorial on Python basics with code examples and exercises.",
+    },
+    {
+        id: 6,
+        title: "Cell Structure & Function",
+        subject: "Biology",
+        tutor: "Prof. Lisa Chen",
+        type: "Video",
+        dateAdded: "2025-05-15",
+        description: "Detailed video lesson on cell organelles and their functions with 3D animations.",
+    },
+];
+
+const favoritesMock = [
+    { title: 'Algebra Formulas Cheat Sheet', subject: 'Mathematics' },
+    { title: 'Periodic Table Interactive', subject: 'Chemistry' },
+    { title: 'Literary Devices Reference', subject: 'Literature' },
+    { title: 'Spanish Verb Conjugations', subject: 'Languages' },
+    { title: 'Cell Division Video Lesson', subject: 'Biology' },
+];
+
+const ResourceCard = ({ resource }: { resource: typeof resources[0] }) => {
+    const [liked, setLiked] = useState(false);
+    return (
+        <div className="bg-white rounded-md p-4 w-full max-w-xs">
+            <div className="text-sm font-semibold text-gray-800 mb-1">{resource.title}</div>
+            <div className="text-xs text-gray-500 mb-2">{resource.subject} - {resource.tutor}</div>
+            <div className="text-xs text-gray-600 mb-4">{resource.description}</div>
+            <div className="text-xs text-gray-400 mb-2">Added: {new Date(resource.dateAdded).toLocaleDateString()}</div>
+            <div className="flex justify-between items-center">
+                <span className="text-xs bg-gray-200 px-2 py-1 rounded-full">{resource.type}</span>
+                <button onClick={() => setLiked(!liked)}>
+                    {liked ? <FaHeart className="text-red-500" /> : <FaRegHeart className="text-gray-400" />}
+                </button>
+            </div>
+        </div>
+    );
 };
 
-const books: Resource[] = [
-    {
-        title: "Advanced Mathematics",
-        type: "Textbook",
-        subject: "Math",
-        grade: "Grade 10",
-        size: "15MB",
-        icon: <FaBook className="text-gray-900" />,
-        description: "Comprehensive guide to Grade 10 mathematics with practice problems and solutions.",
-        color: 'bg-orange-600',
-    },
-    {
-        title: "Biology Fundamentals",
-        type: "Textbook",
-        subject: "Biology",
-        grade: "Grade 11",
-        size: "22MB",
-        icon: <FaBook className="text-gray-900" />,
-        color: 'bg-green-600',
-        description: "Essential biology concepts with illustrations and practical examples.",
-    },
-    {
-        title: "English Literature",
-        type: "Textbook",
-        subject: "English",
-        grade: "Grade 9",
-        size: "18MB",
-        icon: <FaBook className="text-gray-900" />,
-        description: "Analysis of classic and contemporary literature with study questions.",
-        color: 'bg-purple-600'
-    },
-    {
-        title: "Physics Principles",
-        type: "Textbook",
-        subject: "Physics",
-        grade: "Grade 12",
-        size: "25MB",
-        icon: <FaBook className="text-gray-900" />,
-        color: 'bg-purple-600',
-        description: "Advanced physics concepts with problem-solving techniques for final year students.",
-    },
-];
-
-const pastPapers: Resource[] = [
-    {
-        title: "Mathematics Final Exam",
-        type: "Exam",
-        subject: "Math",
-        grade: "Grade 12",
-        year: "2022",
-        size: "3.2MB",
-        icon: <PiFilePdfFill size={40} className="text-red-600" />,
-        description: "Complete exam paper with marking scheme and solutions.",
-    },
-    {
-        title: "Biology Mid-Term Test",
-        type: "Exam",
-        subject: "Biology",
-        grade: "Grade 11",
-        year: "2023",
-        size: "2.8MB",
-        icon: <PiFilePdfFill size={40} className="text-red-600" />,
-        description: "Mid-term assessment with answer key and grading rubric.",
-    },
-    {
-        title: "English Literature Exam",
-        type: "Exam",
-        subject: "English",
-        grade: "Grade 10",
-        year: "2023",
-        size: "1.5MB",
-        icon: <PiFilePdfFill size={40} className="text-red-600" />,
-        description: "Comprehensive literature assessment with essay questions.",
-    },
-    {
-        title: "Chemistry Practice Test",
-        type: "Exam",
-        subject: "Chemistry",
-        grade: "Grade 9",
-        year: "2022",
-        size: "2.1MB",
-        icon: <PiFilePdfFill size={40} className="text-red-600" />,
-        description: "Practice assessment with detailed solutions and explanations.",
-    },
-];
-
-const presentations: Resource[] = [
-    {
-        title: "Cell Division",
-        type: "Presentation",
-        subject: "Biology",
-        grade: "Grade 10",
-        size: "4.2MB",
-        icon: <FaFilePowerpoint size={40} className="text-orange-600" />,
-        description: "Detailed slides on mitosis and meiosis with annotated diagrams.",
-    },
-    {
-        title: "Algebraic Equations",
-        type: "Presentation",
-        subject: "Math",
-        grade: "Grade 9",
-        size: "3.1MB",
-        icon: <FaFilePowerpoint size={40} className="text-orange-500" />,
-        description: "Step-by-step guide to solving complex algebraic equations.",
-    },
-    {
-        title: "Shakespeares Works",
-        type: "Presentation",
-        subject: "English",
-        grade: "Grade 11",
-        size: "5.4MB",
-        icon: <FaFilePowerpoint size={40} className="text-orange-600" />,
-        description: "Summary of major themes in Shakespeare’s most famous plays.",
-    },
-    {
-        title: "Periodic Table",
-        type: "Presentation",
-        subject: "Chemistry",
-        grade: "Grade 8",
-        size: "3.8MB",
-        icon: <FaFilePowerpoint size={40} className="text-orange-500" />,
-        description: "Interactive guide to the elements with properties and applications.",
-    },
-];
-
-const BookCard = ({ resource }: { resource: Resource }) => (
-    <div className="bg-white rounded-xl overflow-hidden h-60 flex flex-col space-y-4 shadow-md transition w-full ">
-        <div className='flex flex-col items-start justify-start p-4 bg-red-800'>
-            <div className={`text-sm text-white bg-red-500/50 rounded p-1`}>{resource.grade}</div>
-            <h3 className="font-semibold text-md text-white mb-1">{resource.title}</h3>
-        </div>
-
-        <div className="relative flex-col h-40 flex px-4 pb-2 w-full">
-            <div className="flex items-center m-0 pb-0 space-x-2 mb-2">
-                {resource.icon}
-                <span>{resource.type}</span>
-            </div>
-            <p className="text-sm text-gray-500 mb-3">{resource.description}</p>
-            <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
-
-                <div className="flex gap-3 justify-between w-full">
-                    <span>PDF • {resource.size}</span>
-                    {resource.type === "Exam" && <FaEye color="black" className="cursor-pointer" />}
-                    <FaDownload />
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-const ExamCard = ({ resource }: { resource: Resource }) => (
-    <div className="bg-white  relative p-4 rounded-xl overflow-hidden h-60 flex flex-col space-y-4 shadow-md transition w-full ">
-
-        <div className="flex items-center m-0 pb-0 space-x-2 mb-2">
-            {resource.icon}
-            <span>{resource.title}</span>
-        </div>
-        <div className="flex justify-between items-center">
-            <p className="text-xs font-thin text-gray-500">{resource.grade + ' - ' + resource.year}</p>
-            <p className="rounded bg-slate-900 text-white text-xs p-1 shadow">{resource.subject}</p>
-        </div>
-        <p className="text-sm text-gray-500 mb-3">{resource.description}</p>
-        <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
-
-            <div className="flex gap-3 justify-between w-full">
-                <span>PDF • {resource.size}</span>
-                <div className="space-x-4 flex items-center">
-                    <FaEye color="black" className="cursor-pointer" />
-                    <FaDownload color="black" />
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-const PresentationsCard = ({ resource }: { resource: Resource }) => (
-    <div className="bg-white  relative p-4 rounded-xl overflow-hidden h-60 flex flex-col space-y-4 shadow-md transition w-full ">
-
-        <div className="flex items-center m-0 pb-0 space-x-2 mb-2">
-            {resource.icon}
-            <span>{resource.title}</span>
-        </div>
-        <div className="flex justify-between items-center">
-            <p className="text-xs font-thin text-gray-500">{resource.grade + ' - ' + resource.subject}</p>
-            <p className="rounded bg-slate-900 text-white text-xs p-1 shadow">{resource.subject}</p>
-        </div>
-        <p className="text-sm text-gray-500 mb-3">{resource.description}</p>
-        <div className="flex absolute bottom-2 w-55 items-center justify-between text-xs text-gray-500">
-
-            <div className="flex gap-3 justify-between w-full">
-                <span>PDF • {resource.size}</span>
-                <div className="space-x-4 flex items-center">
-                    <FaEye color="black" className="cursor-pointer" />
-                    <FaDownload color="black" />
-                </div>
-            </div>
-        </div>
-    </div>
-);
-
-export default function EducationalResources() {
+export default function ResourceLibrary() {
     return (
-        <DefaultLayout>
-            <main className="md:ml-[17.3%] w-full px-2 md:p-6 space-y-10 max-w-screen-xl mx-auto custom-scrollbar md:overflow-y-auto h-screen">
-                {/* Filters */}
-                <div className="hidden md:flex justify-between items-center w-full">
-                    <div className="flex gap-4">
-                        <div>
-                            <label className="block text-sm font-medium">Grade Level</label>
-                            <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
-                                <option>All Grades</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium">Subject</label>
-                            <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
-                                <option>All Subjects</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label className="block text-sm font-medium">Resource Type</label>
-                            <select className="border border-gray-300 shadow rounded p-2 text-sm w-40 bg-white">
-                                <option>All Types</option>
-                            </select>
-                        </div>
-                    </div>
-                    <button className="bg-purple-600 text-white px-4 py-2 shadow-lg border-purple-400 border cursor-pointer rounded text-sm flex items-center gap-2">
-                        <FaFilter /> <span>Apply Filters</span>
-                    </button>
-                </div>
-                <div className="w-full flex flex-col mt-16 md:mt-0">
-                    <label className="block text-sm font-medium">Search</label>
+        <StudentsLayout>
+            <div className="w-full  min-h-screen">
+                {/* Search & Filters */}
+                <div className="flex flex-col space-y-4">
                     <div className="flex relative">
-                        <BsSearch className="absolute left-2 top-2.5 fill-gray-600" />
                         <input
                             type="text"
-                            placeholder="Search resources..."
-                            className="outline-0 px-4 py-2 pl-8 text-black bg-white text-sm rounded shadow border border-gray-200 w-84"
+                            className="w-full border pl-8 border-gray-300 rounded  py-2 text-sm"
+                            placeholder="Search for notes, videos, worksheets..."
                         />
+                        <BsSearch className="absolute left-3 top-3 text-gray-400" />
+                        <button className="bg-gray-800 text-white px-4 py-2 rounded text-sm">Search</button>
+                    </div>
+                    <div className="flex flex-wrap gap-2 mb-4 items-center">
+                        <select className="border px-3 py-2 rounded text-sm">
+                            <option>All Subjects</option>
+                        </select>
+                        <select className="border px-3 py-2 rounded text-sm">
+                            <option>Resource Type</option>
+                        </select>
+                        <select className="border px-3 py-2 rounded text-sm">
+                            <option>Date Added</option>
+                        </select>
                     </div>
                 </div>
-                {/* Books */}
-                <section>
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-semibold">Books</h2>
-                        <a href="#" className="text-sm text-purple-600 flex items-center gap-1">
-                            View All <IoIosArrowForward />
-                        </a>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {books.map((res, i) => (
-                            <BookCard key={i} resource={res} />
-                        ))}
-                    </div>
-                </section>
 
-                {/* Past Exam Papers */}
-                <section>
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-semibold">Past Exam Papers</h2>
-                        <a href="#" className="text-sm text-purple-600 flex items-center gap-1">
-                            View All <IoIosArrowForward />
-                        </a>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {pastPapers.map((res, i) => (
-                            <ExamCard key={i} resource={res} />
-                        ))}
-                    </div>
-                </section>
+                <div className="w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {resources.map((res) => (
+                        <ResourceCard key={res.id} resource={res} />
+                    ))}
+                </div>
 
-                {/* PowerPoint Presentations */}
-                <section>
-                    <div className="flex justify-between items-center mb-4">
-                        <h2 className="text-xl font-semibold">PowerPoint Presentations</h2>
-                        <a href="#" className="text-sm text-purple-600 flex items-center gap-1">
-                            View All <IoIosArrowForward />
-                        </a>
-                    </div>
-                    <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-                        {presentations.map((res, i) => (
-                            <PresentationsCard key={i} resource={res} />
+                {/* Pagination */}
+                <div className="flex justify-center mt-6 space-x-2">
+                    <button className="px-3 py-1 border rounded">1</button>
+                    <button className="px-3 py-1 border rounded">2</button>
+                    <button className="px-3 py-1 border rounded">3</button>
+                </div>
+
+                {/* Favorites */}
+                <div className="fixed top-40 right-6 w-64 bg-gray-50 p-4 rounded shadow">
+                    <h3 className="font-semibold text-lg mb-2">My Favorites</h3>
+                    <ul className="space-y-2">
+                        {favoritesMock.map((fav, i) => (
+                            <li key={i} className="flex justify-between items-start text-sm">
+                                <div>
+                                    <div className="font-medium">{fav.title}</div>
+                                    <div className="text-xs text-gray-500">{fav.subject}</div>
+                                </div>
+                                <FiX className="cursor-pointer text-gray-400" />
+                            </li>
                         ))}
-                    </div>
-                </section>
-            </main>
-        </DefaultLayout>
+                    </ul>
+                </div>
+            </div>
+        </StudentsLayout>
     );
 }

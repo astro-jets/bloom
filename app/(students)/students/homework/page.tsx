@@ -1,6 +1,7 @@
 "use client";
 
-import DefaultLayout from "@/components/Layouts/DefaultLayout";
+import StudentsLayout from "@/components/Layouts/StudentsLayout";
+import Link from "next/link";
 import { FaFilter } from "react-icons/fa";
 
 type HomeworkStatus = "Pending" | "Submitted" | "Overdue";
@@ -59,102 +60,99 @@ const statusColors: Record<HomeworkStatus, string> = {
 
 const Homeworks = () => {
     return (
-        <DefaultLayout>
-            <main className="h-full md:overflow-y-auto w-full custom-scrollbar py-6 px-2 md:px-8 md:w-[83%] md:ml-[17.3%]">
-                <div className="mb-6 mt-16 md:mt-0 flex flex-col md:flex-row justify-between items-center w-full">
-                    <div className="">
-                        <h2 className="text-xl font-bold text-[#5855D8]">Homework</h2>
-                        <p className="text-gray-500 mt-1">
-                            Track and manage all assigned homework for your students.
-                        </p>
-                    </div>
-                    <div className="hidden md:flex space-x-3 items-center">
-                        <span className="bg-white w-25 p-2 text-black rounded shadow space-x-2 flex items-center justify-center">
-                            <FaFilter size={20} className={'fill-gray-900 text-sm'} />
-                            <p>Filter</p>
-                        </span>
-                        <span className="p-2 text-white bg-gray-800 rounded shadow">+ Assign Homework</span>
-                    </div>
-
+        <StudentsLayout>
+            <div className="mb-6 flex flex-col md:flex-row justify-between items-center w-full">
+                <div className="">
+                    <h2 className="text-xl font-bold text-[#5855D8]">Homework</h2>
+                    <p className="text-gray-500 mt-1">
+                        Track and manage all assigned homework for your students.
+                    </p>
                 </div>
-                {/* Top Summary Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                    <div className="bg-white shadow rounded p-4">
-                        <h3 className="text-gray-500 text-sm">Total Submissions</h3>
-                        <p className="text-xl font-semibold">28</p>
-                        <p className="text-green-500 text-xs mt-1">+5 from last week</p>
-                    </div>
-                    <div className="bg-white shadow rounded p-4">
-                        <h3 className="text-gray-500 text-sm">Pending Review</h3>
-                        <p className="text-xl font-semibold">12</p>
-                        <p className="text-yellow-500 text-xs mt-1">Needs your attention</p>
-                    </div>
-                    <div className="bg-white shadow rounded p-4">
-                        <h3 className="text-gray-500 text-sm">Average Grade</h3>
-                        <p className="text-xl font-semibold">87%</p>
-                        <p className="text-green-500 text-xs mt-1">+2% from last month</p>
-                    </div>
+                <div className="hidden md:flex space-x-3 items-center">
+                    <span className="bg-white w-25 p-2 text-black rounded shadow space-x-2 flex items-center justify-center">
+                        <FaFilter size={20} className={'fill-gray-900 text-sm'} />
+                        <p>Filter</p>
+                    </span>
+                    <span className="p-2 text-white bg-gray-800 rounded shadow">+ Assign Homework</span>
                 </div>
 
-                {/* Table */}
-                <div className="overflow-x-auto bg-white shadow rounded">
-                    <h2 className="text-xl font-bold text-gary-800 px-4 py-2">Recent Submissions</h2>
-                    <table className="min-w-full table-auto">
-                        <thead className="bg-gray-50 text-sm text-gray-600">
-                            <tr>
-                                <th className="text-left px-6 py-3">Student</th>
-                                <th className="text-left px-6 py-3">Subject</th>
-                                <th className="text-left px-6 py-3">Assignment</th>
-                                <th className="text-left px-6 py-3">Submitted</th>
-                                <th className="text-left px-6 py-3">Status</th>
-                                <th className="text-left px-6 py-3">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody className="text-sm divide-y divide-gray-200">
-                            {dummyHomeworks.map((hw, idx) => (
-                                <tr key={idx} className="hover:bg-gray-50">
-                                    <td className="px-6 py-4">{hw.student}</td>
-                                    <td className="px-6 py-4">{hw.subject}</td>
-                                    <td className="px-6 py-4">{hw.title}</td>
-                                    <td className="px-6 py-4">{new Date(hw.submitted).toLocaleDateString()}</td>
-                                    <td className="px-6 py-4">
-                                        <span
-                                            className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[hw.status]}`}
-                                        >
-                                            {hw.status}
-                                        </span>
-                                    </td>
-                                    <td className="px-6 py-4">
-                                        <button className="text-gray-900 cursor-pointer">
-                                            {hw.status === "Submitted" ? "View" : "Review"}
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                            <tr className="p-6!">
-                                <td className="px-6 py-4">Showing 5 of 28 submissions</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td className="pr-12" >
-                                    {/* Pagination */}
-                                    <div className="flex justify-end items-center space-x-2">
-                                        <button className="px-3 py-1 rounded shadow border border-[#ccc] text-gray-900 flex items-center">
-                                            Previous
-                                        </button>
-                                        <button className="px-3 py-1 rounded shadow text-gray-50 bg-gray-900 flex items-center">
-                                            Next
-                                        </button>
-                                    </div>
+            </div>
+            {/* Top Summary Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div className="bg-white shadow rounded p-4">
+                    <h3 className="text-gray-500 text-sm">Total Submissions</h3>
+                    <p className="text-xl font-semibold">28</p>
+                    <p className="text-green-500 text-xs mt-1">+5 from last week</p>
+                </div>
+                <div className="bg-white shadow rounded p-4">
+                    <h3 className="text-gray-500 text-sm">Pending Review</h3>
+                    <p className="text-xl font-semibold">12</p>
+                    <p className="text-yellow-500 text-xs mt-1">Needs your attention</p>
+                </div>
+                <div className="bg-white shadow rounded p-4">
+                    <h3 className="text-gray-500 text-sm">Average Grade</h3>
+                    <p className="text-xl font-semibold">87%</p>
+                    <p className="text-green-500 text-xs mt-1">+2% from last month</p>
+                </div>
+            </div>
+
+            {/* Table */}
+            <div className="overflow-x-auto bg-white shadow rounded">
+                <h2 className="text-xl font-bold text-gary-800 px-4 py-2">Recent Submissions</h2>
+                <table className="min-w-full table-auto">
+                    <thead className="bg-gray-50 text-sm text-gray-600">
+                        <tr>
+                            <th className="text-left px-6 py-3">Student</th>
+                            <th className="text-left px-6 py-3">Subject</th>
+                            <th className="text-left px-6 py-3">Assignment</th>
+                            <th className="text-left px-6 py-3">Submitted</th>
+                            <th className="text-left px-6 py-3">Status</th>
+                            <th className="text-left px-6 py-3">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody className="text-sm divide-y divide-gray-200">
+                        {dummyHomeworks.map((hw, idx) => (
+                            <tr key={idx} className="hover:bg-gray-50">
+                                <td className="px-6 py-4">{hw.student}</td>
+                                <td className="px-6 py-4">{hw.subject}</td>
+                                <td className="px-6 py-4">{hw.title}</td>
+                                <td className="px-6 py-4">{new Date(hw.submitted).toLocaleDateString()}</td>
+                                <td className="px-6 py-4">
+                                    <span
+                                        className={`px-2 py-1 rounded-full text-xs font-medium ${statusColors[hw.status]}`}
+                                    >
+                                        {hw.status}
+                                    </span>
+                                </td>
+                                <td className="px-6 py-4">
+                                    <Link href={`/students/homework/1`} className="text-gray-900 cursor-pointer">
+                                        {hw.status === "Submitted" ? "View" : "Review"}
+                                    </Link>
                                 </td>
                             </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            </main>
-        </DefaultLayout>
+                        ))}
+                        <tr className="p-6!">
+                            <td className="px-6 py-4">Showing 5 of 28 submissions</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td className="pr-12" >
+                                {/* Pagination */}
+                                <div className="flex justify-end items-center space-x-2">
+                                    <button className="px-3 py-1 rounded shadow border border-[#ccc] text-gray-900 flex items-center">
+                                        Previous
+                                    </button>
+                                    <button className="px-3 py-1 rounded shadow text-gray-50 bg-gray-900 flex items-center">
+                                        Next
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </StudentsLayout>
     );
 };
 
