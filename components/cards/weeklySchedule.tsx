@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useEffect, useState } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 
@@ -43,14 +43,21 @@ const formatRangeLabel = (start: Date) => {
 };
 
 export const WeeklySchedule: React.FC<Props> = ({ events }) => {
-    const [weekStart, setWeekStart] = useState(() => {
-        const saved = localStorage.getItem("currentWeekStart");
-        return saved ? new Date(saved) : getStartOfWeek(new Date());
-    });
+    const [weekStart, setWeekStart] = useState<Date | null>(null);
 
     useEffect(() => {
-        localStorage.setItem("currentWeekStart", weekStart.toISOString());
+        const saved = localStorage.getItem("currentWeekStart");
+        const initialDate = saved ? new Date(saved) : getStartOfWeek(new Date());
+        setWeekStart(initialDate);
+    }, []);
+
+    useEffect(() => {
+        if (weekStart) {
+            localStorage.setItem("currentWeekStart", weekStart.toISOString());
+        }
     }, [weekStart]);
+
+    if (!weekStart) return null; // or <div>Loading...</div>
 
     const weekDays = Array.from({ length: 7 }, (_, i) => {
         const day = new Date(weekStart);
