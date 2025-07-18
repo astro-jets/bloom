@@ -1,4 +1,4 @@
-import { BsBank, BsFilter } from "react-icons/bs";
+import { BsBank } from "react-icons/bs";
 import { FaCcVisa, FaFilter } from "react-icons/fa";
 import { PiDownload } from "react-icons/pi";
 

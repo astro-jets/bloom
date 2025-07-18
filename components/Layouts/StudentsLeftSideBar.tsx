@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { BiLineChart, BiMenu, BiX } from "react-icons/bi";
-import { FaUserGraduate, FaBook, FaEnvelope, FaCalendarAlt } from "react-icons/fa";
+import { FaUserGraduate, FaBook, FaEnvelope } from "react-icons/fa";
 import { PiBooks } from "react-icons/pi";
 import { useState } from "react";
 import { BsCreditCard, BsQrCodeScan } from "react-icons/bs";
