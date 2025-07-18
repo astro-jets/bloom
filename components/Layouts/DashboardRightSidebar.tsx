@@ -1,7 +1,5 @@
 "use client"
-
-import { BiSolidComment } from "react-icons/bi";
-import { BsCalendar, BsBook, BsBarChartLine } from "react-icons/bs";
+import { BsBook } from "react-icons/bs";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { useLessonModalStore } from '@/stores/useLessonModalSotre';
 import { ReminderCard } from "../cards/reminderCard";
