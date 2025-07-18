@@ -72,7 +72,7 @@ export default async function Dashboard() {
 
                 </div>
 
-                <WeeklySchedule events={weeklyEvents} />
+                {weeklyEvents && <WeeklySchedule events={weeklyEvents} />}
                 <div className="mb-6">
                     <TableOne />
                 </div>

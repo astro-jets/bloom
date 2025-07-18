@@ -130,7 +130,7 @@ export default async function Dashboard() {
                     </div>
                     {/* Weekly Schedule */}
                     <div className="md:col-span-2 ">
-                        <WeeklySchedule events={weeklyEvents} />
+                        {weeklyEvents && <WeeklySchedule events={weeklyEvents} />}
                     </div>
                     {/* Recent Updates */}
                     <div className="bg-white rounded-xl shadow p-4 h-full">
