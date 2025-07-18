@@ -8,6 +8,8 @@ import { BsRocketTakeoffFill, BsClock, BsFire, BsBook, BsStarFill } from "react-
 export default async function Dashboard() {
     const rawLessons = await fetchLessons();
     const weeklyEvents = rawLessons && rawLessons.length ? parseWeeklyEvents(rawLessons) : [];
+
+    console.log("Weekly Events => ", weeklyEvents)
     return (
         <StudentsLayout>
             <div className="w-full space-y-6">
