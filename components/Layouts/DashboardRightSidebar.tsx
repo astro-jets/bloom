@@ -4,6 +4,7 @@ import { BiSolidComment } from "react-icons/bi";
 import { BsCalendar, BsBook, BsBarChartLine } from "react-icons/bs";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { useLessonModalStore } from '@/stores/useLessonModalSotre';
+import { ReminderCard } from "../cards/reminderCard";
 
 const DashboardRightSideBar = () => {
     const openModal = useLessonModalStore((state) => state.openModal);
@@ -36,7 +37,7 @@ const DashboardRightSideBar = () => {
                 </div>
 
                 {/* Shortcuts */}
-                <div className="flex flex-col">
+                {/* <div className="flex flex-col">
                     <h2 className="mb-2 text-gray-700">SHORTCUTS</h2>
                     <div className="grid grid-cols-2 gap-2">
 
@@ -66,7 +67,9 @@ const DashboardRightSideBar = () => {
                         </div>
                     </div>
 
-                </div>
+                </div> */}
+
+                <ReminderCard />
 
                 {/* Notifications */}
                 <div className="flex flex-col">
