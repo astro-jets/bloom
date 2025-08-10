@@ -20,9 +20,9 @@ export default function StudentStatsCard({ student }: { student: Student }) {
         : 0;
 
     // Find the most recent lesson
-    const sortedLessons = [...(student.lessons || [])].sort((a, b) =>
-        new Date(b.lessonDate).getTime() - new Date(a.lessonDate).getTime()
-    );
+    // const sortedLessons = [...(student.lessons || [])].sort((a, b) =>
+    //     new Date(b.lessonDate).getTime() - new Date(a.lessonDate).getTime()
+    // );
 
     const lastSession = student.lessons?.[student.lessons.length - 1]?.lessonDate;
     const lastSessionDate = lastSession ? moment(lastSession).format('MMMM D, YYYY') : 'N/A';

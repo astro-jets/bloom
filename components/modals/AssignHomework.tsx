@@ -1,12 +1,9 @@
 "use client"
 import { FormEvent, useState } from 'react';
-import moment from 'moment';
 import { Lesson } from '@/types/types';
 import { assignHomework } from '@/utils/routes';
 import SuccessModal from "./SuccessModal"; // adjust path if needed
 import { useRouter } from 'next/navigation';
-import { getServerSession } from 'next-auth';
-import { options } from '@/app/api/auth/[...nextauth]/options';
 import { useSession } from 'next-auth/react';
 
 type props = {
@@ -23,7 +20,7 @@ export default function AssignHomeworkModal({ isOpen, onClose, lessons, studentI
     const [file, setFile] = useState<File | null>(null);
     const [showSuccessModal, setShowSuccessModal] = useState(false);
     const router = useRouter()
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const user = session?.user
 
 
