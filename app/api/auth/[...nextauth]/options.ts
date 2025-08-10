@@ -1,7 +1,7 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signIn } from "@/utils/routes";
-import { JWT } from "next-auth/jwt";
+// import { JWT } from "next-auth/jwt";
 import { User } from "@/types/types";
 
 const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET;
