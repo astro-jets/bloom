@@ -1,5 +1,4 @@
 import type { NextAuthOptions } from "next-auth";
-// import GitHubProvider from "next-auth/providers/github";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { signIn } from "@/utils/routes";
 import { JWT } from "next-auth/jwt";
@@ -14,48 +13,54 @@ export const options: NextAuthOptions = {
   },
   providers: [
     CredentialsProvider({
-      name: "credentials",
+      name: "Credentials",
       credentials: {
         email: {
           label: "Email:",
-          min: 1,
           type: "email",
           placeholder: "Email",
         },
-        password: { label: "Password", type: "password", min: 1 },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        if (!credentials?.email || !credentials?.password) {
+          throw new Error("Email and password are required");
+        }
+
         try {
           const user: User = await signIn({
-            email: credentials?.email,
-            password: credentials?.password,
+            email: credentials.email,
+            password: credentials.password,
           });
+
+          if (!user) {
+            throw new Error("Invalid credentials");
+          }
+
           return user;
         } catch (err) {
+          console.error("Login error:", err);
           throw new Error("Failed to log in");
-          console.log(err);
         }
       },
     }),
   ],
   callbacks: {
-    async jwt({ token, user }: { token: JWT; user: any }) {
+    async jwt({ token, user }) {
       if (user) {
+        token.id = (user as User).id;
         token.name = user.name;
         token.email = user.email;
-        token.id = user.id;
-        token.role = user.role;
+        token.role = (user as User).role;
       }
       return token;
     },
     async session({ session, token }) {
-      if (token) {
-        if (session.user) {
-          session.user.id = token.id as string;
-          session.user.email = token.email!;
-          session.user.name = token.name!;
-          session.user.role = token.role;
-        }
+      if (session.user) {
+        session.user.id = token.id as string;
+        session.user.email = token.email ?? "";
+        session.user.name = token.name ?? "";
+        session.user.role = token.role as string;
       }
       return session;
     },
