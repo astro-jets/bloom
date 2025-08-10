@@ -1,13 +1,30 @@
 import { WeeklySchedule } from "@/components/cards/weeklySchedule";
 import StudentsLayout from "@/components/Layouts/StudentsLayout";
-import { fetchLessons } from "@/utils/fetxhLessons";
+import { fetchStudentSchedule } from "@/utils/routes";
 import { parseWeeklyEvents } from "@/utils/parseWeeklyEvetns";
 import { BiSolidComment } from "react-icons/bi";
 import { BsRocketTakeoffFill, BsClock, BsFire, BsBook, BsStarFill } from "react-icons/bs";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
 export default async function Dashboard() {
-    const rawLessons = await fetchLessons();
-    const weeklyEvents = rawLessons && rawLessons.length ? parseWeeklyEvents(rawLessons) : [];
+    // ✅ Get the logged-in session (server-side)
+    const session = await getServerSession(options);
+
+    // ✅ If no session, send user to /signin immediately
+    if (!session) {
+        redirect("/");
+    }
+
+    console.log("Session in Dashboard => ", session?.user);
+
+    // You can now grab user details
+    const userName = session?.user?.name;
+    const userRole = session?.user?.role;
+
+    const rawLessons = await fetchStudentSchedule(session.user.id);
+    const weeklyEvents = rawLessons && rawLessons.length ? parseWeeklyEvents(rawLessons, session.user.role) : [];
 
     console.log("Weekly Events => ", weeklyEvents)
     return (

@@ -3,8 +3,11 @@ import { useEffect, useRef, useState } from "react";
 import DarkModeSwitcher from "../themeMode/ThemeMode";
 import { FaAngleDown, FaAngleUp } from "react-icons/fa";
 import { BsDoorOpen, BsGear, BsPerson } from "react-icons/bs";
+import { signOut, useSession } from "next-auth/react";
 
 const DropdownDefault = () => {
+  const { data: session, status } = useSession();
+  const user = session?.user
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const trigger = useRef<HTMLButtonElement | null>(null);
@@ -47,7 +50,7 @@ const DropdownDefault = () => {
         ref={trigger}
         onClick={() => setDropdownOpen(!dropdownOpen)}
       >
-        <p>Alex Rock</p>
+        <p>{user?.name}</p>
         {dropdownOpen ? <FaAngleUp /> : <FaAngleDown />}
       </button>
       <div
@@ -68,7 +71,9 @@ const DropdownDefault = () => {
 
         <DarkModeSwitcher />
 
-        <div className="flex space-x-3">
+        <div className="flex space-x-3"
+          onClick={() => { signOut() }}
+        >
           <BsDoorOpen size={20} />
           <p>Log Out</p>
         </div>

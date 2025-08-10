@@ -1,8 +1,20 @@
+import { options } from "@/app/api/auth/[...nextauth]/options";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import MessageBox from "@/components/MessageBox/MessageBox"
 import MessageList from "@/components/MessageBox/MessageList";
+import { fetchThreads } from "@/utils/routes";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-const MessagesPage = () => {
+const MessagesPage = async () => {
+    // ✅ Get the logged-in session (server-side)
+    const session = await getServerSession(options);
+    // ✅ If no session, send user to /signin immediately
+    if (!session?.user) {
+        redirect("/");
+    }
+    const user = session.user;
+    const students = await fetchThreads(user.id)
     return (
         <DefaultLayout>
             <main className="flex justify-between md:ml-[17%] h-full w-full bg-slate-50">
@@ -23,7 +35,7 @@ const MessagesPage = () => {
                     <MessageBox />
                 </div>
                 <div className="h-full w-[24.5%] hidden md:block">
-                    <MessageList />
+                    <MessageList threads={students} userId={user.id} />
                 </div>
             </main>
         </DefaultLayout>

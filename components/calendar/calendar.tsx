@@ -19,7 +19,7 @@ type LessonEvent = {
         id: string;
         name: string;
         status: string;
-        tutorProfile: { link: string };
+        tutorProfile?: { link?: string | null };
     };
     student: {
         id: string;

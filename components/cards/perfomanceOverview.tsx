@@ -1,32 +1,45 @@
-'use client'
+'use client';
 
+import { Student } from "@/types/types";
 import { ProgressBar } from "../assignments/ProgresBar";
-
-type SubjectScore = {
-    name: string;
-    score: number;
-    color: string;
-};
-
-const subjects: SubjectScore[] = [
-    { name: 'Chemistry', score: 9.5, color: 'bg-green-500' },
-    { name: 'Physics', score: 8.7, color: 'bg-yellow-500' },
-    { name: 'Mathematics', score: 9.3, color: 'bg-blue-500' },
-    { name: 'Biology', score: 9.0, color: 'bg-purple-500' },
-];
 
 const circleRadius = 80;
 const circumference = 2 * Math.PI * circleRadius;
-const score = 9.2
-const progress = (score / 10) * circumference;
 
-export default function PerformanceOverview() {
+export default function PerformanceOverview({ student }: { student: Student }) {
+    const lessons = student?.lessons || [];
+
+    // Group lessons by subject and count them
+    const subjectCounts: Record<string, number> = {};
+    lessons.forEach((lesson) => {
+        const subjectName = lesson.Subject.subject_name;
+        subjectCounts[subjectName] = (subjectCounts[subjectName] || 0) + 1;
+    });
+
+    const maxCount = Math.max(...Object.values(subjectCounts), 1); // prevent division by 0
+
+    // Convert to SubjectScore array
+    const subjects = Object.entries(subjectCounts).map(([name, count], index) => {
+        const score = parseFloat(((count / maxCount) * 10).toFixed(1));
+        const colors = ['bg-purple-500', 'bg-green-500', 'bg-yellow-500', 'bg-purple-500', 'bg-pink-500'];
+        return {
+            name,
+            score,
+            color: colors[index % colors.length],
+        };
+    });
+
+    // Average score across all subjects
+    const totalScore = subjects.reduce((sum, s) => sum + s.score, 0);
+    const averageScore = parseFloat((totalScore / subjects.length || 0).toFixed(1));
+    const progress = (averageScore / 10) * circumference;
+
     return (
         <div className="w-full bg-white p-4 rounded-xl shadow space-y-2 h-120">
-            <h3 className="text-xl text-gray-900 font-semibold">Perfomance Overview</h3>
+            <h3 className="text-xl text-gray-900 font-semibold">Performance Overview</h3>
             <div className="flex flex-col items-center justify-center w-full">
                 {/* Circular progress bar */}
-                <svg width="200" height="200" className="transform ">
+                <svg width="200" height="200" className="transform">
                     <circle
                         cx="90"
                         cy="90"
@@ -34,7 +47,6 @@ export default function PerformanceOverview() {
                         stroke="#e5e7eb"
                         strokeWidth="11"
                         fill="none"
-
                     />
                     <circle
                         cx="90"
@@ -43,7 +55,6 @@ export default function PerformanceOverview() {
                         stroke="#7c3aed"
                         strokeWidth="10"
                         fill="none"
-                        className="rounded-4xl"
                         strokeDasharray={circumference}
                         strokeDashoffset={circumference - progress}
                         strokeLinecap="round"
@@ -53,8 +64,10 @@ export default function PerformanceOverview() {
                         y="60%"
                         textAnchor="middle"
                         dy=".3em"
-                        className="text-xs text-gray-400">Weekly Avg</text>
-
+                        className="text-xs text-gray-400"
+                    >
+                        Weekly Avg
+                    </text>
                     <text
                         x="45%"
                         y="40%"
@@ -62,11 +75,12 @@ export default function PerformanceOverview() {
                         dy=".3em"
                         className="text-3xl font-bold text-purple-600"
                     >
-                        {score}%
+                        {averageScore}%
                     </text>
                 </svg>
-
-                <p className="text-sm text-gray-500">Excellent progress this week</p>
+                <p className="text-sm text-gray-500">
+                    {averageScore >= 7 ? 'Excellent progress this week' : 'Keep working hard'}
+                </p>
             </div>
             <div className="space-y-2 text-sm">
                 {subjects.map((subject, index) => (

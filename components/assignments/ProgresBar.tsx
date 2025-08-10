@@ -1,28 +1,23 @@
-import React from "react";
-
-
-interface ProgressBarProps {
-    grade: string;
+type Props = {
     subject: string;
-}
+    grade: string;
+    barColor?: string;
+};
 
-export const ProgressBar = ({
-    grade,
-    subject,
-}: ProgressBarProps) => {
-    const parsedGrade = (parseInt(grade) * 10).toString();
+export const ProgressBar = ({ subject, grade, barColor = "bg-blue-500" }: Props) => {
+    const percent = parseFloat(grade) * 10;
+
     return (
-        <div className="flex flex-col-reverse">
-
-            <div className="w-full bg-gray-200 rounded-full h-2 mb-1">
-                <div
-                    className="bg-gray-900 h-2 rounded-full"
-                    style={{ width: `${parsedGrade}%` }}
-                />
+        <div>
+            <div className="flex justify-between mb-1">
+                <span className="text-gray-700 font-medium">{subject}</span>
+                <span className="text-gray-500">{grade}/10</span>
             </div>
-            <div className="text-sm flex justify-between text-gray-900 mb-2">
-                <p>{subject}</p>
-                <p className="">{grade}</p>
+            <div className="w-full bg-gray-200 rounded-full h-2.5">
+                <div
+                    className={`${barColor} h-2.5 rounded-full`}
+                    style={{ width: `${percent}%` }}
+                />
             </div>
         </div>
     );

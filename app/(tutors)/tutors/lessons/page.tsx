@@ -1,7 +1,7 @@
 // app/lessons/page.tsx or components/LessonsPage.tsx
 import MyCalendar from "@/components/calendar/calendar";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import { fetchLessons } from "@/utils/fetxhLessons";
+import { fetchLessons } from "@/utils/routes";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
 import React from "react";
 

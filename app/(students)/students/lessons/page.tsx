@@ -3,13 +3,29 @@ import MyCalendar from "@/components/calendar/calendar";
 import LearningProgress from "@/components/cards/learningProgress";
 import QuickActions from "@/components/cards/quickActions";
 import StudentsLayout from "@/components/Layouts/StudentsLayout";
-import { fetchLessons } from "@/utils/fetxhLessons";
+import { fetchLessons, fetchStudentSchedule } from "@/utils/routes";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
 import React from "react";
+import { redirect } from "next/navigation";
+import { getServerSession } from "next-auth/next";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
 export default async function LessonsPage() {
-    const rawLessons = await fetchLessons();
-    const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons) : [];
+    // ✅ Get the logged-in session (server-side)
+    const session = await getServerSession(options);
+
+    // ✅ If no session, send user to /signin immediately
+    if (!session) {
+        redirect("/");
+    }
+
+    console.log("Session in Dashboard => ", session?.user);
+
+    // You can now grab user details
+    const userName = session?.user?.name;
+    const userRole = session?.user?.role;
+    const rawLessons = await fetchStudentSchedule(session.user.id);
+    const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons, session, userRole as 'student') : [];
     return (
         <StudentsLayout>
             <div className="flex flex-col md:flex-row space-y-6 justify-between">
