@@ -16,13 +16,6 @@ export default async function Dashboard() {
     if (!session) {
         redirect("/");
     }
-
-    console.log("Session in Dashboard => ", session?.user);
-
-    // You can now grab user details
-    const userName = session?.user?.name;
-    const userRole = session?.user?.role;
-
     const rawLessons = await fetchStudentSchedule(session.user.id);
     const weeklyEvents = rawLessons && rawLessons.length ? parseWeeklyEvents(rawLessons, session.user.role) : [];
 

@@ -8,8 +8,6 @@ import { BiSolidVideoRecording } from 'react-icons/bi';
 export const LessonDetailsModal: React.FC = () => {
     const {
         isModalOpen,
-        notes,
-        setNotes,
         resetForm,
     } = useLessonModalStore();
 
@@ -28,6 +26,8 @@ export const LessonDetailsModal: React.FC = () => {
     const recordedChunksRef = useRef<Blob[]>([]);
 
     const [meetTab, setMeetTab] = useState<Window | null>(null);
+
+    console.log(meetTab)
 
     const startRecording = async () => {
 

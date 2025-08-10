@@ -6,7 +6,7 @@ import { BsDoorOpen, BsGear, BsPerson } from "react-icons/bs";
 import { signOut, useSession } from "next-auth/react";
 
 const DropdownDefault = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const user = session?.user
   const [dropdownOpen, setDropdownOpen] = useState(false);
 

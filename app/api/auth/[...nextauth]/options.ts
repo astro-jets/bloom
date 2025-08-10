@@ -33,6 +33,7 @@ export const options: NextAuthOptions = {
           return user;
         } catch (err) {
           throw new Error("Failed to log in");
+          console.log(err);
         }
       },
     }),

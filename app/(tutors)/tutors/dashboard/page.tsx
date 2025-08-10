@@ -9,7 +9,7 @@ import { BsArrowUp, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
-import { fetchTutorSchedule, fetchTutorsHomeworks } from "@/utils/routes";
+import { fetchTutorSchedule } from "@/utils/routes";
 import DashboardRightSideBar, { SidbarLesson } from "@/components/Layouts/DashboardRightSidebar";
 import { WeeklySchedule } from "@/components/cards/weeklySchedule";
 import { parseWeeklyEvents } from "@/utils/parseWeeklyEvetns";

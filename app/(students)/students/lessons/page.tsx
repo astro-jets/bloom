@@ -3,7 +3,7 @@ import MyCalendar from "@/components/calendar/calendar";
 import LearningProgress from "@/components/cards/learningProgress";
 import QuickActions from "@/components/cards/quickActions";
 import StudentsLayout from "@/components/Layouts/StudentsLayout";
-import { fetchLessons, fetchStudentSchedule } from "@/utils/routes";
+import { fetchStudentSchedule } from "@/utils/routes";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
 import React from "react";
 import { redirect } from "next/navigation";
@@ -18,11 +18,6 @@ export default async function LessonsPage() {
     if (!session) {
         redirect("/");
     }
-
-    console.log("Session in Dashboard => ", session?.user);
-
-    // You can now grab user details
-    const userName = session?.user?.name;
     const userRole = session?.user?.role;
     const rawLessons = await fetchStudentSchedule(session.user.id);
     const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons, session, userRole as 'student') : [];

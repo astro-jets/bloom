@@ -6,7 +6,7 @@ import moment from "moment";
 import { useSession } from "next-auth/react";
 
 const StudentsLayout = ({ children }: { children: React.ReactNode; }) => {
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     if (!session?.user) { return }
 
     const user = session.user;
