@@ -23,7 +23,7 @@ const MessagesPage = () => {
                     <MessageBox />
                 </div>
                 <div className="h-full w-[25%] hidden md:block">
-                    <MessageList />
+                    {/* <MessageList /> */}
                 </div>
             </main>
         </StudentsLayout>
