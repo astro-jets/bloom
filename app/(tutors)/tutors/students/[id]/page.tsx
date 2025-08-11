@@ -13,7 +13,7 @@ interface PageProps {
 }
 
 export default async function StudentDashboard({ params }: PageProps) {
-    const { id } = await params;
+    const { id } = params;
     const student = await fetchStudent(id)
     console.log("Student => ", student)
     return (
