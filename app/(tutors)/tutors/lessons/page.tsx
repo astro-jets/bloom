@@ -4,10 +4,14 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { fetchLessons } from "@/utils/routes";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
 import React from "react";
+import { getServerSession } from "next-auth";
+import { options } from "@/app/api/auth/[...nextauth]/options";
 
 export default async function LessonsPage() {
+    const session = await getServerSession(options);
+    if (!session) { return }
     const rawLessons = await fetchLessons();
-    const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons) : [];
+    const formattedEvents = rawLessons && rawLessons.length ? lessonsToEvents(rawLessons, session, 'tutor') : [];
     return (
         <DefaultLayout>
             <main className="md:ml-[17.3%] w-full md:max-w-6xl md:mx-auto ">
