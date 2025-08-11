@@ -5,13 +5,7 @@ import StudentsLayout from "@/components/Layouts/StudentsLayout";
 import { fetchHomeworkById } from "@/utils/routes";
 import moment from "moment";
 
-interface PageProps {
-    params: {
-        id: string;
-    };
-}
-
-const StudentsProfile = async ({ params }: PageProps) => {
+const StudentsProfile = async ({ params }: { params: { id: string } }) => {
     const { id } = params;
     const homework = await fetchHomeworkById(id)
     const isLate = true

@@ -6,13 +6,7 @@ import PerformanceOverview from '@/components/cards/perfomanceOverview';
 import DefaultLayout from '@/components/Layouts/DefaultLayout';
 import { fetchStudent } from '@/utils/routes';
 
-interface PageProps {
-    params: {
-        id: string;
-    };
-}
-
-export default async function StudentDashboard({ params }: PageProps) {
+export default async function StudentDashboard({ params }: { params: { id: string } }) {
     const { id } = params;
     const student = await fetchStudent(id)
     console.log("Student => ", student)
