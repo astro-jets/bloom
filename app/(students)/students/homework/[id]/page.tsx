@@ -12,7 +12,7 @@ interface PageProps {
 }
 
 const StudentsProfile = async ({ params }: PageProps) => {
-    const { id } = await params;
+    const { id } = params;
     const homework = await fetchHomeworkById(id)
     const isLate = true
     const file = 'https://gofile.io/d/od6SRY'
