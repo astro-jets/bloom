@@ -1,6 +1,6 @@
 import StudentsLayout from "@/components/Layouts/StudentsLayout";
-import MessageBox from "@/components/MessageBox/MessageBox"
-import MessageList from "@/components/MessageBox/MessageList";
+// import MessageBox from "@/components/MessageBox/MessageBox"
+// import MessageList from "@/components/MessageBox/MessageList";
 
 const MessagesPage = () => {
     return (
@@ -20,7 +20,7 @@ const MessagesPage = () => {
                     </div>
                 </div> */}
                 <div className="w-full md:w-[75%] h-full mt-15 md:mt-0 p-0 hide-scrollbar">
-                    <MessageBox />
+                    {/* <MessageBox /> */}
                 </div>
                 <div className="h-full w-[25%] hidden md:block">
                     {/* <MessageList /> */}
