@@ -5,8 +5,8 @@ import StudentsLayout from "@/components/Layouts/StudentsLayout";
 import { fetchHomeworkById } from "@/utils/routes";
 import moment from "moment";
 
-const StudentsProfile = async ({ params }: { params: { id: string } }) => {
-    const { id } = params;
+const StudentsProfile = async ({ params }: { params: Promise<{ id: string }> }) => {
+    const { id } = await params;
     const homework = await fetchHomeworkById(id)
     const isLate = true
     const file = 'https://gofile.io/d/od6SRY'
