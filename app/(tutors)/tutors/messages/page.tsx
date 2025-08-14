@@ -34,7 +34,7 @@ const MessagesPage = async () => {
                 <div className="w-full md:w-[75%] h-full mt-15 md:mt-0 p-0 hide-scrollbar">
                     <MessageBox />
                 </div>
-                <div className="h-full w-[24.5%] hidden md:block">
+                <div className="h-full w-[24.5%] md:block">
                     <MessageList threads={students} userId={user.id} />
                 </div>
             </main>

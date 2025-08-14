@@ -49,9 +49,9 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
   sendMessage: async (userId, thread, content) => {
     if (!content.trim()) return;
 
-    // ✅ Create an optimistic message
+    const tempId = `temp-${Date.now()}`;
     const tempMessage: Message = {
-      id: `temp-${Date.now()}`,
+      id: tempId,
       senderId: userId,
       receiverId: thread.id,
       content,
@@ -60,26 +60,29 @@ export const useMessageStore = create<MessageStore>((set, get) => ({
       updatedAt: new Date().toISOString(),
     };
 
-    // ✅ Show optimistic message immediately
-    set({ messages: [...get().messages, tempMessage] });
+    set((state) => ({ messages: [...state.messages, tempMessage] }));
 
     try {
-      // ✅ Use axios helper here
-      const savedMessage = await sendMessage({
+      const res = await sendMessage({
         senderId: userId,
         receiverId: thread.id,
         content,
       });
 
-      // ✅ Replace optimistic message with the actual one from API
-      set({
-        messages: get().messages.map((msg) =>
-          msg.id === tempMessage.id ? savedMessage : msg
+      const actualMessage = res.message; // ✅ Unwrap here
+
+      set((state) => ({
+        messages: state.messages.map((msg) =>
+          msg.id === tempId ? actualMessage : msg
         ),
-      });
+      }));
+
+      return actualMessage; // ✅ Return the full message
     } catch (err) {
       console.error("Send message error:", err);
-      // 🚨 Optionally remove or mark the failed message
+      set((state) => ({
+        messages: state.messages.filter((msg) => msg.id !== tempId),
+      }));
     }
   },
 }));
