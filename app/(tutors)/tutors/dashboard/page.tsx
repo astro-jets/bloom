@@ -54,9 +54,9 @@ export default async function Dashboard() {
             ? lessonsToEvents(rawLessons, session, userRole)
             : [];
     const weeklyEvents =
-        rawLessons && rawLessons.length
-            ? parseWeeklyEvents(rawLessons, userRole)
-            : [];
+        // rawLessons && rawLessons.length?
+        parseWeeklyEvents(rawLessons, userRole)
+    // : [];
 
     // Fetch Homeworks (future use)
     // const homeworks = await fetchTutorsHomeworks();
