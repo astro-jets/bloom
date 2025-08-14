@@ -26,14 +26,16 @@ export const LessonDetailsModal: React.FC = () => {
     const recordedChunksRef = useRef<Blob[]>([]);
 
     const [meetTab, setMeetTab] = useState<Window | null>(null);
-
     console.log(meetTab)
-
     const startRecording = async () => {
+
+        // Open Google Meet tab but don't focus it
+        const newTab = window.open('https://meet.google.com/hjf-eprb-ryv', '_blank', 'noopener,noreferrer');
+        setMeetTab(newTab);
 
         try {
             // Delay a bit so the tab loads (optional, adjust as needed)
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            // await new Promise(resolve => setTimeout(resolve, 1000));
 
             const stream = await navigator.mediaDevices.getDisplayMedia({
                 video: true,
@@ -65,9 +67,7 @@ export const LessonDetailsModal: React.FC = () => {
             mediaRecorder.start();
             mediaRecorderRef.current = mediaRecorder;
             setIsRecording(true);
-            // Open Google Meet tab but don't focus it
-            const newTab = window.open('https://meet.google.com/hjf-eprb-ryv', '_blank', 'noopener,noreferrer');
-            setMeetTab(newTab);
+
         } catch (err) {
             console.error("Error starting screen recording:", err);
             alert("Failed to start screen recording. Please allow screen and mic access.");
@@ -99,16 +99,16 @@ export const LessonDetailsModal: React.FC = () => {
                             </button>
                         ) : (
                             <button
-                                className="bg-red-600 space-x-4 flex items-center text-white px-4 py-1 rounded-sm shadow"
+                                className="bg-purple-600 cursor-pointer space-x-4 flex items-center text-white px-4 py-1 rounded-sm shadow"
                                 onClick={startRecording}
                             >
-                                <span>Start Recording</span>
+                                <span>Start Lesson</span>
                                 <BiSolidVideoRecording size={20} className='fill-white' />
                             </button>
                         )}
                     </div>
 
-                    <form onSubmit={handleSubmit} className="space-y-6">
+                    <form onSubmit={handleSubmit} className="space-y-6 mt-6">
 
                         {/* Lesson Status Dropdown */}
                         <div>
@@ -125,7 +125,7 @@ export const LessonDetailsModal: React.FC = () => {
                         </div>
 
                         {/* Topics Covered Dropdown */}
-                        {/* <div>
+                        <div>
                             <label className="block mb-1 font-semibold text-gray-700">Topics Covered</label>
                             <select
                                 className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
@@ -137,33 +137,33 @@ export const LessonDetailsModal: React.FC = () => {
                                 <option value="algebra">Algebraic Equations</option>
                                 <option value="probability">Probability</option>
                             </select>
-                        </div> */}
+                        </div>
 
                         {/* Notes Textarea */}
-                        {/* <div className="relative">
+                        <div className="relative">
                             <label className="block mb-1 font-semibold text-gray-700">Lesson Summary & Observations</label>
 
                             <textarea
                                 placeholder="Lesson Summary & Observations "
                                 className="w-full px-4 pt-6 pb-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none peer"
                                 rows={5}
-                                value={notes}
-                                onChange={(e) => setNotes(e.target.value)}
+                                // value={notes}
+                                // onChange={(e) => setNotes(e.target.value)}
                                 required
                             />
-                        </div> */}
+                        </div>
 
                         {/* Homework Button */}
                         {/* <div className="flex flex-col md:flex-row items-start gap-4">
-                        <label className="font-semibold text-gray-700">Assign Homework</label>
-                        <button
-                            type="button"
-                            className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-                            onClick={() => alert('Open Homework Modal or Inline Form')}
-                        >
-                            ➕ Add Homework
-                        </button>
-                    </div> */}
+                            <label className="font-semibold text-gray-700">Assign Homework</label>
+                            <button
+                                type="button"
+                                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
+                                onClick={() => alert('Open Homework Modal or Inline Form')}
+                            >
+                                ➕ Add Homework
+                            </button>
+                        </div> */}
 
                         {/* Upload Recording */}
                         {/* <div>
