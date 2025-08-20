@@ -14,7 +14,7 @@ interface Student {
     name: string;
 }
 
-export interface SidbarLesson {
+export interface SideBarLesson {
     lessonDate: string;
     startTime: string;
     Subject: Subject;
@@ -22,7 +22,7 @@ export interface SidbarLesson {
 }
 
 interface DashboardRightSideBarProps {
-    lesson: SidbarLesson;
+    lesson: SideBarLesson;
 }
 
 export default function DashboardRightSideBar({ lesson }: DashboardRightSideBarProps) {
@@ -41,7 +41,7 @@ export default function DashboardRightSideBar({ lesson }: DashboardRightSideBarP
 
     return (
         <aside className="hidden md:block fixed custom-scrollbar overflow-y-auto top-0 right-0 bg-white rounded-xl shadow p-4 space-y-6 h-screen w-[23%]">
-            {/* Next Scheduled SidbarLesson */}
+            {/* Next Scheduled Lesson */}
             <div className="flex-col flex space-y-2">
                 <h2 className="mb-2 text-gray-700 capitalize">NEXT SCHEDULED LESSON</h2>
 
@@ -77,7 +77,7 @@ export default function DashboardRightSideBar({ lesson }: DashboardRightSideBarP
                             className="bg-[#5855D8] text-white text-sm px-4 py-2 rounded-sm shadow cursor-pointer"
                             onClick={openModal}
                         >
-                            {canJoin ? "Join SidbarLesson" : "View Details"}
+                            {canJoin ? "Join Lesson" : "View Details"}
                         </button>
                         <button className="bg-white text-[#2c2d39] text-sm px-4 py-2 rounded-sm shadow">
                             Reschedule
@@ -105,7 +105,7 @@ export default function DashboardRightSideBar({ lesson }: DashboardRightSideBarP
                     />
                     <NotificationItem
                         icon={<HiPresentationChartBar size={20} color="blue" />}
-                        title="SidbarLesson Rescheduled"
+                        title="Lesson Rescheduled"
                         description="Jack Lee moved his lesson to Thursday."
                         time="yesterday 10:30 am"
                     />

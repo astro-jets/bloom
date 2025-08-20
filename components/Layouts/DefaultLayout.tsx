@@ -1,5 +1,4 @@
 "use client"
-import { LessonDetailsModal } from "../forms/LessonDetailsModal";
 import LeftSidebar from "./LeftSideBar";
 
 const DefaultLayout = ({ children }: { children: React.ReactNode; }) => {
@@ -8,7 +7,6 @@ const DefaultLayout = ({ children }: { children: React.ReactNode; }) => {
             <div className="relative h-screen flex flex-col md:flex-row">
                 <LeftSidebar />
                 {children}
-                <LessonDetailsModal />
             </div>
         </div>
     );

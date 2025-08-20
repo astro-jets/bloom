@@ -5,7 +5,7 @@ import { useLessonModalStore } from '@/stores/useLessonModalSotre';
 import { BiSolidVideoRecording } from 'react-icons/bi';
 
 
-export const LessonDetailsModal: React.FC = () => {
+export const LessonDetailsModal = ({ topics }: { topics: any }) => {
     const {
         isModalOpen,
         resetForm,
@@ -132,10 +132,17 @@ export const LessonDetailsModal: React.FC = () => {
                                 required
                             >
                                 <option value="">Choose topic...</option>
-                                <option value="derivatives">Derivatives</option>
-                                <option value="integrals">Integrals</option>
-                                <option value="algebra">Algebraic Equations</option>
-                                <option value="probability">Probability</option>
+                                {
+                                    topics.map((topic: { topic_id: string; topic_name: string }) => (
+                                        <option
+                                            key={topic.topic_id}
+                                            value={topic.topic_name}
+                                        >
+                                            {topic.topic_name}
+                                        </option>
+                                    ))
+                                }
+
                             </select>
                         </div>
 

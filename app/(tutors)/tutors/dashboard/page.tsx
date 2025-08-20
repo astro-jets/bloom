@@ -9,11 +9,12 @@ import { BsArrowUp, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
-import { fetchTutorSchedule } from "@/utils/routes";
-import DashboardRightSideBar, { SidbarLesson } from "@/components/Layouts/DashboardRightSidebar";
+import { fetchTopicsBySubject, fetchTutorSchedule } from "@/utils/routes";
+import DashboardRightSideBar, { SideBarLesson } from "@/components/Layouts/DashboardRightSidebar";
 import { WeeklySchedule } from "@/components/cards/weeklySchedule";
 import { parseWeeklyEvents } from "@/utils/parseWeeklyEvetns";
 import { redirect } from "next/navigation";
+import { LessonDetailsModal } from "@/components/forms/LessonDetailsModal";
 
 
 // types/lesson.ts
@@ -24,6 +25,7 @@ interface Lesson {
     endTime?: string;   // optional
     Subject?: {
         subject_name: string;
+        subject_id: string;
     };
     Tutor?: {
         id: string;
@@ -54,12 +56,9 @@ export default async function Dashboard() {
             ? lessonsToEvents(rawLessons, session, userRole)
             : [];
     const weeklyEvents =
-        // rawLessons && rawLessons.length?
-        parseWeeklyEvents(rawLessons, userRole)
-    // : [];
-
-    // Fetch Homeworks (future use)
-    // const homeworks = await fetchTutorsHomeworks();
+        rawLessons && rawLessons.length ?
+            parseWeeklyEvents(rawLessons, userRole)
+            : [];
 
     function getNextLesson(lessons: Lesson[]): Lesson & { startDateTime: Date } | null {
         const now = new Date();
@@ -78,7 +77,9 @@ export default async function Dashboard() {
 
     const nextLesson = getNextLesson(rawLessons);
 
-    console.log("Next Lessons => ", nextLesson);
+    const topics = await fetchTopicsBySubject('1')
+
+    console.log("Next Lessons Topics => ", topics);
 
     return (
         <DefaultLayout>
@@ -144,8 +145,8 @@ export default async function Dashboard() {
                 {/* Calendar */}
                 {formattedEvents && <MyCalendar events={formattedEvents} />}
             </main>
-
-            <DashboardRightSideBar lesson={nextLesson as SidbarLesson} />
+            <LessonDetailsModal topics={topics} />
+            <DashboardRightSideBar lesson={nextLesson as SideBarLesson} />
         </DefaultLayout>
     );
 }

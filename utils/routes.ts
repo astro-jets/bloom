@@ -216,3 +216,14 @@ export const submitHomework = async (
     throw error;
   }
 };
+
+export const fetchTopicsBySubject = async (subjectId: string) => {
+  try {
+    const res = await axios.get(
+      `https://bloom-ft06.onrender.com/api/subjects/subjectTopics/${subjectId}`
+    );
+    return res.data;
+  } catch (error) {
+    return error;
+  }
+};
