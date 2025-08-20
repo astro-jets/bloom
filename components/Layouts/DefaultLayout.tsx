@@ -1,5 +1,5 @@
 "use client"
-import { LessonDetailsModal } from "../LessonDetailsModal";
+import { LessonDetailsModal } from "../forms/LessonDetailsModal";
 import LeftSidebar from "./LeftSideBar";
 
 const DefaultLayout = ({ children }: { children: React.ReactNode; }) => {

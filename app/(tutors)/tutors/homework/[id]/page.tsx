@@ -1,10 +1,9 @@
 import React from "react";
 import { AssignmentHeader } from "@/components/assignments/AssignmentHeader";
-import { PDFViewer } from "@/components/assignments/PDFViewer";
 import { GradingSection } from "@/components/assignments/GradingSection";
 import { StudentProfile } from "@/components/assignments/StudentProfile";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-
+import HomeworkViewer from "@/components/forms/HomeworkViewer";
 const StudentsProfile = () => {
     const recentGrades = [
         { subject: "Physics Quiz", score: "92%" },
@@ -15,14 +14,14 @@ const StudentsProfile = () => {
     return (
         <DefaultLayout>
             <main className="w-full md:ml-[17.3%] mx-auto p-1 space-y-4 flex justify-between">
-                <div className="w-[66.5%] rounded bg-white  p-4 overflow-y-scroll custom-scrollbar ">
+                <div className="w-[70%] rounded bg-white  p-2 space-y-4 overflow-y-scroll custom-scrollbar ">
                     <AssignmentHeader
                         studentName="Emma Wilson"
                         dueDate="May 25, 2025"
                         submittedDate="May 28, 2025"
                         isLate={true}
                     />
-                    <PDFViewer fileName="algebra_homework.pdf" />
+                    <HomeworkViewer fileUrl="/files/file.pdf" />
                     <GradingSection />
 
                     <div className="flex space-x-3">
@@ -35,7 +34,7 @@ const StudentsProfile = () => {
                     </div>
                 </div>
 
-                <div className="w-[33%] h-screen rounded bg-white ">
+                <div className="w-[30%] h-screen rounded bg-white ">
                     <StudentProfile
                         name="Emma Wilson"
                         grade="10"

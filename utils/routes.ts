@@ -191,3 +191,28 @@ export const sendMessage = async (payload: {
   );
   return response.data;
 };
+
+export const submitHomework = async (
+  formData: FormData,
+  homeworkID: string
+) => {
+  try {
+    const response = await axios.post(
+      `https://bloom-ft06.onrender.com/api/homework/submitHomework/${homeworkID}`,
+      formData,
+      {
+        headers: {
+          // Let Axios set the multipart boundary automatically
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+    return response.data;
+  } catch (error: any) {
+    console.error(
+      "Homework submission failed:",
+      error.response?.data || error.message
+    );
+    throw error;
+  }
+};

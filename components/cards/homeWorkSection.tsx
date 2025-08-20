@@ -93,16 +93,23 @@ export default function HomeworksSection({ student }: { student: Student }) {
                                     </p>
                                 </div>
                             </div>
-                            <span className={`px-2 py-1 rounded
+                            <div className="flex space-x-2">
+                                <span className={`px-2 py-1 rounded
                             ${hw.submissions?.length ?
-                                    ` bg-green-700 text-white`
-                                    : `bg-red-700 text-white`
-                                }`}>
-                                {hw.submissions?.length
-                                    ? `Submitted`
-                                    : `Not Submitted`
+                                        ` bg-green-700 text-white`
+                                        : `bg-red-700 text-white`
+                                    }`}>
+                                    {hw.submissions?.length
+                                        ? `Submitted`
+                                        : `Not Submitted`
+                                    }
+                                </span>
+                                {hw.submissions?.length &&
+                                    <span className={`px-2 py-1 rounded text-gray-700 bg-white`}>
+                                        Review
+                                    </span>
                                 }
-                            </span>
+                            </div>
                         </li>
                     ))}
                 </ul>
