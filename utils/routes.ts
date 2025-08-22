@@ -227,3 +227,18 @@ export const fetchTopicsBySubject = async (subjectId: string) => {
     return error;
   }
 };
+
+export const logLessonFeedback = async (
+  lessonId: string,
+  formData: FormData
+) => {
+  return await axios.post(
+    `https://bloom-ft06.onrender.com/api/schedule/lesson-log/197bc4e5-d824-4eb2-9ba4-4fb01f21abeb/${lessonId}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    }
+  );
+};

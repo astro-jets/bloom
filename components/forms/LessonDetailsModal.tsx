@@ -2,55 +2,93 @@
 'use client'
 import React, { useRef, useState } from 'react';
 import { useLessonModalStore } from '@/stores/useLessonModalSotre';
-import { BiSolidVideoRecording } from 'react-icons/bi';
-
+import { BiSolidVideoRecording, BiVideoRecording } from 'react-icons/bi';
+import { BsX } from 'react-icons/bs';
+import RecordingCard from '../Recordings/Recordingcard';
 
 export const LessonDetailsModal = ({ topics }: { topics: { topic_id: string; topic_name: string }[] }) => {
-    const {
-        isModalOpen,
-        resetForm,
-    } = useLessonModalStore();
+    const { isModalOpen, resetForm } = useLessonModalStore();
+    const [filteredTopics, setFilteredTopics] = useState(topics); // initially all
 
-    const handleSubmit = (e: React.FormEvent) => {
+    // local state for form fields
+    const [lessonStatus, setLessonStatus] = useState('');
+    const [topic, setTopic] = useState('');
+    const [notes, setNotes] = useState('');
+    const [file, setFile] = useState<File | null>(null);
+
+    const [submitting, setSubmitting] = useState(false);
+
+    const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (true) {
-            // Do any submission logic here (e.g., send to API)
-            resetForm(); // closes modal + clears form + updates localStorage
+        // topicID
+        // subtopicID
+        // tutor ID
+        // topic notes
+        // topic is completed
+        // sub-topic is completed
+        // lesson summary
+        // Recording
+        // time joined
+
+        if (!lessonStatus || !topic || !notes) {
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        try {
+            setSubmitting(true);
+
+            // use FormData because of file
+            const formData = new FormData();
+            formData.append("lessonStatus", lessonStatus);
+            formData.append("topic", topic);
+            formData.append("notes", notes);
+            if (file) formData.append("recording", file);
+
+            // POST to your API route (replace with your backend endpoint)
+            const res = await fetch("/api/lessons/feedback", {
+                method: "POST",
+                body: formData,
+            });
+
+            if (!res.ok) {
+                throw new Error("Failed to submit feedback");
+            }
+
+            alert("Feedback submitted successfully ✅");
+            resetForm(); // close modal + clear
+        } catch (err) {
+            console.error(err);
+            alert("Something went wrong. Please try again.");
+        } finally {
+            setSubmitting(false);
         }
     };
 
+    // recording stuff (unchanged)
     const [isRecording, setIsRecording] = useState(false);
+    const [lessonEnded, setLessonEnded] = useState(false);
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const recordedChunksRef = useRef<Blob[]>([]);
-
     const [meetTab, setMeetTab] = useState<Window | null>(null);
-    console.log(meetTab)
-    const startRecording = async () => {
+    const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
 
-        // Open Google Meet tab but don't focus it
+
+    const startRecording = async () => {
         const newTab = window.open('https://meet.google.com/hjf-eprb-ryv', '_blank', 'noopener,noreferrer');
         setMeetTab(newTab);
 
         try {
-            // Delay a bit so the tab loads (optional, adjust as needed)
-            // await new Promise(resolve => setTimeout(resolve, 1000));
-
             const stream = await navigator.mediaDevices.getDisplayMedia({
                 video: true,
                 audio: true,
             });
 
-            const options = {
-                mimeType: "video/webm;codecs=vp9,opus"
-            };
-
-            const mediaRecorder = new MediaRecorder(stream, options);
+            const mediaRecorder = new MediaRecorder(stream, { mimeType: "video/webm;codecs=vp9,opus" });
             recordedChunksRef.current = [];
 
             mediaRecorder.ondataavailable = (event) => {
-                if (event.data.size > 0) {
-                    recordedChunksRef.current.push(event.data);
-                }
+                if (event.data.size > 0) recordedChunksRef.current.push(event.data);
             };
 
             mediaRecorder.onstop = () => {
@@ -70,148 +108,195 @@ export const LessonDetailsModal = ({ topics }: { topics: { topic_id: string; top
             console.error("Error starting screen recording:", err);
             alert("Failed to start screen recording. Please allow screen and mic access.");
         }
-
     };
-
 
     const stopRecording = () => {
         mediaRecorderRef.current?.stop();
         setIsRecording(false);
+        setLessonEnded(true)
     };
 
-    // startRecording()
     if (!isModalOpen) return null;
+
     return (
         <div className="fixed inset-0 z-50 bg-[#ffffff69] backdrop-blur bg-opacity-50 flex items-center justify-center h-full">
             <div className=" z-60 bg-white/80 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-2xl w-full max-w-3xl p-2 relative overflow-y-auto h-[95%]">
                 <div className=" custom-scrollbar w-full overflow-y-auto h-full p-6">
-                    <h2 className="text-3xl font-bold text-gray-800 mb-6">📋 Lesson Feedback</h2>
-                    <div className="flex justify-between mt-2">
-                        {isRecording ? (
-                            <button
-                                className="bg-red-600 space-x-4 flex items-center text-white px-4 py-1 rounded-sm shadow"
-                                onClick={stopRecording}
-                            >
-                                <span>Stop Recording</span>
-                                <BiSolidVideoRecording size={20} className='fill-white' />
-                            </button>
-                        ) : (
-                            <button
-                                className="bg-purple-600 cursor-pointer space-x-4 flex items-center text-white px-4 py-1 rounded-sm shadow"
-                                onClick={startRecording}
-                            >
-                                <span>Start Lesson</span>
-                                <BiSolidVideoRecording size={20} className='fill-white' />
-                            </button>
-                        )}
-                    </div>
-
-                    <form onSubmit={handleSubmit} className="space-y-6 mt-6">
-
-                        {/* Lesson Status Dropdown */}
-                        <div>
-                            <label className="block mb-1 font-semibold text-gray-700">Lesson Status</label>
-                            <select
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                                required
-                            >
-                                <option value="">Select status...</option>
-                                <option value="delivered">Delivered</option>
-                                <option value="rescheduled">Rescheduled</option>
-                                <option value="no-show">No-show</option>
-                            </select>
+                    {/* Recording controls */}
+                    {
+                        !lessonEnded &&
+                        <div className="flex justify-between mt-2">
+                            {isRecording ? (
+                                <button
+                                    className="bg-red-600 space-x-4 flex items-center text-white px-4 py-1 rounded-sm shadow"
+                                    onClick={stopRecording}
+                                >
+                                    <span>Stop Recording</span>
+                                    <BiSolidVideoRecording size={20} className='fill-white' />
+                                </button>
+                            ) : (
+                                <button
+                                    className="bg-purple-600 cursor-pointer space-x-4 flex items-center text-white px-4 py-1 rounded-sm shadow"
+                                    onClick={startRecording}
+                                >
+                                    <span>Start Lesson</span>
+                                    <BiSolidVideoRecording size={20} className='fill-white' />
+                                </button>
+                            )}
                         </div>
-
-                        {/* Topics Covered Dropdown */}
-                        <div>
-                            <label className="block mb-1 font-semibold text-gray-700">Topics Covered</label>
-                            <select
-                                className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                                required
-                            >
-                                <option value="">Choose topic...</option>
-                                {
-                                    topics.map((topic) => (
-                                        <option
-                                            key={topic.topic_id}
-                                            value={topic.topic_name}
-                                        >
-                                            {topic.topic_name}
-                                        </option>
-                                    ))
-                                }
-
-                            </select>
-                        </div>
-
-                        <div className="flex space-x-6">
-                            {/* Notes Textarea */}
-                            <div className="relative w-[65%]">
-                                <label className="block mb-1 font-semibold text-gray-700">Lesson Summary & Observations</label>
-
-                                <textarea
-                                    placeholder="Lesson Summary & Observations "
-                                    className="w-full px-4 pt-6 pb-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none peer"
-                                    rows={5}
-                                    // value={notes}
-                                    // onChange={(e) => setNotes(e.target.value)}
+                    }
+                    {/* FORM */}
+                    {
+                        lessonEnded &&
+                        <form onSubmit={handleSubmit} className="space-y-6 mt-6">
+                            {/* Lesson Status Dropdown */}
+                            <div>
+                                <label className="block mb-1 font-semibold text-gray-700">Lesson Status</label>
+                                <select
+                                    value={lessonStatus}
+                                    onChange={(e) => setLessonStatus(e.target.value)}
+                                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
                                     required
+                                >
+                                    <option value="">Select status...</option>
+                                    <option value="delivered">Delivered</option>
+                                    <option value="rescheduled">Rescheduled</option>
+                                    <option value="no-show">No-show</option>
+                                </select>
+                            </div>
+
+                            {/* Topics Covered with Search */}
+                            <div>
+                                <label className="block mb-1 font-semibold text-gray-700">Topics Covered</label>
+                                <input
+                                    type="text"
+                                    placeholder="Search topics..."
+                                    className="w-full px-4 py-2 mb-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none"
+                                    onChange={(e) => {
+                                        const searchValue = e.target.value.toLowerCase();
+                                        setFilteredTopics(
+                                            topics.filter((t) => t.topic_name.toLowerCase().includes(searchValue))
+                                        );
+                                    }}
                                 />
-                            </div>
-                            {/* Upload Recording */}
-                            <div className='w-[30%] flex flex-col items-center'>
-                                <label className="block mb-1 font-semibold text-gray-700">
-                                    Upload Lesson Recording
-                                </label>
-                                <label htmlFor="dropzone-file" className="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100">
-                                    <div className="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <svg className="w-8 h-8 mb-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                        </svg>
-                                        <p className="mb-2 text-sm text-gray-500 dark:text-gray-400 text-center"><span className="font-semibold">Click to upload</span> or drag and drop</p>
-                                        <p className="text-xs text-gray-500 dark:text-gray-400">  MP4 (MAX. 50mb)</p>
+
+                                {/* Display filtered topics as checkboxes */}
+                                <div className="flex flex-col space-y-2 max-h-40 overflow-y-auto border border-purple-500 rounded-xl p-3 custom-scrollbar">
+                                    {filteredTopics.map((topic) => (
+                                        <label key={topic.topic_id} className="flex items-center space-x-2">
+                                            <input
+                                                type="checkbox"
+                                                value={topic.topic_name}
+                                                checked={selectedTopics.includes(topic.topic_name)}
+                                                onChange={(e) => {
+                                                    if (e.target.checked) {
+                                                        setSelectedTopics([...selectedTopics, topic.topic_name]);
+                                                    } else {
+                                                        setSelectedTopics(
+                                                            selectedTopics.filter((t) => t !== topic.topic_name)
+                                                        );
+                                                    }
+                                                }}
+                                                className="h-4 w-4 text-purple-600 border-gray-300 rounded"
+                                            />
+                                            <span>{topic.topic_name}</span>
+                                        </label>
+                                    ))}
+                                </div>
+
+                                {/* Display selected topics as tags */}
+                                {selectedTopics.length > 0 && (
+                                    <div className="flex flex-wrap gap-2 mt-3">
+                                        {selectedTopics.map((t) => (
+                                            <span
+                                                key={t}
+                                                className="flex items-center gap-2 bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-sm"
+                                            >
+                                                {t}
+                                                <button
+                                                    type="button"
+                                                    onClick={() =>
+                                                        setSelectedTopics(selectedTopics.filter((topic) => topic !== t))
+                                                    }
+                                                    className="text-purple-500 hover:text-purple-700"
+                                                >
+                                                    <BsX className='fill-purple-500' size={20} />
+                                                </button>
+                                            </span>
+                                        ))}
                                     </div>
-                                    <input id="dropzone-file" type="file" className="hidden" onChange={(e) => { console.log(e) }} />
-                                </label>
+                                )}
                             </div>
-                        </div>
 
-                        {/* Homework Button */}
-                        {/* <div className="flex flex-col md:flex-row items-start gap-4">
-                            <label className="font-semibold text-gray-700">Assign Homework</label>
-                            <button
-                                type="button"
-                                className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-                                onClick={() => alert('Open Homework Modal or Inline Form')}
-                            >
-                                ➕ Add Homework
-                            </button>
-                        </div> */}
 
-                        {/* Additional Notes */}
-                        {/* <div>
-                            <label className="block font-semibold mb-1 text-gray-700">Additional Notes</label>
-                            <textarea
-                                placeholder="Optional comments, questions, or instructions..."
-                                rows={4}
-                                className="w-full border border-gray-300 rounded-xl px-4 py-2 focus:ring-2 focus:ring-purple-500 focus:outline-none"
-                            />
-                        </div> */}
+                            <div className="flex space-x-6">
+                                {/* Notes Textarea */}
+                                <div className="relative w-[65%]">
+                                    <label className="block mb-1 font-semibold text-gray-700">Lesson Summary & Observations</label>
+                                    <textarea
+                                        value={notes}
+                                        onChange={(e) => setNotes(e.target.value)}
+                                        placeholder="Lesson Summary & Observations "
+                                        className="w-full px-4 pt-6 pb-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-500 focus:outline-none peer"
+                                        rows={5}
+                                        required
+                                    />
+                                </div>
 
-                        {/* Submit Button */}
-                        <div className="flex justify-end pt-4">
-                            <button
-                                type="submit"
-                                className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow hover:bg-purple-700 transition"
-                            >
-                                Submit Feedback
-                            </button>
-                        </div>
-                    </form>
+                                {/* Upload Recording */}
+                                <div className='w-[30%] flex flex-col items-center'>
+                                    <label className="block mb-1 font-semibold text-gray-700">
+                                        {!file ? <span>Upload Lesson Recording</span> : <span>Vide Uploaded</span>}
+                                    </label>
+                                    <label
+                                        htmlFor="dropzone-file"
+                                        className="flex flex-col items-center justify-center w-full h-40 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50  hover:bg-gray-100"
+                                    >
+                                        <div className="flex flex-col items-center justify-center pt-5 pb-6">
+
+                                            {
+                                                file ?
+                                                    <>
+                                                        <BiVideoRecording size={50} className='fill-gray-500' />
+                                                        <p className="text-sm text-center mt-2 text-gray-600">{file.name}</p>
+                                                    </> :
+                                                    <>
+                                                        <svg className="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
+                                                        </svg>
+                                                        <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Click to upload</span> or drag and drop</p>
+                                                        <p className="text-xs text-gray-500">  MP4/WEBM (MAX. 50mb)</p>
+                                                    </>
+                                            }
+                                        </div>
+                                        <input
+                                            id="dropzone-file"
+                                            type="file"
+                                            accept="video/*"
+                                            className="hidden"
+                                            onChange={(e) => {
+                                                if (e.target.files && e.target.files[0]) setFile(e.target.files[0]);
+                                            }}
+                                        />
+                                    </label>
+
+                                </div>
+                            </div>
+
+                            {/* Submit Button */}
+                            <div className="flex justify-end pt-4">
+                                <button
+                                    type="submit"
+                                    disabled={submitting}
+                                    className="inline-flex items-center gap-2 px-6 py-3 bg-purple-600 text-white font-semibold rounded-xl shadow hover:bg-purple-700 transition disabled:opacity-60"
+                                >
+                                    {submitting ? "Submitting..." : "Submit Feedback"}
+                                </button>
+                            </div>
+                        </form>
+                    }
                 </div>
             </div>
-
-
         </div >
     );
 };
