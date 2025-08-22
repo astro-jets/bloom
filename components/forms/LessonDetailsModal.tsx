@@ -4,7 +4,6 @@ import React, { useRef, useState } from 'react';
 import { useLessonModalStore } from '@/stores/useLessonModalSotre';
 import { BiSolidVideoRecording, BiVideoRecording } from 'react-icons/bi';
 import { BsX } from 'react-icons/bs';
-import RecordingCard from '../Recordings/Recordingcard';
 
 export const LessonDetailsModal = ({ topics }: { topics: { topic_id: string; topic_name: string }[] }) => {
     const { isModalOpen, resetForm } = useLessonModalStore();
@@ -15,8 +14,18 @@ export const LessonDetailsModal = ({ topics }: { topics: { topic_id: string; top
     const [topic, setTopic] = useState('');
     const [notes, setNotes] = useState('');
     const [file, setFile] = useState<File | null>(null);
-
     const [submitting, setSubmitting] = useState(false);
+
+    // recording stuff
+    const [isRecording, setIsRecording] = useState(false);
+    const [lessonEnded, setLessonEnded] = useState(false);
+    const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+    const recordedChunksRef = useRef<Blob[]>([]);
+    const [meetTab, setMeetTab] = useState<Window | null>(null);
+    const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
+
+    console.log(meetTab)
+
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -64,14 +73,6 @@ export const LessonDetailsModal = ({ topics }: { topics: { topic_id: string; top
             setSubmitting(false);
         }
     };
-
-    // recording stuff (unchanged)
-    const [isRecording, setIsRecording] = useState(false);
-    const [lessonEnded, setLessonEnded] = useState(false);
-    const mediaRecorderRef = useRef<MediaRecorder | null>(null);
-    const recordedChunksRef = useRef<Blob[]>([]);
-    const [meetTab, setMeetTab] = useState<Window | null>(null);
-    const [selectedTopics, setSelectedTopics] = useState<string[]>([]);
 
 
     const startRecording = async () => {
