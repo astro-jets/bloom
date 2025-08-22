@@ -11,7 +11,7 @@ export const LessonDetailsModal = ({ topics }: { topics: { topic_id: string; top
 
     // local state for form fields
     const [lessonStatus, setLessonStatus] = useState('');
-    const [topic, setTopic] = useState('');
+    const [topic] = useState('');
     const [notes, setNotes] = useState('');
     const [file, setFile] = useState<File | null>(null);
     const [submitting, setSubmitting] = useState(false);
