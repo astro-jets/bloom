@@ -21,6 +21,8 @@ type SelectedSubTopic = {
 export const LessonDetailsModal = ({ lessonId, topics, subTopics, tutorid }: { lessonId: string, tutorid: string, topics: Topic[], subTopics: Topic[] }) => {
     const { isModalOpen, resetForm } = useLessonModalStore();
 
+    console.log(lessonId, tutorid)
+
     // Topics Stuff
     const [filteredTopics, setFilteredTopics] = useState(topics);
     const [selectedTopics, setSelectedTopics] = useState<SelectedTopic[]>([]);
@@ -53,19 +55,17 @@ export const LessonDetailsModal = ({ lessonId, topics, subTopics, tutorid }: { l
 
         console.log("Data => ", data);
 
-        // Example post (uncomment when ready)
         try {
             setSubmitting(true);
             const formData = new FormData();
             formData.append("lessonStatus", lessonStatus);
             formData.append("topics", JSON.stringify(selectedTopics));
             formData.append("subtopics", JSON.stringify(selectedSubTopics));
-            formData.append("notes", notes);
+            formData.append("lessonSummary", notes);
+            formData.append("tutorId", tutorid);
             if (file) formData.append("recording", file);
 
             const res = await logLessonFeedback(lessonId, formData)
-
-            //   if (res) throw new Error("Failed to submit feedback");
             console.log("Result => ", res)
             alert("Feedback submitted successfully ✅");
             resetForm();
