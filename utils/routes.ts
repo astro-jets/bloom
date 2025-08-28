@@ -112,6 +112,19 @@ export const assignHomework = async (
   );
 };
 
+export const gradeHomework = async (formData: FormData, homeworkId: string) => {
+  const res = await axios.patch(
+    `https://bloom-ft06.onrender.com/api/homework/gradeHomework/${homeworkId}`,
+    formData,
+    {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  );
+  return res;
+};
+
 export const signIn = async (formData: {}): Promise<any> => {
   const response = await fetch(`${process.env.BE_LINK}/auth/login`, {
     method: "POST",
@@ -227,13 +240,23 @@ export const fetchTopicsBySubject = async (subjectId: string) => {
     return error;
   }
 };
+export const fetchSubTopicsBySubject = async (subjectId: string) => {
+  try {
+    const res = await axios.get(
+      `https://bloom-ft06.onrender.com/api/subjects/topicSubtopic/${subjectId}`
+    );
+    return res.data;
+  } catch (error) {
+    return error;
+  }
+};
 
 export const logLessonFeedback = async (
   lessonId: string,
   formData: FormData
 ) => {
   return await axios.post(
-    `https://bloom-ft06.onrender.com/api/schedule/lesson-log/197bc4e5-d824-4eb2-9ba4-4fb01f21abeb/${lessonId}`,
+    `https://bloom-ft06.onrender.com/api/schedule/lesson-log/${lessonId}`,
     formData,
     {
       headers: {

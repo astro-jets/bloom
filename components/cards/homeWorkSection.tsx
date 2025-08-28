@@ -12,6 +12,7 @@ import {
 import NavigationTabs from './navigationTabs';
 import { Student } from '@/types/types';
 import AssignHomeworkModal from '../modals/AssignHomework';
+import HomeworkGrader from '../forms/HomeworkGrader';
 
 // Extend this based on your actual subject list
 const subjectIcons: Record<string, JSX.Element> = {
@@ -93,8 +94,8 @@ export default function HomeworksSection({ student }: { student: Student }) {
                                     </p>
                                 </div>
                             </div>
-                            <div className="flex space-x-2">
-                                <span className={`px-2 py-1 rounded
+                            <div className="flex space-x-2 items-center">
+                                <span className={`px-2 py-1 rounded h-8
                             ${hw.submissions?.length ?
                                         ` bg-green-700 text-white`
                                         : `bg-red-700 text-white`
@@ -105,9 +106,7 @@ export default function HomeworksSection({ student }: { student: Student }) {
                                     }
                                 </span>
                                 {hw.submissions?.length &&
-                                    <span className={`px-2 py-1 rounded text-gray-700 bg-white`}>
-                                        Review
-                                    </span>
+                                    <HomeworkGrader homeworkId={hw.id} />
                                 }
                             </div>
                         </li>

@@ -1,6 +1,9 @@
-import { ReactNode } from "react";
-
-type HomeworkStatus = "Graded: A" | "Graded: B+" | "Pending" | "Late: A-";
+export interface Topic {
+  topic_id: string;
+  topic_name: string;
+  subtopic_id: string;
+  subtopic_name: string;
+}
 
 export type User = {
   id: string;

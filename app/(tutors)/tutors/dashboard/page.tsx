@@ -9,7 +9,7 @@ import { BsArrowUp, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
-import { fetchTopicsBySubject, fetchTutorSchedule } from "@/utils/routes";
+import { fetchSubTopicsBySubject, fetchTopicsBySubject, fetchTutorSchedule } from "@/utils/routes";
 import DashboardRightSideBar, { SideBarLesson } from "@/components/Layouts/DashboardRightSidebar";
 import { WeeklySchedule } from "@/components/cards/weeklySchedule";
 import { parseWeeklyEvents } from "@/utils/parseWeeklyEvetns";
@@ -46,7 +46,7 @@ export default async function Dashboard() {
     }
 
     const userName = session.user.name ?? "";
-    const userRole = session.user.role as "tutor" | "student";
+    const userRole = session.user.role as "tutor";
     const userId = session.user.id;
 
     // Fetch Lessons
@@ -78,8 +78,7 @@ export default async function Dashboard() {
     const nextLesson = getNextLesson(rawLessons);
 
     const topics = await fetchTopicsBySubject('1')
-
-    console.log("Next Lessons Topics => ", topics);
+    const subtopics = await fetchSubTopicsBySubject('2')
 
     return (
         <DefaultLayout>
@@ -145,7 +144,15 @@ export default async function Dashboard() {
                 {/* Calendar */}
                 {formattedEvents && <MyCalendar events={formattedEvents} />}
             </main>
-            <LessonDetailsModal topics={topics} />
+            {
+                nextLesson &&
+                <LessonDetailsModal
+                    topics={topics}
+                    subTopics={subtopics}
+                    tutorid={userId}
+                    lessonId={nextLesson.id}
+                />
+            }
             <DashboardRightSideBar lesson={nextLesson as SideBarLesson} />
         </DefaultLayout>
     );
