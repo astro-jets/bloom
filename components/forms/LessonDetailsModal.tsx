@@ -39,7 +39,7 @@ export const LessonDetailsModal = ({ lessonId, topics, subTopics, tutorid }: { l
     const mediaRecorderRef = useRef<MediaRecorder | null>(null);
     const recordedChunksRef = useRef<Blob[]>([]);
     const [meetTab, setMeetTab] = useState<Window | null>(null);
-
+    console.log(meetTab)
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
         const data = {
