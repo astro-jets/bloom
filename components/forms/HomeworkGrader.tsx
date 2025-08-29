@@ -1,7 +1,7 @@
 import { gradeHomework } from "@/utils/routes";
 import { useState } from "react";
 
-export default function HomeworkGrader({ homeworkId }: { homeworkId: string }) {
+export default function HomeworkGrader({ homeworkId, tutorId }: { homeworkId: string, tutorId: string }) {
     const [showForm, setShowForm] = useState(false);
     const [feedback, setFeedback] = useState("");
     const [grade, setGrade] = useState("");
@@ -15,6 +15,7 @@ export default function HomeworkGrader({ homeworkId }: { homeworkId: string }) {
         const formData = new FormData();
         formData.append("grade", grade);
         formData.append("feedback", feedback);
+        formData.append("tutorId", tutorId);
         try {
             const res = await gradeHomework(formData, homeworkId)
             console.log(res)

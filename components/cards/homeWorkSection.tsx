@@ -13,6 +13,7 @@ import NavigationTabs from './navigationTabs';
 import { Student } from '@/types/types';
 import AssignHomeworkModal from '../modals/AssignHomework';
 import HomeworkGrader from '../forms/HomeworkGrader';
+import { useSession } from 'next-auth/react';
 
 // Extend this based on your actual subject list
 const subjectIcons: Record<string, JSX.Element> = {
@@ -24,6 +25,9 @@ const subjectIcons: Record<string, JSX.Element> = {
 };
 
 export default function HomeworksSection({ student }: { student: Student }) {
+    const { data: session } = useSession();
+    const user = session?.user
+    if (!user) return
     const homeworks = student?.lessons?.flatMap((lesson) =>
         (lesson.homeworks ?? []).map(hw => ({
             ...hw,
@@ -33,6 +37,7 @@ export default function HomeworksSection({ student }: { student: Student }) {
         }))
     ) ?? [];
 
+    console.log(homeworks)
     const [modalOpen, setModalOpen] = useState(false);
 
     return (
@@ -106,7 +111,7 @@ export default function HomeworksSection({ student }: { student: Student }) {
                                     }
                                 </span>
                                 {hw.submissions?.length &&
-                                    <HomeworkGrader homeworkId={hw.id} />
+                                    <HomeworkGrader homeworkId={hw.submissions[0].id} tutorId={user.id} />
                                 }
                             </div>
                         </li>

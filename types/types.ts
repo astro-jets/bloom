@@ -21,7 +21,7 @@ export interface Homework {
   subject: string;
   lessonDate: string;
   lessonId: string;
-  submissions?: []; // Optional: define or adjust `Submission` type
+  submissions: { id: string }[]; // Optional: define or adjust `Submission` type
 }
 
 export interface Lesson {
