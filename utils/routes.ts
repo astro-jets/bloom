@@ -12,10 +12,10 @@ export const fetchLessons = async () => {
   }
 };
 
-export const fetchTutorsHomeworks = async () => {
+export const fetchTutorsHomeworks = async (tutorId: string) => {
   try {
     const res = await axios.get(
-      `${process.env.BE_LINK}/homework/getTutorHomework/f972df49-c125-4ae7-bc30-b3d6b399e126`
+      `${process.env.BE_LINK}/homework/getTutorHomework/${tutorId}`
     );
     if (!res) {
       return [];

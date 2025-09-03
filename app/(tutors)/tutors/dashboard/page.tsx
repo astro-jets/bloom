@@ -9,7 +9,7 @@ import { BsArrowUp, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
 import { lessonsToEvents } from "@/utils/lessonsToEvent";
-import { fetchSubTopicsBySubject, fetchTopicsBySubject, fetchTutorSchedule } from "@/utils/routes";
+import { fetchSubTopicsBySubject, fetchTopicsBySubject, fetchTutorSchedule, fetchTutorsHomeworks } from "@/utils/routes";
 import DashboardRightSideBar, { SideBarLesson } from "@/components/Layouts/DashboardRightSidebar";
 import { WeeklySchedule } from "@/components/cards/weeklySchedule";
 import { parseWeeklyEvents } from "@/utils/parseWeeklyEvetns";
@@ -79,6 +79,11 @@ export default async function Dashboard() {
 
     const topics = await fetchTopicsBySubject('1')
     const subtopics = await fetchSubTopicsBySubject('2')
+
+
+    // Homework stuff and submissions
+    const tutorsHomeworks = await fetchTutorsHomeworks(userId)
+    console.log("homeworks => ", userId)
 
     return (
         <DefaultLayout>

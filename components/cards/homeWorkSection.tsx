@@ -14,6 +14,7 @@ import { Student } from '@/types/types';
 import AssignHomeworkModal from '../modals/AssignHomework';
 import HomeworkGrader from '../forms/HomeworkGrader';
 import { useSession } from 'next-auth/react';
+import { BsCheck2Circle, BsExclamationCircle } from 'react-icons/bs';
 
 // Extend this based on your actual subject list
 const subjectIcons: Record<string, JSX.Element> = {
@@ -25,6 +26,7 @@ const subjectIcons: Record<string, JSX.Element> = {
 };
 
 export default function HomeworksSection({ student }: { student: Student }) {
+    const [modalOpen, setModalOpen] = useState(false);
     const { data: session } = useSession();
     const user = session?.user
     if (!user) return
@@ -38,7 +40,7 @@ export default function HomeworksSection({ student }: { student: Student }) {
     ) ?? [];
 
     console.log(homeworks)
-    const [modalOpen, setModalOpen] = useState(false);
+
 
     return (
         <div className="bg-white h-auto flex flex-col p-4 rounded-xl shadow space-y-4">
@@ -100,18 +102,18 @@ export default function HomeworksSection({ student }: { student: Student }) {
                                 </div>
                             </div>
                             <div className="flex space-x-2 items-center">
-                                <span className={`px-2 py-1 rounded h-8
+                                <div className={`px-2 py-1 rounded h-8 flex space-x-2 items-center
                             ${hw.submissions?.length ?
                                         ` bg-green-700 text-white`
                                         : `bg-red-700 text-white`
                                     }`}>
                                     {hw.submissions?.length
-                                        ? `Submitted`
-                                        : `Not Submitted`
+                                        ? <><span>Submitted </span> <BsCheck2Circle className='fill-white' /></>
+                                        : <><span>Not Submitted </span>  <BsExclamationCircle className='fill-white' /></>
                                     }
-                                </span>
+                                </div>
                                 {hw.submissions?.length &&
-                                    <HomeworkGrader homeworkId={hw.submissions[0].id} tutorId={user.id} />
+                                    <HomeworkGrader submission={hw.submissions[0]} tutorId={user.id} />
                                 }
                             </div>
                         </li>

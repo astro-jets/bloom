@@ -1,6 +1,15 @@
 @import "tailwindcss";
 @custom-variant dark (&:where(.dark, .dark *));
 
+.hover-grow:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    transition: 0.4s ease all;
+}
+.hover-bg-red:hover{
+    background: red;
+    color: white;
+}
 .fc .fc-button-primary {
     background: none;
     color:black;

@@ -14,6 +14,15 @@ export type User = {
   token?: string; // optional because NextAuth attaches it to JWT
 };
 
+export interface Submission {
+  id: string;
+  submissionUrl: string;
+  status: string;
+  submissionDate: string;
+  grade: string;
+  feedback: string;
+}
+
 export interface Homework {
   id: string;
   title: string;
@@ -21,7 +30,7 @@ export interface Homework {
   subject: string;
   lessonDate: string;
   lessonId: string;
-  submissions: { id: string }[]; // Optional: define or adjust `Submission` type
+  submissions: Submission[]; // Optional: define or adjust `Submission` type
 }
 
 export interface Lesson {
