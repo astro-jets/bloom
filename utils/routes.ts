@@ -26,6 +26,18 @@ export const fetchTutorsHomeworks = async (tutorId: string) => {
   }
 };
 
+export const fetchLibraryResources = async () => {
+  try {
+    const res = await axios.get(
+      `https://bloom-ft06.onrender.com/api/resources/`
+    );
+    return res?.data || [];
+  } catch (error) {
+    console.error("Error fetching students:", error);
+    return [];
+  }
+};
+
 export const fetchStudentsByTutor = async (tutorId: string) => {
   try {
     const res = await axios.get(
