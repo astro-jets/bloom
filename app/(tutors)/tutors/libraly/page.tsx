@@ -213,6 +213,7 @@ export default function EducationalResources() {
                 console.log("data  => ", data)
                 setRaw(data);
             } catch (e) {
+                console.log(e)
                 setErr("Failed to load resources");
             } finally {
                 setLoading(false);
