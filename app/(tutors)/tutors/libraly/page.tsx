@@ -212,8 +212,8 @@ export default function EducationalResources() {
                 const data: BackendItem[] = await fetchLibraryResources()
                 console.log("data  => ", data)
                 setRaw(data);
-            } catch (e: any) {
-                if (e?.name !== "AbortError") setErr(e?.message || "Failed to load resources");
+            } catch (e) {
+                setErr("Failed to load resources");
             } finally {
                 setLoading(false);
             }
