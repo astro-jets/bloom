@@ -83,7 +83,7 @@ export default async function Dashboard() {
 
     // Homework stuff and submissions
     const tutorsHomeworks = await fetchTutorsHomeworks(userId)
-    console.log("homeworks => ", userId)
+    console.log("homeworks => ", tutorsHomeworks)
 
     return (
         <DefaultLayout>
