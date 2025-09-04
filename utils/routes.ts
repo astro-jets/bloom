@@ -15,7 +15,7 @@ export const fetchLessons = async () => {
 export const fetchTutorsHomeworks = async (tutorId: string) => {
   try {
     const res = await axios.get(
-      `${process.env.BE_LINK}/homework/getTutorHomework/${tutorId}`
+      `https://bloom-ft06.onrender.com/api/homework/getTutorHomework/${tutorId}`
     );
     if (!res) {
       return [];

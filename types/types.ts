@@ -1,3 +1,16 @@
+type HomeworkStatus = "Pending" | "Submitted" | "Overdue" | "Graded";
+
+type Homework2 = {
+  id: string;
+  student: string;
+  subject: string;
+  title: string;
+  submitted: string | null;
+  status: HomeworkStatus;
+  grade?: string;
+  fileUrl?: string;
+};
+
 export interface Topic {
   topic_id: string;
   topic_name: string;
