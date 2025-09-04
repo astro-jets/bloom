@@ -34,6 +34,7 @@ export interface Submission {
   submissionDate: string;
   grade: string;
   feedback: string;
+  fileUrl: string;
 }
 
 export interface Homework {

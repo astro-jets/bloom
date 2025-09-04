@@ -5,6 +5,8 @@ import DefaultLayout from "@/components/Layouts/DefaultLayout";
 import { FaFilter } from "react-icons/fa";
 import { fetchTutorsHomeworks } from "@/utils/routes";
 import { useSession } from "next-auth/react";
+import { Submission } from "@/types/types";
+
 
 type HomeworkStatus = "Pending" | "Submitted" | "Overdue" | "Graded";
 
@@ -26,7 +28,7 @@ const statusColors: Record<HomeworkStatus, string> = {
     Graded: "bg-green-100 text-green-800",
 };
 
-function mapHomework(item: any): Homework {
+function mapHomework(item: { submissions: Submission[]; dueDate: string; id: string; lesson: { student: { name: string; }; }; title: string; description: string; fileUrl: string; }): Homework {
     const submission = item.submissions?.[0];
     let status: HomeworkStatus = "Pending";
 
@@ -43,7 +45,7 @@ function mapHomework(item: any): Homework {
         student: item.lesson?.student?.name || "Unknown",
         subject: item.title,
         title: item.description,
-        submitted: submission?.submittedAt || null,
+        submitted: submission?.submissionDate || null,
         status,
         grade: submission?.grade,
         fileUrl: submission?.fileUrl || item.fileUrl,
