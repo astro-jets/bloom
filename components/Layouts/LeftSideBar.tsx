@@ -8,6 +8,9 @@ import { HiPresentationChartBar } from "react-icons/hi";
 import { PiBooks } from "react-icons/pi";
 import { useState } from "react";
 
+import { motion } from "framer-motion";
+import Image from "next/image";
+
 const navLinks = [
     { name: "Dashboard", icon: BiLineChart, href: "/dashboard" },
     { name: "Student Management", icon: FaUserGraduate, href: "/students" },
@@ -25,8 +28,24 @@ const LeftSidebar = () => {
 
     return (
         <aside className="fixed z-20  h-15 md:flex flex-col items-center top-0 left-0 bg-white md:rounded-xl shadow md:p-4 md:h-screen md:w-[17%] w-full">
-            <div className="w-full flex justify-between p-4 md:p-0 bg-white md:bg-none h-14">
-                <h1 className="text-2xl font-bold mb-6 text-[#5855D8]">Bloom</h1>
+            <div className="w-full flex justify-between p-4 md:p-0 bg-white md:bg-none h-14 mb-4">
+                <div className="w-full flex items-center md:justify-center mt-2">
+                    {/* Logo Animation */}
+                    <motion.div
+                        className="flex justify-center"
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1, rotate: [0, 5, -5, 0] }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                    >
+                        <Image
+                            src="/logo.png" // put your exported transparent logo in /public
+                            alt="Bloom Logo"
+                            width={120}
+                            height={120}
+                            className="drop-shadow-xl w-20 h-20 md:w-25 md:h-25 object-cover"
+                        />
+                    </motion.div>
+                </div>
                 {
                     showMenu ?
                         <BiX size={30} className="fill-gray-900 md:hidden" onClick={() => { setShowMenu(!showMenu) }} />
@@ -34,7 +53,7 @@ const LeftSidebar = () => {
                 }
             </div>
 
-            <nav className={`${showMenu ? 'flex' : 'hidden md:flex'} bg-white font-semibold flex-col md:py-4 space-y-2 w-full text-gray-700 border-t border-gray-300`}>
+            <nav className={`${showMenu ? 'flex' : 'hidden md:flex'} bg-white font-semibold flex-col md:py-4 space-y-4 w-full text-gray-700 `}>
                 {navLinks.map(({ name, icon: Icon, href, badge }) => {
                     const isActive = pathname.includes(href);
 
@@ -42,9 +61,9 @@ const LeftSidebar = () => {
                         <Link
                             key={name}
                             href={`/tutors${href}`}
-                            className={`cursor-pointer flex items-center gap-3 text-sm p-2 rounded ${isActive
+                            className={`cursor-pointer link-hover transition-all flex items-center gap-3 text-sm p-2 rounded ${isActive
                                 ? "bg-[#f0f3f6] text-[#706DA2]"
-                                : "hover:text-[#5C56D3] text-gray-700"
+                                : "text-gray-700"
                                 }`}
                         >
                             <Icon size={15} />

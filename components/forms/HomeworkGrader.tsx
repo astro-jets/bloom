@@ -1,3 +1,4 @@
+"use client"
 import { Submission } from "@/types/types";
 import { gradeHomework } from "@/utils/routes";
 import { useState } from "react";
@@ -41,6 +42,16 @@ export default function HomeworkGrader({
             setLoading(false);
         }
     };
+
+    if (!tutorId || !submission) {
+        return (<button
+            disabled
+            onClick={() => setShowForm(true)}
+            className="px-4 py-2 rounded-xl disabled cursor-not-allowed  text-gray-800  bg-white border border-gray-300 shadow-md"
+        >
+            Review
+        </button>)
+    }
 
     return (
         <div className="p-2">

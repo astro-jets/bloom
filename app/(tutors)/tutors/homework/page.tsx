@@ -6,6 +6,7 @@ import { FaFilter } from "react-icons/fa";
 import { fetchTutorsHomeworks } from "@/utils/routes";
 import { useSession } from "next-auth/react";
 import { Submission } from "@/types/types";
+import HomeworkGrader from "@/components/forms/HomeworkGrader";
 
 
 type HomeworkStatus = "Pending" | "Submitted" | "Overdue" | "Graded";
@@ -16,6 +17,7 @@ type Homework = {
     subject: string;
     title: string;
     submitted: string | null;
+    submissions: Submission[];
     status: HomeworkStatus;
     grade?: string;
     fileUrl?: string;
@@ -49,6 +51,7 @@ function mapHomework(item: { submissions: Submission[]; dueDate: string; id: str
         status,
         grade: submission?.grade,
         fileUrl: submission?.fileUrl || item.fileUrl,
+        submissions: item.submissions
     };
 }
 
@@ -56,12 +59,15 @@ const Homeworks = () => {
     const { data: session } = useSession();
     const [homeworks, setHomeworks] = useState<Homework[]>([]);
 
+
+
     useEffect(() => {
 
         async function fetchData() {
             if (!session?.user) return; // only run if session is available
             try {
                 const data = await fetchTutorsHomeworks(session.user.id);
+                console.log("Raw HWS => ", data)
                 setHomeworks(data.map(mapHomework));
             } catch (err) {
                 console.error("Error fetching homeworks:", err);
@@ -86,7 +92,8 @@ const Homeworks = () => {
                 gradedHomeworks.length
             )
             : 0;
-
+    const user = session?.user;
+    if (!user) { return }
     return (
         <DefaultLayout>
             <main className="h-full md:overflow-y-auto w-full custom-scrollbar py-6 px-2 md:px-8 md:w-[83%] md:ml-[17.3%]">
@@ -166,15 +173,9 @@ const Homeworks = () => {
                                         </span>
                                     </td>
                                     <td className="px-6 py-4">
-                                        {hw.fileUrl ? (
-                                            <a
-                                                href={hw.fileUrl}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="text-blue-600 underline"
-                                            >
-                                                {hw.status === "Graded" ? "View Grade" : "Open"}
-                                            </a>
+                                        {hw.submissions?.length ? (
+                                            <HomeworkGrader tutorId={user.id} submission={hw.submissions[0]} />
+
                                         ) : (
                                             <span className="text-gray-400">N/A</span>
                                         )}

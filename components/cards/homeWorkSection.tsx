@@ -39,7 +39,6 @@ export default function HomeworksSection({ student }: { student: Student }) {
         }))
     ) ?? [];
 
-    console.log(homeworks)
 
 
     return (
@@ -103,18 +102,14 @@ export default function HomeworksSection({ student }: { student: Student }) {
                             </div>
                             <div className="flex space-x-2 items-center">
                                 <div className={`px-2 py-1 rounded h-8 flex space-x-2 items-center
-                            ${hw.submissions?.length ?
-                                        ` bg-green-700 text-white`
-                                        : `bg-red-700 text-white`
-                                    }`}>
+                            ${hw.submissions?.length ? ` bg-green-700 text-white` : `bg-red-700 text-white`}`}>
                                     {hw.submissions?.length
                                         ? <><span>Submitted </span> <BsCheck2Circle className='fill-white' /></>
                                         : <><span>Not Submitted </span>  <BsExclamationCircle className='fill-white' /></>
                                     }
                                 </div>
-                                {hw.submissions?.length &&
-                                    <HomeworkGrader submission={hw.submissions[0]} tutorId={user.id} />
-                                }
+                                <HomeworkGrader submission={hw.submissions[0]} tutorId={user.id} />
+
                             </div>
                         </li>
                     ))}
