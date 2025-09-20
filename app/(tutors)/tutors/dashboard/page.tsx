@@ -4,7 +4,6 @@ import MyCalendar from "@/components/calendar/calendar";
 import PerformanceScoreCard from "@/components/charts/perfomanceScoreCard";
 import DropdownDefault from "@/components/Dropdowns/DropdownDefault";
 import DefaultLayout from "@/components/Layouts/DefaultLayout";
-import TableOne from "@/components/table";
 import { BsArrowUp, BsBellFill } from "react-icons/bs";
 import { FaUserGraduate } from "react-icons/fa";
 import { HiPresentationChartBar } from "react-icons/hi";
